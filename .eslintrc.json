@@ -9,7 +9,7 @@
     "rules": {
         "no-console": ["warn"],
         "no-useless-escape": ["warn"],
-        "no-unused-vars": ["off"],
+        "no-unused-vars": ["warn"],
         "indent": ["error",4],
         "semi": 0,
         "quotes": ["error", "double"],
