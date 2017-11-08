@@ -12,7 +12,7 @@ const createNewUser = function (userName, email) {
     debugger
     if (validateNewUser(userName, email, NutshellDatabase().users)) {
         const newUser = userTableFactory({ "userName": userName, "email": email })
-        const newUserArray = NutshellDatabase.users.push(newUser)
+        const newUserArray = NutshellDatabase().users.push(newUser)
         setData(newUserArray, "users")
 
         const storedUserInfo = JSON.stringify({ "userID": newUser.id, "userName": newUser.userName, "isEditing": false })
