@@ -25,4 +25,4 @@ const NutshellDatabase = {
     ]
 }
 
-modules.export = NutshellDatabase;
+module.exports = NutshellDatabase;

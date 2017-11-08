@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.welcome__background {
+    position: relative;
+    background-color: blue;
+    height: 100vh;
+    width: 100%;
+    
+    /* Display the content in the middle of the div using flexbox*/
+    display: flex;
+    flex-basis: rows;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    height: 100vh;
+    width: 100%;
+}
