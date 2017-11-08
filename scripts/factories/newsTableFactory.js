@@ -7,7 +7,7 @@ newsIdGenerator = idGenerator()
 
 const newsTableFactory = newsInfoObject => {
     Object.create(null, {
-        "id" : {value: newsIdGenerator.next.value(), enumerable: true, writable: true},
+        "id" : {value: newsIdGenerator.next().value, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "userID" : {value: newsInfoObject.userID, enumerable: true, writable: true},
         "title" : {value: newsInfoObject.title, enumerable: true, writable: true},
