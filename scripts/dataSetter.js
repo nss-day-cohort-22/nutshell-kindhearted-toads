@@ -13,7 +13,7 @@ function setData (arrayToSet, stringLabelOfArray) {
     for (let key in DB) {
         // if property matches, overwrite the contents of the DB with the updated array
         if (key === stringLabelOfArray) {
-            DB.key = arrayToSet
+            DB[key] = arrayToSet
         }
         else {
             console.log("No array in database by that name")
