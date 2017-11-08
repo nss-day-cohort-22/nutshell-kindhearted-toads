@@ -42,5 +42,5 @@ function getDatabase () {
     }
 }
 
-
 module.exports = getDatabase;
+
