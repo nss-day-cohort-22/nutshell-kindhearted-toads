@@ -42,11 +42,5 @@ function getDatabase () {
     }
 }
 
-<<<<<<< HEAD
-module.exports = NutshellDatabase;
-||||||| merged common ancestors
-modules.export = NutshellDatabase;
-=======
-
 module.exports = getDatabase;
->>>>>>> d8070dab5c5be00ddd8e2dfc46e1b8bb1a5992d0
+

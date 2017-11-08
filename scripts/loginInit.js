@@ -1,4 +1,5 @@
 /**
+ * Krys Mathis
  * The purpose of this function is to navigate the user through the login
  * process.
  */
@@ -9,7 +10,7 @@
 
 // if is valid
 function tempLogin ( username, email ) {
-    return true;
+    return false;
 }
 
 
@@ -26,8 +27,8 @@ const loginActions = document.addEventListener("click", (event) => {
 
     // Handle navigating to the login page
     if (event.target === loginLink) {
-        document.querySelector(".welcome__container").style.display = "none";
-        document.querySelector(".login").style.display = "flex";
+        welcome.style.display = "none";
+        login.style.display = "flex";
     }
 
     // get elements
@@ -38,6 +39,7 @@ const loginActions = document.addEventListener("click", (event) => {
     // handle the login button errors
     if (event.target === btnLogin) {
         if (tempLogin(username, email)) {
+            message.innerHTML = "";
             login.style.display = "none";
             dashboard.style.display = "";
         } else {
@@ -49,6 +51,7 @@ const loginActions = document.addEventListener("click", (event) => {
     // handle the create button errors
     if (event.target === btnCreate) {
         if (createNewUser(username, email)) {
+            message.innerHTML = "";
             login.style.display = "none";
             dashboard.style.display = "";
         } else {

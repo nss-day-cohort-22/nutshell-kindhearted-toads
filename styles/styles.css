@@ -70,6 +70,10 @@ body {
     display: block;
 } 
 
+.login__user-message {
+    background-color: red;
+}
+
 .dashboard {
     display: none;
 }
