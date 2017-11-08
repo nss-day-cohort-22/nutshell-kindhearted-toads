@@ -3,6 +3,9 @@
  * The purpose of this function is to navigate the user through the login
  * process.
  */
+const login = require("./login");
+const createNewUser = require("./createNewUser");
+
 const dashboardInit = require("./dashboardInit");
 
 // elements you would click
@@ -14,14 +17,13 @@ const loginLink = document.querySelector(".welcome__link");
 const loginActions = document.addEventListener("click", (event) => {
 
     // page elements to toggle visible and invisible
-    const welcome = document.querySelector(".welcome");
-    const login = document.querySelector(".login");
-    const dashboard = document.querySelector(".dashboard");
+    const welcomePage = document.querySelector(".welcome");
+    const loginPage = document.querySelector(".login");
 
     // Handle navigating to the login page
     if (event.target === loginLink) {
-        welcome.style.display = "none";
-        login.style.display = "flex";
+        welcomePage.style.display = "none";
+        loginPage.style.display = "flex";
     }
 
     // get elements
