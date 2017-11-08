@@ -12,7 +12,7 @@ const loginLink = document.querySelector(".welcome__link");
 
 // function to navigate through login
 const loginActions = document.addEventListener("click", (event) => {
-    
+
     // page elements to toggle visible and invisible
     const welcome = document.querySelector(".welcome");
     const login = document.querySelector(".login");
