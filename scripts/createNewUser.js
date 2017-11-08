@@ -9,10 +9,10 @@ const userTableFactory = require("./factories/usersTableFactory")
 
 
 const createNewUser = function (userName, email) {
-    debugger
-    if (validateNewUser(userName, email, NutshellDatabase().users)) {
+    const data = NutshellDatabase()
+    if (validateNewUser(userName, email, data.users)) {
         const newUser = userTableFactory({ "userName": userName, "email": email })
-        const newUserArray = NutshellDatabase().users.push(newUser)
+        const newUserArray = data.users.push(newUser)
         setData(newUserArray, "users")
 
         const storedUserInfo = JSON.stringify({ "userID": newUser.id, "userName": newUser.userName, "isEditing": false })

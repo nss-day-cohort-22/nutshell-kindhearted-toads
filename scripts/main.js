@@ -4,4 +4,6 @@ const createNewUser = require("./createNewUser")
 
 getDatabase()
 createNewUser("paul", "peter")
+debugger
 login("paul", "peter")
+debugger
