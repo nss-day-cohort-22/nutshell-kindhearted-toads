@@ -7,7 +7,20 @@ body {
     --main-bg-color: blue;
 }
 
+.welcome {
+    text-align: center;
+}
 
+.welcome__interaction {
+    margin: 10px;
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+}
+
+.welcome__message {
+    margin: 20px;
+}
 .welcome__background {
     position: relative;
     background-color: var(--main-bg-color);
@@ -21,6 +34,14 @@ body {
     align-items: center;
 }
 
+.welcome__link {
+
+    height: 50px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
 .login {
     background-color: var(--main-bg-color);
     display: none;
@@ -48,3 +69,7 @@ body {
 .login__username-container {
     display: block;
 } 
+
+.dashboard {
+    display: none;
+}
