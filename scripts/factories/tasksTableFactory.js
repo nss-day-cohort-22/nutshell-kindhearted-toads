@@ -6,7 +6,7 @@ const idGenerator = require("./idGenerator")
 tasksIdGenerator = idGenerator()
 
 const taskTableFactory = taskInfoObject => {
-    Object.create(null, {
+    return Object.create(null, {
         "id" : {value: tasksIdGenerator.next().value, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "userID" : {value: taskInfoObject.userID, enumerable: true, writable: true},

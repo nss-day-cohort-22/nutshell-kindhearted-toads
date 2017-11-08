@@ -6,7 +6,7 @@ const idGenerator = require("./idGenerator")
 messageIdGenerator = idGenerator()
 
 const messageTableFactory = messageInfoObject => {
-    Object.create(null, {
+    return Object.create(null, {
         "id" : {value: messageIdGenerator.next().value, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "userID" : {value: messageInfoObject.userID, enumerable: true, writable: true},
