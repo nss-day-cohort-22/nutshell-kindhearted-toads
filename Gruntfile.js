@@ -4,7 +4,7 @@ module.exports = function foo(grunt) {
         pkg: grunt.file.readJSON("package.json"),
         watch: {
             scripts: {
-                files: ["**/scripts/*.js", "!node_modules/**/*.js"],
+                files: ["**/scripts/*.js", "**/scripts/**/*.js", "!node_modules/**/*.js" ],
                 tasks: ["eslint", "browserify"],
                 options: {
                     spawn: false,
@@ -21,6 +21,7 @@ module.exports = function foo(grunt) {
         eslint: {
             src: [
                 "**/scripts/*.js",
+                "**/scripts/**/*.js",
                 "!node_modules/**/*.js",
             ],
         },
