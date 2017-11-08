@@ -9,22 +9,40 @@
   <nav></nav>
   <header></header>
   <main class="main-conent">
+  <section class="welcome">
     <div class="welcome__container">
       <div class="welcome__background">
         <div class="welcome__interaction">
         <div class="welcome__message">
           Welcome to Nutshell!
         </div>
-        <div class="welcome__link">
-          <a href="#login">Register a new account hyperlink</a>
+        <div class="welcome__link-container">
+          <a class="welcome__link" href="#login">Register a new account hyperlink</a>
         </div>
       </div>
       </div>
     </div>
+  </section>
     <section class="login" id="login">
-      form 1
-      form 2
-      form 3
+      <div class="login__page-wrapper">
+      <div class="login__container">
+        <form name="login" class="login__form">
+        <div class="login__username-container">
+            <div class="login__username-label">username:</div>
+            <input class="login__username" type="text">
+        </div>
+        <div class="login__username-email">
+          <div class="login__email-label">email:</div>
+          <input class="login__email" type="text">
+        </div>
+        <div class="login__button-container">
+          <button class="login__button-login">Login</button>
+          <button class="login__button-create">Create Account</button>
+        </div>
+        </form>
+        <div class="login__user-message"></div>
+      </div>
+    </div>
     </section>
  </main>
   <footer></footer>
