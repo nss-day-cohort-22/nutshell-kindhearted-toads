@@ -26,9 +26,9 @@ const loginActions = document.addEventListener("click", (event) => {
         loginPage.style.display = "flex";
     }
 
-    // get elements
-    const username = document.querySelector(".login__username");
-    const email = document.querySelector(".login__email");
+    // get elements and values
+    const username = document.querySelector(".login__username").value;
+    const email = document.querySelector(".login__email").value;
     const message = document.querySelector(".login__user-message");
 
     // handle the login button errors
