@@ -15,12 +15,19 @@ body {
 .welcome__interaction {
     margin: 10px;
     height: 200px;
-    width: 200px;
+    width: 300px;
     padding: 10px;
 }
 
 .welcome__message {
     margin: 20px;
+    font-size: 2em;
+}
+
+.welcome__brand {
+    font-size: 2.25em;
+    font-family: sans;
+
 }
 .welcome__background {
     position: relative;
@@ -35,14 +42,26 @@ body {
     align-items: center;
 }
 
+.welcome__link-container {
+    display: flex;
+    justify-content: center;
+}
+
 .welcome__link {
 
     height: 50px;
+    width: 100px;
     border: 1px solid white;
     color: white;
     border-radius: 15px;
-    padding: 10px;
+    padding-top: 10%;
 }
+
+.welcome__link:hover {
+    background-color: pink;
+    color: black;
+}
+
 .login {
     background-color: var(--main-bg-color);
     display: none;
@@ -54,15 +73,24 @@ body {
     align-items: center;
 }
 
+.login__username {
+    width: 100%;
+    font-size: 1em;
+}
+
+.login__email {
+    font-size: 1em;
+}
 .login__container {
-    background-color: gray;
+    background-color: rgba(128, 128, 128,.5);
     border: 1px solid white;
-    height: 500px;
+    height: 200px;
     width: 300px;
     display: flex;
-    flex-basis: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+    font-size: 1.25em;
 }
 .login__form {
     padding: 5px;
