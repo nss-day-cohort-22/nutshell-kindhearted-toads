@@ -11,9 +11,9 @@ function getDatabase () {
         DB = {
             "users": [
                 // eventually remove these placeholder accounts
-                { "id": 1, "username": "Steve", "email": "me@me.com", "password": 123 },
-                { "id": 2, "username": "Mark", "email": "you@you.com", "password": 123 },
-                { "id": 3, "username": "Krista", "email": "foo@foo.com", "password": 123 }
+                { "id": 1, "userName": "Steve", "email": "me@me.com", "password": 123 },
+                { "id": 2, "userName": "Mark", "email": "you@you.com", "password": 123 },
+                { "id": 3, "userName": "Krista", "email": "foo@foo.com", "password": 123 }
             ],
             "messages": [
                 { "id": 1, "userId": 1, "content": "This is where a chat message will display", "timestamp": 0}
