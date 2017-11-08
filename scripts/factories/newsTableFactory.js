@@ -6,7 +6,7 @@ const idGenerator = require("./idGenerator")
 newsIdGenerator = idGenerator()
 
 const newsTableFactory = newsInfoObject => {
-    Object.create(null, {
+    return Object.create(null, {
         "id" : {value: newsIdGenerator.next().value, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "userID" : {value: newsInfoObject.userID, enumerable: true, writable: true},
