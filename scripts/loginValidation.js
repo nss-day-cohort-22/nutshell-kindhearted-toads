@@ -3,7 +3,7 @@
 
 
 const validateNewUser = function (userName, email, userArray) {
-    if (userArray.find(user => user.username === userName)) {
+    if (userArray.find(user => user.userName === userName)) {
         console.log("ERROR: username not unique")
         return false
     }
@@ -16,10 +16,10 @@ const validateNewUser = function (userName, email, userArray) {
     }
 }
 const validateUser = function (userName, email, userArray) {
-    const user = userArray.find(user => user.username === userName)
-    if (user) {
-        if (user.email === email) {
-            return user
+    const validUser = userArray.find(user => user.userName === userName)
+    if (validUser) {
+        if (validUser.email === email) {
+            return validUser
         }
         else {
             console.log("ERROR: Incorrect email")

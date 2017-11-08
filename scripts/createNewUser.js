@@ -12,7 +12,8 @@ const createNewUser = function (userName, email) {
     const data = NutshellDatabase()
     if (validateNewUser(userName, email, data.users)) {
         const newUser = userTableFactory({ "userName": userName, "email": email })
-        const newUserArray = data.users.push(newUser)
+        data.users.push(newUser)
+        const newUserArray = data.users
         setData(newUserArray, "users")
 
         const storedUserInfo = JSON.stringify({ "userID": newUser.id, "userName": newUser.userName, "isEditing": false })
