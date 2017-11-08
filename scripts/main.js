@@ -1,2 +1,1 @@
-const database = require("./database");
-const loginInit = require("./loginInit");
+const getDatabase = require("./database")
