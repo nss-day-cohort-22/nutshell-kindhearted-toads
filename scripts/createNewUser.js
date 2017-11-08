@@ -8,6 +8,7 @@ const setData = require("./dataSetter")
 
 
 const createNewUser = function (userName, email) {
+    debugger
     if (validateNewUser(userName, email, NutshellDatabase.users)) {
         const newUser = userTableFactory({ "userName": userName, "email": email })
         const newUserArray = NutshellDatabase.users.push(newUser)
