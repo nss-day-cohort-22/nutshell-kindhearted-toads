@@ -1,7 +1,7 @@
 const getDatabase = require("./database")
 const login = require("./login")
-const creatNewUser = require("./createNewUser")
+const createNewUser = require("./createNewUser")
 
-
-creatNewUser("paul", "peter")
+getDatabase()
+createNewUser("paul", "peter")
 login("paul", "peter")

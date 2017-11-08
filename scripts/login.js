@@ -7,6 +7,7 @@ const NutshellDatabase = require("./database")
 
 
 const login = function (userName, email) {
+    debugger
     const user = validateUser(userName, email, NutshellDatabase.users)
     if (user) {
         const storedUserInfo = JSON.stringify({ "userID": user.id, "userName": user.userName, "isEditing": false })

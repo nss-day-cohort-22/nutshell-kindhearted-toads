@@ -5,11 +5,12 @@
 const { validateUser, validateNewUser } = require("./loginValidation")
 const NutshellDatabase = require("./database")
 const setData = require("./dataSetter")
+const userTableFactory = require("./factories/usersTableFactory")
 
 
 const createNewUser = function (userName, email) {
     debugger
-    if (validateNewUser(userName, email, NutshellDatabase.users)) {
+    if (validateNewUser(userName, email, NutshellDatabase().users)) {
         const newUser = userTableFactory({ "userName": userName, "email": email })
         const newUserArray = NutshellDatabase.users.push(newUser)
         setData(newUserArray, "users")
