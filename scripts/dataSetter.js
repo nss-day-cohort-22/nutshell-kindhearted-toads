@@ -16,9 +16,6 @@ function setData (arrayToSet, stringLabelOfArray) {
         if (key === stringLabelOfArray) {
             DB[key] = arrayToSet
         }
-        else {
-            console.log("No array in database by that name")
-        }
     }
 
     // set the updated DB into local storage
