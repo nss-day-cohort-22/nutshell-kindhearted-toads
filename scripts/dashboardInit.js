@@ -21,7 +21,9 @@ const dashboardInit = function(user) {
 
     // const DB = getDatabase()
     //chatWidgetInit;
+
     taskWidgetInit();
+
 }
 
 module.exports = dashboardInit;

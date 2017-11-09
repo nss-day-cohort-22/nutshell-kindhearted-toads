@@ -1,39 +1,23 @@
 /**
  * Krys Mathis
- * Generate the mark-up for the task widget
+ * This init function:
+ * 1. Create the overall structure for the task widget
+ * 2. get the user data
+ * 3. generate the individual tasks
  */
-const taskData = [];
-const userId = 1;
-const {a, button, div, h1, header, p, span, article, input} = require("../domHelpers");
 
-const taskGenerateWidget = function() {
-    
-    const taskWidget = document.querySelector(".taskWidget");
+const structure = require("./createStructure");
+const getTasks = require("./getTasks");
+const getUser = require("../auth/getActiveUser");
+const generateTasks = require("./generateTasks");
+const addListeners = require("./addListeners");
 
-    // Widget Header
-    taskWidget.appendChild(
-        header({"className": "taskWidget_header"},"Tasks")
-    );
 
-    // Task container
-    taskWidget.appendChild(
-        div({"className": "taskContainer"},
-            input({ "className": "taskWidget", "type": "text" , "placeholder": "Enter task"}),
-            button({"className": "taskWidget__btnSubmit"},"Submit")
-        )
 
-    );
+const taskInit = function() {
+    const user = getUser;
+    generateTasks(getTasks(user));
+}
 
-    // let html = `
-    //     <header class="taskWidget__header">Tasks</header>
-    //         <div class="taskContainer">
-    //         </div>
-    //     <div class=taskWidget__input">
-    //         <input class="taskWidget__txt" type="text">
-    //         <button class="taskWidget__btnSubmit">Submit</button>
-    //     </div>
-    // `
-    console.log(taskWidget);
-};
+module.exports = taskInit;
 
-module.exports = taskGenerateWidget
