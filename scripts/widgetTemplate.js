@@ -1,6 +1,10 @@
 // Author: Greg Lawrence
 // A template to use to create widgets that inherit properties from the template. 
 
+// add a require for autoScroll and all other functions/modules that are used
+const autoScroll = require("./autoScroll")
+const getDatabase = require("./getDatabase")
+
 const defaultWidget = function(){ 
 
     return Object.create(null, {
@@ -15,6 +19,7 @@ const defaultWidget = function(){
                         <div class='${name}Container'>
                         </div>   
                         `
+
                 // add the users additional dom string from parameter to this variable    
                 widgetContainerDomString += additionalContentString
                 // push DOM string to DOM element
@@ -22,9 +27,23 @@ const defaultWidget = function(){
 
             }
         },
-        "edit": {
-            "value": function(){
-                
+        "saveEdit": {
+            "value": function(stringLabelOfArray, newEditedObject){
+                // assign new editedObject to proper database location
+                const DB = getDatabase()
+
+                // check if the stringLabel passed in is a valid database object
+                if (DB.hasOwnProperty(stringLabelOfArray)) {
+                    // find the index in the array that matches the item that was edited
+                    let editedIndexNum = DB[stringLabelOfArray].findIndex(e => {
+                        e.id === newEditedObject.id
+                    })
+                    // overwrite the object in the array with the edited object
+                    DB[stringLabelOfArray][editedIndexNum] = newEditedObject
+                    
+                    // pass in array with the newly edited object to the dataSetter() function which will set that in local storage
+                    dataSetter(DB[stringLabelOfArray], stringLabelOfArray)
+                }
             }
         },
         "delete": {
