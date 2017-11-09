@@ -3,9 +3,9 @@
 
 
 const { validateUser, validateNewUser } = require("./loginValidation")
-const NutshellDatabase = require("./database")
-const setData = require("./dataSetter")
-const userTableFactory = require("./factories/usersTableFactory")
+const NutshellDatabase = require("../database")
+const setData = require("../dataSetter")
+const userTableFactory = require("../factories/usersTableFactory")
 
 
 const createNewUser = function (userName, email) {
