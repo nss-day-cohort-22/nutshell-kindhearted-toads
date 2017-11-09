@@ -22,10 +22,12 @@ document.addEventListener("keyup", (e)=> {
     }
 
     if (e.target.className === "task__input") {
-        let txt = e.target.value;
-        let parent = e.target.parentNode;
-        let replaceSpan = span({"className": "task__desc"},txt);
-        parent.replaceChild(replaceSpan,e.target);
+        if (e.keyCode === 13) {
+            let txt = e.target.value;
+            let parent = e.target.parentNode;
+            let replaceSpan = span({"className": "task__desc"},txt);
+            parent.replaceChild(replaceSpan,e.target);
+        }
     }
 });
 
