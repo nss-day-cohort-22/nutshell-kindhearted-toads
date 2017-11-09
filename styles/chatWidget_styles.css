@@ -1,0 +1,18 @@
+.chatWidget {
+    border: 2px solid rgb(128, 128, 128);
+    background-color: rgb(32, 109, 252);
+    height: 200px;
+    max-height: 200px;
+    width: 400px;
+    max-width: 400px;
+    padding: .4em;
+    color: white;
+}
+
+.chatContainer {
+    background-color: rgba(224, 224, 224, 0.411);
+    border: 2px solid grey;
+    overflow-y: auto;
+    /* height: 75px; */
+    width: 95%;
+}
