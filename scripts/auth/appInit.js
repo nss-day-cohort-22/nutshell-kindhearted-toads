@@ -4,15 +4,15 @@
  */
 //const activeUser = require("./getActiveUser");
 const activeUser = require("./getActiveUser");
-const dashboardInit = require("./dashboardInit");
+const dashboardInit = require("../dashboardInit");
 const loginInit = require("./loginInit");
 
 const appInit = () => {
     if (activeUser) {
         dashboardInit(activeUser);
     } else {
-        loginInit();
+        loginInit;
     }
 };
-console.log(activeUser);
+
 module.exports = appInit;
