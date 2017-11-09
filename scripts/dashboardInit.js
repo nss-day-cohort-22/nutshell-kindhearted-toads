@@ -21,9 +21,9 @@ const dashboardInit = function(user) {
     dashboard.style.display = "block";
 
     // const DB = getDatabase()
-    chatWidgetInit;
+    chatWidgetInit();
 }
 
-chatWidgetInit()
+
 
 module.exports = dashboardInit;

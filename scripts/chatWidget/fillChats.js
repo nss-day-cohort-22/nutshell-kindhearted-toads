@@ -29,9 +29,9 @@ const fillChats = function() {
     chatContainerEl.innerHTML = chatMsgDomString
 
     let chatHeight = chatContainerEl.scrollHeight
-    
-    console.log("chatContainerEl: ", chatContainerEl.scrollHeight)
-    chatContainerEl.scrollBy(0,118)
+
+
+    chatContainerEl.scrollTo(0,chatContainerEl.scrollHeight)
 }
 
 
