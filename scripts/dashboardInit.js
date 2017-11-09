@@ -4,6 +4,7 @@
  */
 
 const chatWidgetInit = require("./chatWidget/chatWidgetInit")
+const testWidget = require("./testWidget")
 
 
 

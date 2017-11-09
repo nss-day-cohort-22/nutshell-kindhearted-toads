@@ -2,7 +2,7 @@
 // This module populates chatWidget with current message data from database
 
 const getDatabase = require("../database")
-const autoScroll = require("./autoScroll")
+const autoScroll = require("../autoScroll")
 
 const fillChats = function() {
     const DB = getDatabase()
