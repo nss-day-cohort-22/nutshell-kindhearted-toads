@@ -111,3 +111,7 @@ body {
     display: none;
     color: black;
 }
+
+.task {
+    display: flex;
+}
