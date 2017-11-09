@@ -3,7 +3,7 @@
 
 
 const { validateUser, validateNewUser } = require("./loginValidation")
-const NutshellDatabase = require("./database")
+const NutshellDatabase = require("../database")
 
 
 const login = function (userName, email) {
