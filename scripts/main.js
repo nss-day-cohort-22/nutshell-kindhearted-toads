@@ -1,12 +1,6 @@
 const getDatabase = require("./database")
-const loginInit = require("./loginInit");
-const login = require("./login")
-const createNewUser = require("./createNewUser")
-const taskWidgetInit = require("./taskGenerateWidget");
+const appInit = require("./auth/appInit")
+appInit();
 
-getDatabase()
-createNewUser("paul", "peter")
-login("paul", "peter")
 
-taskWidgetInit();
 

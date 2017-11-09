@@ -5,8 +5,7 @@
  */
 const login = require("./login");
 const createNewUser = require("./createNewUser");
-
-const dashboardInit = require("./dashboardInit");
+const dashboardInit = require("../dashboardInit");
 
 // elements you would click
 const btnLogin = document.querySelector(".login__button-login");
@@ -14,7 +13,7 @@ const btnCreate = document.querySelector(".login__button-create");
 const loginLink = document.querySelector(".welcome__link");
 
 // function to navigate through login
-const loginActions = document.addEventListener("click", (event) => {
+document.addEventListener("click", (event) => {
 
     // page elements to toggle visible and invisible
     const welcomePage = document.querySelector(".welcome");
@@ -53,4 +52,4 @@ const loginActions = document.addEventListener("click", (event) => {
 
 })
 
-module.exports = loginActions;
+module.exports = null;

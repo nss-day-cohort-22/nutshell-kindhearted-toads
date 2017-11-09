@@ -4,7 +4,7 @@
  */
 const taskData = [];
 const userId = 1;
-const {a, button, div, h1, header, p, span, article, input} = require("./domHelpers");
+const {a, button, div, h1, header, p, span, article, input} = require("../domHelpers");
 
 const taskGenerateWidget = function() {
     
