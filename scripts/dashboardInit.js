@@ -3,6 +3,8 @@
  * Purpose is to handle initializing the structure for the dashboard
  */
 // get page elements
+const chatWidgetInit = require
+
 const welcome = document.querySelector(".welcome");
 const login = document.querySelector(".login");
 const dashboard = document.querySelector(".dashboard");
@@ -14,6 +16,9 @@ const dashboardInit = function(user) {
     welcome.style.display = "none";
     login.style.display = "none";
     dashboard.style.display = "block";
+
+    // const DB = getDatabase()
+    chatWidgetInit()
 }
 
 module.exports = dashboardInit;

@@ -14,5 +14,5 @@ const appInit = () => {
         loginInit();
     }
 };
-
+console.log(activeUser);
 module.exports = appInit;
