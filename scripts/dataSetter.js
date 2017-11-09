@@ -1,4 +1,5 @@
-// Greg - DataSetter will take in data as input and set it to local storage.
+// Author: Greg Lawrence
+// DataSetter will take in data as input and set it to local storage.
 
 // get a copy of the most recent version of DB in Local Storage from the database module
 const getDatabase = require("./database")
