@@ -16,7 +16,7 @@ let chatWidgetInit = function (DB, userId) {
         <div class='chatContainer'>
         </div>   
         <input type="text" class="chatWidget__text" placeholder="Chat with your friends">
-        <button class="chatWidget__btn"></button>
+        <button class="chatWidget__btn">Send</button>
         `
 
     // push DOM string to DOM element
@@ -40,7 +40,7 @@ let chatWidgetInit = function (DB, userId) {
 
         // populate chat msg container dom string with data from each chat message
         chatMsgDomString += `
-            <span class="chatWidget__msg">${messageAuthor.userName}: ${msg.content}</span>
+            <p class="chatWidget__msg">${messageAuthor.userName}: ${msg.content}</p>
         `
     })
 

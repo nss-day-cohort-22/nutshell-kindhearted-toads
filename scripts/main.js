@@ -4,8 +4,12 @@ const login = require("./login")
 const createNewUser = require("./createNewUser")
 const chatWidgetInit = require("./chatWidgetInit")
 
-createNewUser("paul", "peter")
 
+
+
+
+
+createNewUser("paul", "peter")
 login("paul", "peter")
 
 
