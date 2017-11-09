@@ -3,9 +3,9 @@ const appInit = require("./auth/appInit")
 
 // The three lines below can be uncommented to populate the database with random stuff
 
-// getDatabase()
-// const popDB = require("./factories/populate_database")
-// popDB()
+getDatabase()
+const populateDB = require("./factories/populate_database")
+populateDB()
 
 
 appInit();
