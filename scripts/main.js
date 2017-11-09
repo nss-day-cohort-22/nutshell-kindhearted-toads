@@ -4,7 +4,6 @@ const login = require("./login")
 const createNewUser = require("./createNewUser")
 const chatWidgetInit = require("./chatWidgetInit")
 
-const DB = getDatabase()
 createNewUser("paul", "peter")
 
 login("paul", "peter")
@@ -12,6 +11,6 @@ login("paul", "peter")
 
 
 
-console.log("DB: ", DB)
+const DB = getDatabase()
 chatWidgetInit(DB, DB.users[0].id)
 
