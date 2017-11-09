@@ -1,8 +1,7 @@
 const getDatabase = require("./database")
-const loginInit = require("./loginInit");
+const appInit = require("./appInit")
 const login = require("./login")
 const createNewUser = require("./createNewUser")
 getDatabase()
-createNewUser("paul", "peter")
-login("paul", "peter")
+appInit();
 

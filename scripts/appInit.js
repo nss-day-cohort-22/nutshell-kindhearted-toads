@@ -1,15 +1,15 @@
 /**
  * Krys Mathis
- * This function controls what shows up when the application
+ * This function controls what shows up when the application launches
  */
-const utilities = require("./utilities");
+//const activeUser = require("./getActiveUser");
+const activeUser = require("./getActiveUser");
 const dashboardInit = require("./dashboardInit");
 const loginInit = require("./loginInit");
 
 const appInit = () => {
-    const userID = utilities.getUserID;
-    if (userID === -1) {
-        dashboardInit(userID);
+    if (activeUser) {
+        dashboardInit(activeUser);
     } else {
         loginInit();
     }
