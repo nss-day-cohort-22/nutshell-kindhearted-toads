@@ -41,13 +41,26 @@ const defaultWidget = function(){
                     // overwrite the object in the array with the edited object
                     DB[stringLabelOfArray][editedIndexNum] = newEditedObject
                     
-                    // pass in array with the newly edited object to the dataSetter() function which will set that in local storage
+                    // call dataSetter() function to set the updated array into the database. 
                     dataSetter(DB[stringLabelOfArray], stringLabelOfArray)
                 }
             }
         },
         "delete": {
-            "value": function() {}
+            "value": function(stringLabelOfArray, itemId) {
+
+                // check if the stringLabel passed in is a valid database object
+                if (DB.hasOwnProperty(stringLabelOfArray)) {
+                    let indexToDelete = DB[stringLabelOfArray].findIndex(e => {
+                        e.id === itemId
+                    })
+                    // delete the item from the array
+                    DB[stringLabelOfArray].splice(indexToDelete, 1)
+
+                    // call dataSetter() function to set the updated array into the database. 
+                    dataSetter(DB[stringLabelOfArray], stringLabelOfArray)
+                }
+            }
         },
         "fill": {
             "value": function(domString) {
