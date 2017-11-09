@@ -1,11 +1,13 @@
 // eventsJoin - Chris Miller
 // returns new object for eventsTable
 
-// const getDatabase = require("../database")
+const getDatabase = require("../database")
+const setDatabase = require("../datasetter")
+const getActiveUser = require("../auth/getActiveUser")
 
 const eventsJoinFactory = eventJoinObject => {
 
-    let db = JSON.parse(localStorage.getItem("NutshellDatabase"))
+    let db = getDatabase()
     
     let idValue = 0
     
@@ -17,7 +19,7 @@ const eventsJoinFactory = eventJoinObject => {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "eventID" : {value: eventJoinObject.eventID, enumerable: true, writable: true},
-        "userID" : {value: getActiveUser().id, enumerable: true, writable: true},
+        "userID" : {value: getActiveUser.id, enumerable: true, writable: true},
         "save": {value: function () {
             db.eventJoin.push({
                 "id": this.id,
@@ -25,7 +27,7 @@ const eventsJoinFactory = eventJoinObject => {
                 "userID": this.userID,
                 "eventID": this.eventID
             })
-            localStorage.setItem("NutshellDatabase", JSON.stringify(db))
+            setDatabase(db.eventJoin, "eventJoin")
             return this
         }}
     })

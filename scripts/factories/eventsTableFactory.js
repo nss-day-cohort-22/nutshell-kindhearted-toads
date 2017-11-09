@@ -1,11 +1,13 @@
 // eventsTableFactory - Chris Miller
 // returns new object for eventsTable
 
-// const getDatabase = require("../database")
+const getDatabase = require("../database")
+const setDatabase = require("../datasetter")
+const getActiveUser = require("../auth/getActiveUser")
 
 const eventsFactory = eventsInfoObject => {
 
-    let db = JSON.parse(localStorage.getItem("NutshellDatabase"))
+    let db = getDatabase()
     
     let idValue = 0
     
@@ -16,7 +18,7 @@ const eventsFactory = eventsInfoObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "userID" : {value: getActiveUser().id, enumerable: true, writable: true},
+        "userID" : {value: getActiveUser.id, enumerable: true, writable: true},
         "name" : {value: eventsInfoObject.name, enumerable: true, writable: true},
         "eventDate" : {value: eventsInfoObject.eventDate, enumerable: true, writable: true},
         "location" : {value: eventsInfoObject.location, enumerable: true, writable: true},
@@ -29,7 +31,7 @@ const eventsFactory = eventsInfoObject => {
                 "eventDate": this.eventDate,
                 "location": this.location
             })
-            localStorage.setItem("NutshellDatabase", JSON.stringify(db))
+            setDatabase(db.events, "events")
             return this
         }}
     })

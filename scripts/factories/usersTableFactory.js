@@ -1,11 +1,12 @@
 // usersTableFactory - Chris Miller
 // returns new object for usersTable
 
-// const getDatabase = require("../database")
+const getDatabase = require("../database")
+const setDatabase = require("../datasetter")
 
 const userFactory = userObject => {
 
-    let db = JSON.parse(localStorage.getItem("NutshellDatabase"))
+    let db = getDatabase()
     
     let idValue = 0
 
@@ -25,7 +26,7 @@ const userFactory = userObject => {
                 "userName": this.userName,
                 "email": this.email
             })
-            localStorage.setItem("NutshellDatabase", JSON.stringify(db))
+            setDatabase(db.users, "users")
             return this
         }}
     })

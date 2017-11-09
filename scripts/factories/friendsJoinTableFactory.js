@@ -1,11 +1,13 @@
 // friendsJoinTable - Chris Miller
 // returns new object for eventsTable
 
-// const getDatabase = require("../database")
+const getDatabase = require("../database")
+const setDatabase = require("../datasetter")
+const getActiveUser = require("../auth/getActiveUser")
 
 const friendsFactory = friendsInfoObject => {
 
-    let db = JSON.parse(localStorage.getItem("NutshellDatabase"))
+    let db = getDatabase()
     
     let idValue = 0
     
@@ -16,7 +18,7 @@ const friendsFactory = friendsInfoObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "userID" : {value: getActiveUser().id, enumerable: true, writable: true},
+        "userID" : {value: getActiveUser.id, enumerable: true, writable: true},
         "friendID" : {value: friendsInfoObject.friendID, enumerable: true, writable: true},
         "save": {value: function () {
             db.friends.push({
@@ -25,7 +27,7 @@ const friendsFactory = friendsInfoObject => {
                 "eventID": this.eventID,
                 "friendID": this.friendID
             })
-            localStorage.setItem("NutshellDatabase", JSON.stringify(db))
+            setDatabase(db.friends, "friends")
             return this
         }}
     })

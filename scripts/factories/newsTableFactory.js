@@ -1,11 +1,13 @@
 // newsTableFactory - Chris Miller
 // returns new object for newsTable
 
-// const getDatabase = require("../database")
+const getDatabase = require("../database")
+const setDatabase = require("../datasetter")
+const getActiveUser = require("../auth/getActiveUser")
 
 const newsFactory = newsObject => {
     
-    let db = JSON.parse(localStorage.getItem("NutshellDatabase"))
+    let db = getDatabase()
     
     let idValue = 0
     
@@ -16,7 +18,7 @@ const newsFactory = newsObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "userID" : {value: getActiveUser().id, enumerable: true, writable: true},
+        "userID" : {value: getActiveUser.id, enumerable: true, writable: true},
         "title" : {value: newsObject.title, enumerable: true, writable: true},
         "synopsis" : {value: newsObject.synopsis, enumerable: true, writable: true},
         "url" : {value: newsObject.url, enumerable: true, writable: true},
@@ -29,7 +31,7 @@ const newsFactory = newsObject => {
                 "synopsis": this.synopsis,
                 "url": this.title
             })
-            localStorage.setItem("NutshellDatabase", JSON.stringify(db))
+            setDatabase(db.news, "news")
             return this
         }}
     })
