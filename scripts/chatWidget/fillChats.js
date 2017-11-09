@@ -2,6 +2,7 @@
 // This module populates chatWidget with current message data from database
 
 const getDatabase = require("../database")
+const autoScroll = require("./autoScroll")
 
 const fillChats = function() {
     const DB = getDatabase()
@@ -28,10 +29,7 @@ const fillChats = function() {
     // populate chat container with dom string
     chatContainerEl.innerHTML = chatMsgDomString
 
-    let chatHeight = chatContainerEl.scrollHeight
-
-
-    chatContainerEl.scrollTo(0,chatContainerEl.scrollHeight)
+    autoScroll("chatContainer")
 }
 
 
