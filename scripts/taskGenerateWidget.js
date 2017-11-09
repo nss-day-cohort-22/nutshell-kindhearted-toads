@@ -7,6 +7,7 @@ const userId = 1;
 
 const taskGenerateTaskWidget = function(taskData, userId) {
     
+    const taskWidget = document.querySelector("")
     let html = `
         <header class="taskWidget__header">Tasks</header>
             <div class="taskContainer">
