@@ -9,7 +9,7 @@ const dashboard = document.querySelector(".dashboard");
 const message = document.querySelector(".login__user-message");
 
 // control what elements exist on the page
-const dashboardInit = function() {
+const dashboardInit = function(userID) {
     message.innerHTML = "";
     welcome.style.display = "none";
     login.style.display = "none";
