@@ -19,7 +19,7 @@ const createTaskStructure = function() {
     // Task container
     taskWidget.appendChild(
         div({"className": "taskContainer"},
-            input({ "className": "taskWidget", "type": "text" , "placeholder": "Enter task"}),
+            input({ "className": "taskWidget__input", "type": "text" , "placeholder": "Enter task"}),
             button({"className": "taskWidget__btnSubmit"},"Submit")
         )
 

@@ -12,7 +12,7 @@ const generateTasks = function(tasks) {
     tasks.forEach(task =>
         container.appendChild(div({"className": "task"},
             input({"type": "checkbox", "className": "task__checkbox"}),
-            span({"className": "task__name"}, `${task.task}`))
+            span({"className": "task__desc"}, `${task.task}`))
         )
     )
 }
