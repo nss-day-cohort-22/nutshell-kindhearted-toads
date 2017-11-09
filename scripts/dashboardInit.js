@@ -2,9 +2,12 @@
  * Krys Mathis
  * Purpose is to handle initializing the structure for the dashboard
  */
-// get page elements
-const chatWidgetInit = require("./chatWidgetInit");
 
+const chatWidgetInit = require("./chatWidget/chatWidgetInit")
+
+
+
+// get page elements
 const welcome = document.querySelector(".welcome");
 const login = document.querySelector(".login");
 const dashboard = document.querySelector(".dashboard");
@@ -18,7 +21,9 @@ const dashboardInit = function(user) {
     dashboard.style.display = "block";
 
     // const DB = getDatabase()
-    chatWidgetInit;
+    chatWidgetInit();
 }
+
+
 
 module.exports = dashboardInit;
