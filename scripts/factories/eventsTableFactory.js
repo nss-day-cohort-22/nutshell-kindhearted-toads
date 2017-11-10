@@ -18,7 +18,7 @@ const eventsFactory = eventsInfoObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "userID" : {value: getActiveUser().userID, enumerable: true, writable: true},
+        "userId" : {value: getActiveUser().userId, enumerable: true, writable: true},
         "name" : {value: eventsInfoObject.name, enumerable: true, writable: true},
         "eventDate" : {value: eventsInfoObject.eventDate, enumerable: true, writable: true},
         "location" : {value: eventsInfoObject.location, enumerable: true, writable: true},
@@ -26,7 +26,7 @@ const eventsFactory = eventsInfoObject => {
             db.events.push({
                 "id": this.id,
                 "timeStamp": this.timeStamp,
-                "userID": this.userID,
+                "userId": this.userId,
                 "name": this.name,
                 "eventDate": this.eventDate,
                 "location": this.location

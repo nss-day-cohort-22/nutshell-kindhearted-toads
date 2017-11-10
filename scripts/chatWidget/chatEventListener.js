@@ -1,5 +1,5 @@
 // Author: Greg Lawrence
-// listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userID and pass in these values to the messageTableFactory.js 
+// listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userId and pass in these values to the messageTableFactory.js 
 
 const messagesFactory = require("../factories/messagesTableFactory")
 const fillChats = require("./fillChats")

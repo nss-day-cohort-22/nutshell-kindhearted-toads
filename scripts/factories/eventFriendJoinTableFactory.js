@@ -18,14 +18,14 @@ const eventsJoinFactory = eventJoinObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "eventID" : {value: eventJoinObject.eventID, enumerable: true, writable: true},
-        "userID" : {value: getActiveUser().userID, enumerable: true, writable: true},
+        "eventId" : {value: eventJoinObject.eventId, enumerable: true, writable: true},
+        "userId" : {value: getActiveUser().userId, enumerable: true, writable: true},
         "save": {value: function () {
             db.eventJoin.push({
                 "id": this.id,
                 "timeStamp": this.timeStamp,
-                "userID": this.userID,
-                "eventID": this.eventID
+                "userId": this.userId,
+                "eventId": this.eventId
             })
             setDatabase(db.eventJoin, "eventJoin")
             return this

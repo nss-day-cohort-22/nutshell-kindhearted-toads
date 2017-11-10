@@ -53,12 +53,12 @@ const popDB = function () {
     ]
 
     const eventsJoin = [
-        { "eventID": 1 },
-        { "eventID": 1 },
-        { "eventID": 2 },
-        { "eventID": 2 },
-        { "eventID": 3 },
-        { "eventID": 3 }
+        { "eventId": 1 },
+        { "eventId": 1 },
+        { "eventId": 2 },
+        { "eventId": 2 },
+        { "eventId": 3 },
+        { "eventId": 3 }
     ]
 
     users.forEach(obj => userFactory(obj).save())
