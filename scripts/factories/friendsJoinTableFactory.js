@@ -18,7 +18,7 @@ const friendsFactory = friendsInfoObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "userID" : {value: getActiveUser.id, enumerable: true, writable: true},
+        "userID" : {value: getActiveUser().userID, enumerable: true, writable: true},
         "friendID" : {value: friendsInfoObject.friendID, enumerable: true, writable: true},
         "save": {value: function () {
             db.friends.push({

@@ -4,9 +4,10 @@
 const getDatabase = require("../database")
 const autoScroll = require("../autoScroll")
 
+
 const fillChats = function() {
     const DB = getDatabase()
-    console.log("DB: ", DB)
+   
     // create a string to post to Dom for each chat message
     let chatMsgDomString = ""
     
