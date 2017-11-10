@@ -13,20 +13,20 @@ function getDatabase () {
     } else {
         // create a data base if none already exists
 
-        DB = {
-            "users": [],
-            "events": [],
-            "messages": [],
-            "friends": [],
-            "news": [],
-            "tasks": [],
-            "eventJoin": []
-        }
+        // DB = {
+        //     "users": [],
+        //     "events": [],
+        //     "messages": [],
+        //     "friends": [],
+        //     "news": [],
+        //     "tasks": [],
+        //     "eventJoin": []
+        // }
 
-        localStorage.setItem("NutshellDatabase", JSON.stringify(DB))
+        // localStorage.setItem("NutshellDatabase", JSON.stringify(DB))
         // popDB()
-        return DB
-
+        // return DB
+        return null
     }
 }
 
