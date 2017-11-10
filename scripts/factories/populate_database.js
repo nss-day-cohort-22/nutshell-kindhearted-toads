@@ -6,6 +6,19 @@ const friendsJoinTableFactory = require("./friendsJoinTableFactory.js")
 const eventsTableFactory = require("./eventsTableFactory.js")
 const eventFriendJoinTableFactory = require("./eventFriendJoinTableFactory.js")
 
+sessionStorage.setItem("userInfo", JSON.stringify({ "userId": 1, "userName": "Steve", "isEditing": false }))
+
+let DB = {
+    "users": [],
+    "events": [],
+    "messages": [],
+    "friends": [],
+    "news": [],
+    "tasks": [],
+    "eventJoin": []
+}
+
+localStorage.setItem("NutshellDatabase", JSON.stringify(DB))
 
 const popDB = function () {
 
@@ -68,6 +81,8 @@ const popDB = function () {
     tasks.forEach(obj => tasksFactory(obj).save())
     events.forEach(obj => eventsTableFactory(obj).save())
     eventsJoin.forEach(obj => eventFriendJoinTableFactory(obj).save())
+
+    sessionStorage.removeItem("userInfo")
 }
 
 module.exports = popDB
