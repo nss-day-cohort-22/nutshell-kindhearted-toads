@@ -26,6 +26,7 @@ let chatWidgetInit = function () {
     //array.sort((a,b) => a.id-b.id)
     // debugger
     fillChats()
+    const chatEventListener = require("./chatEventListener")
 
 }
 
