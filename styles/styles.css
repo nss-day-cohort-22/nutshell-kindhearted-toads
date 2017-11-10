@@ -119,3 +119,7 @@ body {
 .task {
     display: flex;
 }
+
+.hidden {
+    display: none;
+}
