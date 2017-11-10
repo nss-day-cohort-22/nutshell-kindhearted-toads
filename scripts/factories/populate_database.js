@@ -54,9 +54,9 @@ const popDB = function () {
     ]
 
     const tasks = [
-        { "task": "Task example :: Take out garbage", "completionDate": "10/2/14" },
-        { "task": "Second task example :: Bring the garbage back in", "completionDate": "10/2/14" },
-        { "task": "Third Example", "completionDate": "10/11/12" }
+        { "taskName": "Task example :: Take out garbage", "completionDate": "10/2/14" },
+        { "taskName": "Second task example :: Bring the garbage back in", "completionDate": "10/2/14" },
+        { "taskName": "Third Example", "completionDate": "10/11/12" }
     ]
 
     const events = [

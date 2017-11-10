@@ -6,18 +6,44 @@
  * 3. generate the individual tasks
  */
 
-const structure = require("./createStructure");
+//const structure = require("./createStructure");
 const getTasks = require("./getTasks");
 const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
-const addListeners = require("./addListeners");
+const addEvents = require("./addListeners");
 
-const Widget = require("../")
+const Widget = require("../widgetTemplate")
 
-const taskInit = function() {
-    const user = getUser;
-    generateTasks(getTasks(user));
+//console.log(taskWidget);
+const taskWidget = Widget()
+
+function taskWidgetInit() {
+
+    //create new widget object
+
+    // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
+
+    let additionalElementDomString = "<button class='tasksWidget__btn-add'>Add</button>";
+
+    // initialize new widget and pass in the name of the widget and the addition elements dom string
+    taskWidget.init("tasks", additionalElementDomString)
+
+    // invoke the fill function
+
+    // invoke the createFriendsListener
+    const user = getUser();
+    const tasks = getTasks(user);
+
+    const generateTasksEls = function() {
+        generateTasks(tasks);
+    }
+
+    taskWidget.populate = generateTasksEls;
+    taskWidget.containerName = "tasksContainer";
+    taskWidget.addEvents = addEvents;
+    taskWidget.addEvents(taskWidget);
 }
+taskWidgetInit();
 
-module.exports = taskInit;
+module.exports = taskWidget;
 

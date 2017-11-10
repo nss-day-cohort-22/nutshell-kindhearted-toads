@@ -4,11 +4,10 @@
  */
 const database = require("../database");
 
-const getData = function(user) {
+const getTasks = function(user) {
     // get incomplete tasks for user
-    tasks = database()["tasks"].filter(task => task.userId === user.userID && task.complete === false);
+    let tasks = database().tasks.filter(t=> t.userId === user.userId && !t.complete)
     return tasks;
-
 }
 
-module.exports = getData;
+module.exports = getTasks;

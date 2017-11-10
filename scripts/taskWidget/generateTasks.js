@@ -6,15 +6,15 @@
 
 const {a, button, div, h1, header, p, span, article, input} = require("../domHelpers");
 
-const container = document.querySelector(".taskContainer");
-
 const generateTasks = function(tasks) {
-    tasks.forEach(task =>
-        container.appendChild(div({"className": "task"},
-            input({"type": "checkbox", "className": "task__checkbox"}),
-            span({"className": "task__desc"}, `${task.task}`))
-        )
-    )
+    const container = document.querySelector(".tasksContainer");
+    tasks.forEach(task => {
+        let newDiv = div({"className": "task"});
+        container.appendChild(newDiv);
+        newDiv.innerHTML = `<input type="checkbox" class="task__checkbox">
+        <div class="task__desc" data-id="${task.id}" data-user-id="${task.userId}">${task.taskName}</div>
+        `
+    })
 }
 
 module.exports = generateTasks;
