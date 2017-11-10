@@ -3,6 +3,7 @@
 
 
 const fillChats = require("./fillChats")
+const createChatListener = require("./chatEventListener")
 
 let chatWidgetInit = function () {
     
@@ -11,11 +12,11 @@ let chatWidgetInit = function () {
 
     // build up a DOM string for chat container
     let chatContainerDomString = `
-        <header class='chatWidget__header'>Chat</header>
+        <header class='chatWidget__header widgetHeader'>Chat</header>
         <div class='chatContainer widgetContainer'>
         </div>   
         <input type="text" class="chatWidget__text" placeholder="Chat with your friends">
-        <button class="chatWidget__btn">Send</button>
+        <button class="chatWidget__btn widgetBtn">Send</button>
         `
 
     // push DOM string to DOM element
@@ -26,8 +27,7 @@ let chatWidgetInit = function () {
     //array.sort((a,b) => a.id-b.id)
     // debugger
     fillChats()
-    const chatEventListener = require("./chatEventListener")
-
+    createChatListener()
 }
 
 
