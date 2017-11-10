@@ -21,7 +21,7 @@ const fillChats = function() {
 
         // populate chat msg container dom string with data from each chat message
         chatMsgDomString += `
-                <p class="chatWidget__msg" data-id="${msg.id}">${messageAuthor.userName}: ${msg.content}</p>
+            <p class="chatWidget__msg" data-id="${msg.id}"><span class="chatWidget__author">${messageAuthor.userName}:</span><span class="chatWidget__msg"> ${msg.content}</span><button class="hidden">Edit</button></p>
             `
     })
 
