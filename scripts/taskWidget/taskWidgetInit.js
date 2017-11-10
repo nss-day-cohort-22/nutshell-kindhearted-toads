@@ -12,7 +12,7 @@ const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
 const addListeners = require("./addListeners");
 
-
+const Widget = require("../")
 
 const taskInit = function() {
     const user = getUser;
