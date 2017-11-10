@@ -7,7 +7,7 @@ const autoScroll = require("../autoScroll")
 
 const fillChats = function() {
     const DB = getDatabase()
-    console.log("I just filled with: ", DB)
+   
     // create a string to post to Dom for each chat message
     let chatMsgDomString = ""
     
