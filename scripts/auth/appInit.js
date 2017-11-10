@@ -8,8 +8,8 @@ const dashboardInit = require("../dashboardInit");
 const loginInit = require("./loginInit");
 
 const appInit = () => {
-    if (activeUser) {
-        dashboardInit(activeUser);
+    if (activeUser()) {
+        dashboardInit(activeUser());
     } else {
         loginInit;
     }

@@ -12,4 +12,4 @@ const getActiveUser = function () {
     }
 }
 
-module.exports = getActiveUser()
+module.exports = getActiveUser
