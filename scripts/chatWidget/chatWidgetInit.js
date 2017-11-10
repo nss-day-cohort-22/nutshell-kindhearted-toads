@@ -12,7 +12,7 @@ let chatWidgetInit = function () {
     // build up a DOM string for chat container
     let chatContainerDomString = `
         <header class='chatWidget__header'>Chat</header>
-        <div class='chatContainer'>
+        <div class='chatContainer widgetContainer'>
         </div>   
         <input type="text" class="chatWidget__text" placeholder="Chat with your friends">
         <button class="chatWidget__btn">Send</button>

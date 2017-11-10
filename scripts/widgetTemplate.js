@@ -14,7 +14,7 @@ const defaultWidget = Object.create(null, {
             // build up a DOM string for chat container
             let widgetContainerDomString = `
                         <header class='${name}Widget__header'>${name}</header>
-                        <div class='${name}Container'>
+                        <div class='${name}Container widgetContainer'>
                         WATCH THIS SUCKA
                         </div>   
                         `
