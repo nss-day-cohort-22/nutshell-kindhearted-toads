@@ -16,7 +16,7 @@ const fillChats = function() {
     DB.messages.forEach(msg => {
         // match up the userId attached to each message with a userId from user Table to get the username of the author of the message
         const messageAuthor = DB.users.find(user => {
-            return msg.userID === user.id
+            return msg.userId === user.id
         })
 
         // populate chat msg container dom string with data from each chat message

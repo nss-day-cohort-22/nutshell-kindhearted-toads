@@ -16,7 +16,7 @@ const createNewUser = function (userName, email) {
         // const newUserArray = data.users
         // setData(newUserArray, "users")
 
-        const storedUserInfo = JSON.stringify({ "userID": newUser.id, "userName": newUser.userName, "isEditing": false })
+        const storedUserInfo = JSON.stringify({ "userId": newUser.id, "userName": newUser.userName, "isEditing": false })
         sessionStorage.setItem("userInfo", storedUserInfo)
         return true
     }
