@@ -1,31 +1,26 @@
 // Author: Greg Lawrence
 // creates the chatWidget
 
-
+const widgetTemplate = require("../widgetTemplate")
 const fillChats = require("./fillChats")
 const createChatListener = require("./chatEventListener")
 
-let chatWidgetInit = function () {
+
+let chatWidgetInit = function () { 
+
+    //create new widget object
+    const chatWidget = widgetTemplate()
     
-    // get control of DOM element to place HTML code for chat container
-    let chatWidgetEl = document.querySelector(".chatWidget")
+    // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
+    let additionalDomElementString = `
+    <input type="text" class="chatWidget__text" placeholder="Chat with your friends">
+    <button class="chatWidget__btn widgetBtn">Send</button>
+    `
 
-    // build up a DOM string for chat container
-    let chatContainerDomString = `
-        <header class='chatWidget__header widgetHeader'>Chat</header>
-        <div class='chatContainer widgetContainer'>
-        </div>   
-        <input type="text" class="chatWidget__text" placeholder="Chat with your friends">
-        <button class="chatWidget__btn widgetBtn">Send</button>
-        `
-
-    // push DOM string to DOM element
-    chatWidgetEl.innerHTML = chatContainerDomString
-
-
-    // this maybe optional depending on how we push new messages to the database
-    //array.sort((a,b) => a.id-b.id)
-    // debugger
+    // initialize new widget and pass in the name of the widget and the addition elements dom string
+    chatWidget.init("chat", additionalDomElementString)
+    
+    // invoke the fill function
     fillChats()
     createChatListener()
 }
