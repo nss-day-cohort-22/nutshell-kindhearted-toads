@@ -21,7 +21,11 @@ const popDB = function () {
 
     const messages = [
         { "content": "This is where a chat message will display" },
-        { "content": "More Displayed Content" }
+        { "content": "More Displayed Content" },
+        { "content": "Test to see if this gets a userId info attached" },
+        { "content": "I just want more than 4 messages" },
+        { "content": "Five or more is better" },
+        { "content": "Maybe even ten!" }
     ]
 
     const news = [

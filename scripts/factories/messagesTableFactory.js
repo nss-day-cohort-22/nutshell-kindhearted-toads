@@ -17,7 +17,7 @@ const messageFactory = messageObject => {
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
-        "userID" : {value: getActiveUser.id, enumerable: true, writable: true},
+        "userID" : {value: getActiveUser.userID, enumerable: true, writable: true},
         "content" : {value: messageObject.content, enumerable: true, writable: true},
         "save": {value: function () {
             db.messages.push({
