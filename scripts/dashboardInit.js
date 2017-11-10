@@ -23,6 +23,7 @@ const dashboardInit = function(user) {
 
     // const DB = getDatabase()
     chatWidgetInit();
+    const chatEventListener = require("./chatWidget/chatEventListener")
 }
 
 
