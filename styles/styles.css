@@ -111,3 +111,11 @@ body {
     display: none;
     color: black;
 }
+
+.taskWidget {
+    border: 1px solid black;
+}
+
+.task {
+    display: flex;
+}
