@@ -53,10 +53,12 @@
 }
 
 /* Task Widget Styling - could be applied globally */
-.task__desc {
+.task__desc,
+.task__input {
     width: 80%;
     word-wrap: break-word;
 }
+
 
 
 

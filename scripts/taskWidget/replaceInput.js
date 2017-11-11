@@ -1,6 +1,6 @@
 /**
  * Krys Mathis
- *   replaces an input box with a span
+ *   replaces an input box with a completed task
  */
 const replaceInput = function(e) {
     let txt = e.target.value;

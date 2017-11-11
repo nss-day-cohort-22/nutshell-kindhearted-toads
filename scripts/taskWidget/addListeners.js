@@ -15,6 +15,7 @@ let editing = false;
 
 const addEvents = function(taskWidget) {
 
+    const tasksWidgetEl = document.querySelector(".tasksWidget");
     // adding a new task
     const taskAddButton = document.querySelector(".tasksWidget__btn-add");
     taskAddButton.addEventListener("click",(e)=>{
@@ -32,19 +33,12 @@ const addEvents = function(taskWidget) {
         autoScroll(taskWidget.containerName);
     });
 
-    document.addEventListener("keyup", (e)=> {
+    tasksWidgetEl.addEventListener("keyup", (e)=> {
 
         // check input field and return it to normal status when user clicks return
         if (e.target.className === "task__input") {
             if (e.keyCode === 13) {
                 if (e.target.value !== currentText){
-                // save it to the database
-                // "id": this.id,
-                // "timeStamp": this.timeStamp,
-                // "userId": this.userId,
-                // "taskName": this.taskName,
-                // "completionDate": this.completionDate,
-                // "completed": this.completed    
                 
                     taskObj = {"id": parseInt(e.target.dataset.id),
                         "timestamp": Date.now(),
@@ -55,7 +49,7 @@ const addEvents = function(taskWidget) {
                     };
   
                     taskWidget.saveEdit("tasks",taskObj);
-                    console.warn("saving to the database");
+
                 }
                 editing = false;
                 replaceInput(e);
@@ -65,7 +59,7 @@ const addEvents = function(taskWidget) {
 
 
     // This will change the box from a span to an input box
-    document.addEventListener("click", function(e) {
+    tasksWidgetEl.addEventListener("click", function(e) {
 
         if (e.target.className === "task__desc") {
 
@@ -91,7 +85,7 @@ const addEvents = function(taskWidget) {
     });
 
     // This will revert an input box back to a span
-    document.addEventListener("focusout", function(e) {
+    tasksWidgetEl.addEventListener("focusout", function(e) {
 
         if (e.target.className === "task__input" && editing===true) {
             if (e.target.value !== currentTxt) {
