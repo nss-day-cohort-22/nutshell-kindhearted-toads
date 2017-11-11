@@ -5,6 +5,10 @@
 const replaceInput = function(e) {
     let txt = e.target.value;
     let parent = e.target.parentNode;
+    // gather the inputs from the element
+
+    // repopulate the task container
+    //parent.innerHTML = ""
     let replaceWithText = document.createElement("div");
     replaceWithText.className = "task__desc",
     replaceWithText.innerHTML = txt;

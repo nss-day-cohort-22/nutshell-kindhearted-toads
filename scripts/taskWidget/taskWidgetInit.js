@@ -37,7 +37,8 @@ function taskWidgetInit() {
     const generateTasksEls = function() {
         generateTasks(tasks);
     }
-
+    
+    taskWidget.user = user;
     taskWidget.populate = generateTasksEls;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;

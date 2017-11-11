@@ -50,11 +50,20 @@
 
 /* Task Widget Styling - could be applied globally */
 .task__desc,
-.task__input {
-    width: 80%;
+.task__desc--input {
+    width: 70%;
     word-wrap: break-word;
+    font-size: 12px;
 }
-
+.task__completion-date,
+.task__completion-date--input {
+    font-size: 12px;
+}
+.task {
+    padding: 5px;
+    border: 1px solid white;
+    margin: 5px;
+}
 
 
 
