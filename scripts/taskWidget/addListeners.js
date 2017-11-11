@@ -15,17 +15,13 @@ let editing = false;
 
 const addEvents = function(taskWidget) {
 
+    
     const tasksWidgetEl = document.querySelector(".tasksWidget");
     // adding a new task
     const taskAddButton = document.querySelector(".tasksWidget__btn-add");
     taskAddButton.addEventListener("click",(e)=>{
         const taskContainer = document.querySelector(".tasksContainer");
         
-        // build a new element for each entry
-        // taskContainer.appendChild(div({"className": "task"},
-        //     input({"type": "checkbox", "className": "task__checkbox"}),
-        //     input({"type":"text", "className": "task__input", "value": ""})));
-
         taskContainer.appendChild(div({"className": "task"},
             input({"type": "checkbox", "className": "task__checkbox"}),
             input({"type":"text", "className": "task__input", "value": ""})));

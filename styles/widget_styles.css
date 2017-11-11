@@ -29,10 +29,6 @@
     "chat chat";
 }
 
-.widgetHeader {
-    background-color: black;
-}
-
 .tasksWidget {
     grid-area: tasks;
 }
