@@ -23,6 +23,7 @@ let chatWidgetInit = function () {
     // invoke the fill function
     fillChats()
     createChatListener()
+    
 }
 
 

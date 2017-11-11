@@ -4,9 +4,12 @@
 const messagesFactory = require("../factories/messagesTableFactory")
 const fillChats = require("./fillChats")
 
+
 // temporarily get database
 const getDatabase = require("../database")
 
+let editMode = false
+let currentArticle = null
 
 const createChatListener = () => {
     // get control of Send button used to create a new chat message
@@ -17,15 +20,27 @@ const createChatListener = () => {
     const chatContainerEl = document.querySelector(".chatContainer")
     const chatWidgetEditBtnEl = document.querySelector(".chatWidget__editBtn")
 
-
-    const createChatMsg = function(event) {
+    // function to create a chat message object
+    const createChatMsg = function() {
+        let newChatObject
         // get control of dom input element
         let composeChatInput = document.querySelector(".chatWidget__text")
-        // put the value of the input field into an object
-        let newChatObject = {"content": composeChatInput.value}
-        // send new chat message object to the messagesFactory to get saved and pushed to local storage
-        messagesFactory(newChatObject).save()
-        
+        if (!editMode) {
+            // put the value of the input field into an object
+            newChatObject = {"content": composeChatInput.value}
+            // send new chat message object to the messagesFactory to get saved and pushed to local storage
+            messagesFactory(newChatObject).save()
+        } else if (editMode) {
+            // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
+            newChatObject = currentArticle
+            newChatObject.content = composeChatInput.value
+
+            // STUCK HERE, chatWidget is causing an error as "undefined"
+            console.log("chatWidget", chatWidget)
+            //chatWidget.saveEdit("messages", newChatObject)
+            editMode = false
+        }
+
         // clear chat input field
         composeChatInput.value = ""
         // refresh chat window with newest content
@@ -41,7 +56,7 @@ const createChatListener = () => {
         }
     })
     
-    // event listener to check if user is click edit btn on a message
+    // event listener to check if user has clicked edit btn on a message
     chatContainerEl.addEventListener("click", event => {
         console.log(event) 
         let composeChatInput = document.querySelector(".chatWidget__text")
@@ -50,14 +65,16 @@ const createChatListener = () => {
         let msgToEditId = parseInt(event.target.id.split("_")[1])
         const DB = getDatabase()
 
-        msgToEditfromDB = DB.messages.find(msg => {
+        msgToEditFromDB = DB.messages.find(msg => {
             return msg.id === msgToEditId
         })
-        composeChatInput.value = msgToEditfromDB.content
+        composeChatInput.value = msgToEditFromDB.content
+        
+        console.log("msgToEditFromDB = ", msgToEditFromDB)
 
-        console.log("msgToEditFromDB = ", msgToEditfromDB)
-
-
+        // set editMode to true
+        editMode = true
+        currentArticle = msgToEditFromDB
 
         // console.log(msgToEditId)
 
