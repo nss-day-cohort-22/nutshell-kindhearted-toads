@@ -10,6 +10,8 @@ const generateTasks = function(tasks) {
     const container = document.querySelector(".tasksContainer");
     tasks.forEach(task => {
         let newDiv = div({"className": "task"});
+        newDiv.dataset.userId = task.userId;
+        newDiv.dataset.id = task.id;
         container.appendChild(newDiv);
         newDiv.innerHTML = `<input type="checkbox" class="task__checkbox">
         <div class="task__desc" data-id="${task.id}" data-user-id="${task.userId}">${task.taskName}</div>

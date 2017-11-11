@@ -7,6 +7,7 @@ const {a, button, div, h1, header, p, span, article, input} = require("../domHel
 const replaceInput = require("./replaceInput");
 const autoScroll = require("../autoScroll")
 const taskFactory = require ("../factories/tasksTableFactory")
+const makeInput = require("./makeInput");
 
 // element
 const task = document.querySelector(".taskWidget");
@@ -15,7 +16,7 @@ let editing = false;
 
 const addEvents = function(taskWidget) {
 
-    
+
     const tasksWidgetEl = document.querySelector(".tasksWidget");
     // adding a new task
     const taskAddButton = document.querySelector(".tasksWidget__btn-add");
@@ -35,10 +36,11 @@ const addEvents = function(taskWidget) {
         if (e.target.className === "task__input") {
             if (e.keyCode === 13) {
                 if (e.target.value !== currentText){
-                
-                    taskObj = {"id": parseInt(e.target.dataset.id),
+                    
+
+                    taskObj = {"id": parseInt(e.target.parentNode.dataset.id),
                         "timestamp": Date.now(),
-                        "userId": parseInt(e.target.dataset.userId),
+                        "userId": parseInt(e.target.parentNode.dataset.userId),
                         "taskName": e.target.value,
                         "completionDate": null,
                         "completed": false
