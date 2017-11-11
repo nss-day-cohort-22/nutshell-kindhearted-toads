@@ -26,13 +26,19 @@ const makeInput = function(taskElement) {
     //taskElement.replaceChild(taskInputDesc, taskDesc);
     const taskInputDesc = document.createElement("input");
     taskInputDesc.type = "text";
-    taskInputDesc.className = "task__input";
+    taskInputDesc.className = "task__desc--input";
     taskInputDesc.value = taskDesc.textContent;
     taskElement.replaceChild(taskInputDesc, taskDesc);
+    
+    
+    // for the completion date field only
+    const taskInputCompletionDate = document.createElement("input");
+    taskInputCompletionDate.type = "date";
+    taskInputCompletionDate.className = "task__completion-date--input";
+    taskInputCompletionDate.value = taskCompletionDate.textContent;
+    taskElement.replaceChild(taskInputCompletionDate,taskCompletionDate);
+    
     console.log("taskElement: ",taskElement);
-
-
-
 }
 makeInput(taskElement);
 module.exports = makeInput;
