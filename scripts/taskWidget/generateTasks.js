@@ -3,13 +3,12 @@
  * Krys Mathis
  * Populates the task items to the DOM
  */
-
-const {a, button, div, h1, header, p, span, article, input} = require("../domHelpers");
-
 const generateTasks = function(tasks) {
     const container = document.querySelector(".tasksContainer");
+    container.innerHTML = "";
     tasks.forEach(task => {
-        let newDiv = div({"className": "task"});
+        const newDiv = document.createElement("div");
+        newDiv.className = "task";
         newDiv.dataset.userId = task.userId;
         newDiv.dataset.id = task.id;
         container.appendChild(newDiv);

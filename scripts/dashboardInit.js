@@ -24,7 +24,7 @@ const dashboardInit = function(user) {
     login.style.display = "none";
     dashboard.style.display = "block";
 
-    taskWidget.populate();
+    taskWidget.populate(taskWidget.tasks);
     chatWidgetInit();
     friendsWidgetInit();
 }

@@ -25,7 +25,8 @@ const addEvents = function(taskWidget) {
         const taskContainer = document.querySelector(".tasksContainer");
         const task = document.createElement("div");
         task.className = "task";
-        task.innerHTML = "<input type='checkbox' class='task__checkbox'>";
+        
+        // task.innerHTML = "<input type='checkbox' class='task__checkbox'>";
         task.innerHTML += "<input type='text' class='task__desc--input'>";
         task.innerHTML += "<input type='date' class='task__completion-date--input'>";
         task.innerHTML += "<button class='task__btn-commit'>Commit</button>"
@@ -37,27 +38,27 @@ const addEvents = function(taskWidget) {
     
     tasksWidgetEl.addEventListener("keyup", (e)=> {
 
-        // check input field and return it to normal status when user clicks return
-        if (e.target.className === "task__desc--input") {
-            if (e.keyCode === 13) {
-                if (e.target.value !== currentText && editing){
+        // // check input field and return it to normal status when user clicks return
+        // if (e.target.className === "task__desc--input") {
+        //     if (e.keyCode === 13) {
+        //         if (e.target.value !== currentText && editing){
                     
 
-                    taskObj = {"id": parseInt(e.target.parentNode.dataset.id),
-                        "timestamp": Date.now(),
-                        "userId": parseInt(e.target.parentNode.dataset.userId),
-                        "taskName": e.target.value,
-                        "completionDate": null,
-                        "completed": false
-                    };
+        //             taskObj = {"id": parseInt(e.target.parentNode.dataset.id),
+        //                 "timestamp": Date.now(),
+        //                 "userId": parseInt(e.target.parentNode.dataset.userId),
+        //                 "taskName": e.target.value,
+        //                 "completionDate": null,
+        //                 "completed": false
+        //             };
   
-                    taskWidget.saveEdit("tasks",taskObj);
+        //             taskWidget.saveEdit("tasks",taskObj);
 
-                }
-                editing = false;
-                replaceInput(e);
-            }
-        }
+        //         }
+        //         editing = false;
+        //         replaceInput(e);
+        //     }
+        // }
     });
 
 
@@ -69,15 +70,29 @@ const addEvents = function(taskWidget) {
         // get text from element
             let txt = e.target.innerHTML;
             currentTxt = txt;
-            let parent = e.target.parentNode;
+
+            const parent = e.target.parentNode;
+            const childNodes = Array.from(parent.childNodes);
+            const descEl = childNodes.find(el=> el.className === "task__desc");
+            const dateEl = childNodes.find(el=> el.className === "task__completion-date");
             // create the new element
             const inputBox = document.createElement("input");
             inputBox.type = "text";
             inputBox.className = "task__desc--input";
-            inputBox.value = txt;
+            inputBox.value = descEl.textContent;
             inputBox.dataset.userId = e.target.dataset.userId;
             inputBox.dataset.id = e.target.dataset.id;
 
+            const completionDateInput = document.createElement("input");
+            completionDateInput.type = "date";
+            completionDateInput.className = "task__completion-date--input";
+            completionDateInput.value = dateEl.value;
+            
+            // add the confirm button too
+            const confirmButton = document.createElement("button");
+            confirmButton.className = "task__btn-update";
+            confirmButton.textContent = "Update";
+            parent.appendChild(confirmButton);
             // replace the old element
             parent.replaceChild(inputBox,e.target);
             inputBox.focus();
@@ -97,20 +112,53 @@ const addEvents = function(taskWidget) {
             const taskCompletionDate = dateEl.value;
             console.warn("adding to the database");
             taskFactory({taskName: taskDetail, completionDate: taskCompletionDate }).save();
-
+            //refresh the tasks
+            taskWidget.tasks = taskWidget.getTasks(taskWidget.user);
+            //repaint the widget
+            taskWidget.populate(taskWidget.tasks)
+            autoScroll(taskWidget.containerName);
             console.log("taskDeail: ", taskDetail);
         }
+
+        if (e.target.className === "task__btn-update") {
+            
+            const parent = e.target.parentNode;
+            const childNodes = Array.from(parent.childNodes);
+            const descEl = childNodes.find(el=> el.className === "task__desc--input");
+            const dateEl = childNodes.find(el=> el.className === "task__completion-date");
+
+            taskObj = {"id": parseInt(e.target.parentNode.dataset.id),
+                "timestamp": Date.now(),
+                "userId": parseInt(e.target.parentNode.dataset.userId),
+                "taskName": descEl.value,
+                "completionDate": dateEl.textContent,
+                "completed": false
+            };
+      
+            taskWidget.saveEdit("tasks",taskObj);
+            
+            taskWidget.tasks = taskWidget.getTasks(taskWidget.user);
+            //repaint the widget
+            taskWidget.populate(taskWidget.tasks)
+        }
+
     });
 
     // This will revert an input box back to a span
-    tasksWidgetEl.addEventListener("focusout", function(e) {
+    // tasksWidgetEl.addEventListener("focusout", function(e) {
 
-        if (e.target.className === "task__desc--input" && editing===true) {
-            if (e.target.value !== currentTxt) {
-                console.warn("saving to the database");
-            }
-            replaceInput(e);
-        }
-    });
+    //     if (e.target.className === "task__desc--input" && editing===true) {
+    //         if (e.target.value !== currentTxt) {
+    //             console.warn("saving to the database");
+    //         }
+    //         replaceInput(e);
+    //     }
+    // });
 }
+
+
+
+
+
+
 module.exports = addEvents;

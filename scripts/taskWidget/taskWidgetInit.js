@@ -11,7 +11,7 @@ const getTasks = require("./getTasks");
 const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
 const addEvents = require("./addListeners");
-
+const database = require("../database.js");
 const Widget = require("../widgetTemplate")
 
 //console.log(taskWidget);
@@ -37,12 +37,16 @@ function taskWidgetInit() {
     const generateTasksEls = function() {
         generateTasks(tasks);
     }
-    
+
     taskWidget.user = user;
-    taskWidget.populate = generateTasksEls;
+    taskWidget.getTasks = getTasks;
+    taskWidget.tasks = taskWidget.getTasks(taskWidget.user);
+    taskWidget.populate = generateTasks;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;
     taskWidget.addEvents(taskWidget);
+
+ 
 }
 taskWidgetInit();
 
