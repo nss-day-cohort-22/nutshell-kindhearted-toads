@@ -119,3 +119,7 @@ body {
 .task {
     display: flex;
 }
+
+.dashboard {
+    margin: 20px;
+}

@@ -1,5 +1,5 @@
 .widget {
-    border: 2px solid rgb(128, 128, 128);
+    border: 1px solid rgb(128, 128, 128);
     background-color: rgb(32, 109, 252);
     height: 200px;
     max-height: 200px;
@@ -15,4 +15,37 @@
     overflow-y: auto;
     height: 150px;
     width: 95%;
+}
+
+.widget__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+    "tasks news"
+    "friends events"
+    "chat chat";
+}
+
+.widgetHeader {
+    background-color: black;
+}
+
+.tasksWidget {
+    grid-area: tasks;
+}
+
+.eventsWidget {
+    grid-area: events;
+}
+.newsWidget {
+    grid-area: news
+}
+
+.friendsWidget {
+    grid-area: friends;
+}
+
+.chatWidget {
+    grid-area: chat;
 }

@@ -28,9 +28,7 @@ const addEvents = function(taskWidget) {
         taskContainer.appendChild(div({"className": "task"},
             input({"type": "checkbox", "className": "task__checkbox"}),
             input({"type":"text", "className": "task__input", "value": ""})));
-        
-        
- 
+
         autoScroll(taskWidget.containerName);
     });
 
@@ -41,7 +39,22 @@ const addEvents = function(taskWidget) {
             if (e.keyCode === 13) {
                 if (e.target.value !== currentText){
                 // save it to the database
-                    
+                // "id": this.id,
+                // "timeStamp": this.timeStamp,
+                // "userId": this.userId,
+                // "taskName": this.taskName,
+                // "completionDate": this.completionDate,
+                // "completed": this.completed    
+                
+                    taskObj = {"id": parseInt(e.target.dataset.id),
+                        "timestamp": Date.now(),
+                        "userId": parseInt(e.target.dataset.userId),
+                        "taskName": e.target.value,
+                        "completionDate": null,
+                        "completed": false
+                    };
+  
+                    taskWidget.saveEdit("tasks",taskObj);
                     console.warn("saving to the database");
                 }
                 editing = false;
@@ -61,7 +74,12 @@ const addEvents = function(taskWidget) {
             currentTxt = txt;
             let parent = e.target.parentNode;
             // create the new element
-            const inputBox = input({"type":"text", "className": "task__input", "value": txt});
+            const inputBox = document.createElement("input");
+            inputBox.type = "text";
+            inputBox.className = "task__input";
+            inputBox.value = txt;
+            inputBox.dataset.userId = e.target.dataset.userId;
+            inputBox.dataset.id = e.target.dataset.id;
 
             // replace the old element
             parent.replaceChild(inputBox,e.target);
