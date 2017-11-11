@@ -17,6 +17,8 @@
     width: 95%;
 }
 
+/* grid structure for widgets */
+
 .widget__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -49,3 +51,13 @@
 .chatWidget {
     grid-area: chat;
 }
+
+/* Task Widget Styling - could be applied globally */
+.task__desc {
+    width: 80%;
+    word-wrap: break-word;
+}
+
+
+
+
