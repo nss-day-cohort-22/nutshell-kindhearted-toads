@@ -29,10 +29,10 @@ const defaultWidget = Object.create(null, {
         "value": function(stringLabelOfArray, newEditedObject){
             // assign new editedObject to proper database location
             const DB = getDatabase()
-            debugger
+
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
-                console.log("Array:",DB[stringLabelOfArray]);
+  
                 // find the index in the array that matches the item that was edited
                 let editedIndexNum = DB[stringLabelOfArray].findIndex(e => e.id ===newEditedObject.id);
                 // overwrite the object in the array with the edited object
