@@ -13,7 +13,7 @@ const generateTasks = require("./generateTasks");
 const addEvents = require("./addListeners");
 const database = require("../database.js");
 const Widget = require("../widgetTemplate")
-
+const refreshWidget = require("./refreshWidget");
 //console.log(taskWidget);
 const taskWidget = Widget()
 
@@ -37,11 +37,12 @@ function taskWidgetInit() {
     const generateTasksEls = function() {
         generateTasks(tasks);
     }
-
+    taskWidget.widgetContainer = "tasksWidget";
     taskWidget.user = user;
-    taskWidget.getTasks = getTasks;
-    taskWidget.tasks = taskWidget.getTasks(taskWidget.user);
+    taskWidget.getLatest = getTasks;
+    taskWidget.latest = taskWidget.getLatest();
     taskWidget.populate = generateTasks;
+    taskWidget.refresh = refreshWidget;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;
     taskWidget.addEvents(taskWidget);

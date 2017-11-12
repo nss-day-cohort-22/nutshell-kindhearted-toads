@@ -10,10 +10,12 @@ const getTasks = function() {
     // get incomplete tasks for user
     let db = database() || {"tasks":[]};
     let tasks = db.tasks || []
-    tasks = tasks
-        .filter(t=> t.userId === user.userId && !t.complete)
+    let filteredTasks = tasks
+        .filter(t=> t.userId === user.userId && !t.completed)
         .sort((f,s)=> f.id - s.id);
-    return tasks;
+
+    return filteredTasks;
+    
 }
 
 module.exports = getTasks;
