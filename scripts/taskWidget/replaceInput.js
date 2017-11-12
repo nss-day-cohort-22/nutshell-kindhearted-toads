@@ -1,13 +1,21 @@
 /**
  * Krys Mathis
- *   replaces an input box with a span
+ *   replaces an input box with a completed task
  */
-const {a, button, div, h1, header, p, span, article, input} = require("../domHelpers");
 const replaceInput = function(e) {
     let txt = e.target.value;
     let parent = e.target.parentNode;
-    let replaceSpan = div({"className": "task__desc"},txt);
-    parent.replaceChild(replaceSpan,e.target);
+    // gather the inputs from the element
+
+    // repopulate the task container
+    //parent.innerHTML = ""
+    let replaceWithText = document.createElement("div");
+    replaceWithText.className = "task__desc",
+    replaceWithText.innerHTML = txt;
+    replaceWithText.dataset.userId = e.target.dataset.userId;
+    replaceWithText.dataset.id = e.target.dataset.id;
+
+    parent.replaceChild(replaceWithText,e.target);
 }
 
 module.exports = replaceInput;

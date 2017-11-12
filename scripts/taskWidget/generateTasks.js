@@ -3,18 +3,26 @@
  * Krys Mathis
  * Populates the task items to the DOM
  */
-
-const {a, button, div, h1, header, p, span, article, input} = require("../domHelpers");
-
-const container = document.querySelector(".taskContainer");
+const getCurrentDate = require("../getCurrentDate");
 
 const generateTasks = function(tasks) {
-    tasks.forEach(task =>
-        container.appendChild(div({"className": "task"},
-            input({"type": "checkbox", "className": "task__checkbox"}),
-            span({"className": "task__desc"}, `${task.task}`))
-        )
-    )
+    const container = document.querySelector(".tasksContainer");
+    container.innerHTML = "";
+    tasks.forEach(task => {
+        const newDiv = document.createElement("div");
+        newDiv.className = "task";
+        newDiv.dataset.userId = task.userId;
+        newDiv.dataset.id = task.id;
+        container.appendChild(newDiv);
+        newDiv.innerHTML = `<input type="checkbox" class="task__checkbox">
+        <div class="task__desc">${task.taskName}</div>
+        <div class="task__completion-date">${task.completionDate}</div>
+        `
+        //handle overdue tasks
+        if (task.completionDate < getCurrentDate()) {
+            newDiv.className += " task--overdue"
+        }
+    })
 }
 
 module.exports = generateTasks;

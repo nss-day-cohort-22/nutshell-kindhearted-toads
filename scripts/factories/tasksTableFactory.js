@@ -22,7 +22,7 @@ const taskFactory = taskObject => {
         "userId" : {value: getActiveUser().userId, enumerable: true, writable: true},
         "taskName" : {value: taskObject.taskName, enumerable: true, writable: true},
         "completionDate" : {value: taskObject.completionDate, enumerable: true, writable: true},
-        "completed" : {value: false, enumerable: true, writable: true},
+        "completed" : {value: taskObject.completed, enumerable: true, writable: true},
         "save": {value: function () {
             db.tasks.push({
                 "id": this.id,

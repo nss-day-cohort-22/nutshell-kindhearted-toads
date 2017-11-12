@@ -1,5 +1,5 @@
 .widget {
-    border: 2px solid rgb(128, 128, 128);
+    border: 1px solid rgb(128, 128, 128);
     background-color: rgb(32, 109, 252);
     height: 200px;
     max-height: 200px;
@@ -16,3 +16,55 @@
     height: 150px;
     width: 95%;
 }
+
+/* grid structure for widgets */
+
+.widget__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+    "tasks news"
+    "friends events"
+    "chat chat";
+}
+
+.tasksWidget {
+    grid-area: tasks;
+}
+
+.eventsWidget {
+    grid-area: events;
+}
+.newsWidget {
+    grid-area: news
+}
+
+.friendsWidget {
+    grid-area: friends;
+}
+
+.chatWidget {
+    grid-area: chat;
+}
+
+/* Task Widget Styling - could be applied globally */
+.task__desc,
+.task__desc--input {
+    width: 70%;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+.task__completion-date,
+.task__completion-date--input {
+    font-size: 12px;
+}
+.task {
+    padding: 5px;
+    border: 1px solid white;
+    margin: 5px;
+}
+
+
+
+
