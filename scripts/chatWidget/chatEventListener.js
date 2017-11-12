@@ -4,7 +4,6 @@
 const messagesFactory = require("../factories/messagesTableFactory")
 const fillChats = require("./fillChats")
 
-
 // temporarily get database
 const getDatabase = require("../database")
 
@@ -37,7 +36,7 @@ const createChatListener = () => {
 
             // STUCK HERE, chatWidget is causing an error as "undefined"
             console.log("chatWidget", chatWidget)
-            //chatWidget.saveEdit("messages", newChatObject)
+            chatWidget.saveEdit("messages", newChatObject)
             editMode = false
         }
 
