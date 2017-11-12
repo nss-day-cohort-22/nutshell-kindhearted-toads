@@ -42,10 +42,10 @@ const createChatListener = (chatWidget) => {
         // clear chat input field
         composeChatInput.value = ""
         // refresh chat window with newest content
-        fillChats()
+        chatWidget.populate()
     }
     
-    // add an event listeners for Send button click and for Enter key press
+    // add an event listener for Send button click and for Enter key press
     addChatBtnEl.addEventListener("click", createChatMsg)
     chatInputField.addEventListener("keyup", e => {
         // check if enter key is pressed inside input field, if so, run createChatMsg function
@@ -61,21 +61,28 @@ const createChatListener = (chatWidget) => {
         
         // get message the user wants to edit
         let msgToEditId = parseInt(event.target.id.split("_")[1])
-        const DB = getDatabase()
-
-        msgToEditFromDB = DB.messages.find(msg => {
-            return msg.id === msgToEditId
-        })
-        composeChatInput.value = msgToEditFromDB.content
+        // get the id of the author of the message
+        let msgToEditAuthorId = parseInt(event.target.dataset.author)
         
-        console.log("msgToEditFromDB = ", msgToEditFromDB)
+        // check if the current user is the author of the message. If not, don't let the user edit
+        if (chatWidget.user.userId === msgToEditAuthorId){
+            // get Database, and search messages array for the message that user wants to edit.
+            const DB = getDatabase()
+            msgToEditFromDB = DB.messages.find(msg => {
+                return msg.id === msgToEditId
+            })
+            // put the contents of the message to edit back into the input field
+            composeChatInput.value = msgToEditFromDB.content
+            
+            console.log("msgToEditFromDB = ", msgToEditFromDB)
 
-        // set editMode to true
-        editMode = true
-        currentArticle = msgToEditFromDB
+            // set editMode to true
+            editMode = true
+            //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
+            currentArticle = msgToEditFromDB
 
-        // console.log(msgToEditId)
-
+           
+        }
      
     })
 
