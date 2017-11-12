@@ -3,6 +3,8 @@
  * Krys Mathis
  * Populates the task items to the DOM
  */
+const getCurrentDate = require("../getCurrentDate");
+
 const generateTasks = function(tasks) {
     const container = document.querySelector(".tasksContainer");
     container.innerHTML = "";
@@ -13,9 +15,13 @@ const generateTasks = function(tasks) {
         newDiv.dataset.id = task.id;
         container.appendChild(newDiv);
         newDiv.innerHTML = `<input type="checkbox" class="task__checkbox">
-        <div class="task__desc" data-id="${task.id}" data-user-id="${task.userId}">${task.taskName}</div>
-        <div class="task__completion-date" data-id="${task.id}" data-user-id="${task.userId}">${task.completionDate}</div>
+        <div class="task__desc">${task.taskName}</div>
+        <div class="task__completion-date">${task.completionDate}</div>
         `
+        //handle overdue tasks
+        if (task.completionDate < getCurrentDate()) {
+            newDiv.className += " task--overdue"
+        }
     })
 }
 

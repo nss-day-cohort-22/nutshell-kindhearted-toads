@@ -1,3 +1,9 @@
+/**
+ * Krys Mathis
+ * Steps to refresh the widget
+ * @param {*} obj 
+ */
+
 const refreshWidget = function(obj) {
     // get the latest
     obj.latest = obj.getLatest();

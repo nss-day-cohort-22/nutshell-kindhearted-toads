@@ -8,6 +8,8 @@ const taskFactory = require ("../factories/tasksTableFactory")
 const makeInput = require("./makeInput");
 const createTaskObject = require("./createTaskObject");
 const domIsClean = require("./verifyDOM");
+const getTaskSiblings = require("./getTaskSiblings");
+const getCurrentDate = require("../getCurrentDate");
 
 
 
@@ -24,13 +26,21 @@ const addEvents = function(taskWidget) {
             task.className = "task";
 
             task.innerHTML += "<input type='text' class='task__desc--input'>";
-            task.innerHTML += "<input type='date' class='task__completion-date--input'>";
+            task.innerHTML += "<input type='date' class='task__completion-date--input' value='"+getCurrentDate()+"'>";
             task.innerHTML += "<button class='task__btn-commit'>Commit</button>"
             taskContainer.appendChild(task);
             autoScroll(taskWidget.containerName);
         }
     });
 
+    //
+    tasksWidgetEl.addEventListener("keyup", function(e) {
+        if (e.target.className === "task__desc--input" && e.keyCode === 13 ) {
+            const taskObj = createTaskObject(e.target,false);
+            taskWidget.saveEdit("tasks",taskObj);
+            taskWidget.refresh(taskWidget);
+        }
+    });
 
     // This will change the box from a span to an input box
     tasksWidgetEl.addEventListener("click", function(e) {
@@ -45,31 +55,30 @@ const addEvents = function(taskWidget) {
             }
             // get the element values
             const parent = e.target.parentNode;
-            const childNodes = Array.from(parent.childNodes);
-            const descEl = childNodes.find(el=> el.className === "task__desc");
-            const dateEl = childNodes.find(el=> el.className === "task__completion-date");
-
+            const elements = getTaskSiblings(e.target);
+            const descEl = elements[0];
+            const dateEl = elements[1];
             // create the new elements
             // Input text box
             const inputDesc = document.createElement("input");
             inputDesc.type = "text";
             inputDesc.className = "task__desc--input";
-            inputDesc.value = descEl.textContent;
+            inputDesc.value = descEl.value;
             inputDesc.dataset.userId = e.target.dataset.userId;
             inputDesc.dataset.id = e.target.dataset.id;
             // Input completion date box
             const completionDateInput = document.createElement("input");
             completionDateInput.type = "date";
             completionDateInput.className = "task__completion-date--input";
-            completionDateInput.value = dateEl.textContent;
+            completionDateInput.value = dateEl.value;
             // add the confirm button too
             const confirmButton = document.createElement("button");
             confirmButton.className = "task__btn-update";
             confirmButton.textContent = "Update";
             parent.appendChild(confirmButton);
             // replace the old elements
-            parent.replaceChild(inputDesc,descEl);
-            parent.replaceChild(completionDateInput,dateEl);
+            parent.replaceChild(inputDesc,descEl.element);
+            parent.replaceChild(completionDateInput,dateEl.element);
             inputDesc.focus();
 
 
@@ -82,14 +91,14 @@ const addEvents = function(taskWidget) {
         if (e.target.className === "task__btn-commit") {
             // validate the input
             // take the input and add it to the database
-            const parent = e.target.parentNode;
-            const childNodes = Array.from(parent.childNodes);
-            const descEl = childNodes.find(el=> el.className === "task__desc--input");
-            const dateEl = childNodes.find(el=> el.className === "task__completion-date--input");
-            const taskDetail = descEl.value;
-            const taskCompletionDate = dateEl.value;
+            const elements = getTaskSiblings(e.target);
+            const taskDetail = elements[0].value;
+            const taskCompletionDate = elements[1].value;
 
-            taskFactory({taskName: taskDetail, completionDate: taskCompletionDate }).save();
+            
+            if (taskDetail.length > 0){
+                taskFactory({taskName: taskDetail, completionDate: taskCompletionDate }).save();
+            }
             taskWidget.refresh(taskWidget);
             autoScroll(taskWidget.containerName);
             //editing = false;
@@ -98,8 +107,13 @@ const addEvents = function(taskWidget) {
         // Commit button after an update is made
         if (e.target.className === "task__btn-update") {
             // Update the database with a task object
-            const taskObj = createTaskObject(e.target,false);
-            taskWidget.saveEdit("tasks",taskObj);
+            const parent  = e.target.parentNode;
+            const childNodes = Array.from(parent.childNodes);
+            const descEl = childNodes.find(el=>el.className === "task__desc--input");
+            if (descEl.value.length > 0) {
+                const taskObj = createTaskObject(e.target,false);
+                taskWidget.saveEdit("tasks",taskObj);
+            }
             taskWidget.refresh(taskWidget);
 
         }

@@ -1,28 +1,16 @@
+/**
+ * Krys Mathis
+ * Creates an object to load into the database for updates
+ */
+
+const getTaskSiblings = require("./getTaskSiblings");
 const createTaskObject = function(taskChildElement,completedStatus) {
     
     const parent = taskChildElement.parentNode;
-    const childNodes = Array.from(parent.childNodes);
+    const siblings = getTaskSiblings(taskChildElement);
     
-    // if the element has an input then use that otherwise use the 
-    let descEl = childNodes.find(el=> el.className === "task__desc--input");
-    let descElValue = "";
-    // Handle when it is not an input box
-    if (!descEl) {
-        descEl = childNodes.find(el=> el.className === "task__desc");
-        descElValue = descEl.textContent;
-    } else {
-        descElValue = descEl.value;
-    }
-    
-    let dateEl = childNodes.find(el=> el.className === "task__completion-date--input");
-    let dateElValue = "";
-    // handle when it is not an input box
-    if (!dateEl) {
-        dateEl = childNodes.find(el=> el.className === "task__completion-date");
-        dateElValue = dateEl.textContent;
-    } else {
-        dateElValue = dateEl.value;
-    }
+    const descElValue = siblings[0].value;
+    const dateElValue = siblings[1].value;
     
     const taskObj = {"id": parseInt(parent.dataset.id),
         "timestamp": Date.now(),
