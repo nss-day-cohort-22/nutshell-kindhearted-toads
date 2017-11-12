@@ -15,7 +15,7 @@ const messageFactory = messageObject => {
     }
 
     return Object.create(null, {
-        "id" : {value: ++idValue, enumerable: true, writable: true},
+        "id" : {value: messageObject.id || ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "userId" : {value: getActiveUser().userId, enumerable: true, writable: true},
         "content" : {value: messageObject.content, enumerable: true, writable: true},
