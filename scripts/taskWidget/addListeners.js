@@ -30,6 +30,8 @@ const addEvents = function(taskWidget) {
             task.innerHTML += "<button class='task__btn-commit'>Commit</button>"
             taskContainer.appendChild(task);
             autoScroll(taskWidget.containerName);
+            // set the focus on the input box
+            task.childNodes[0].focus();
         }
     });
 
