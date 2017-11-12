@@ -24,13 +24,12 @@ let chatWidgetInit = function () {
 
     chatWidget.widgetContainer = "chatWidget";
     chatWidget.user = user;
-
     chatWidget.populate = fillChats
-
-    // invoke the fill function
-    chatWidget.fillChats = fillChats
-    chatWidget.createChatListener = createChatListener()
+    chatWidget.containerName = "chatContainer"
+    //chatWidget.populate()
     
+    chatWidget.createChatListener = createChatListener
+    chatWidget.createChatListener(chatWidget)
 }
 
 chatWidgetInit()

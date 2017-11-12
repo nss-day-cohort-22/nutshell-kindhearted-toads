@@ -4,7 +4,7 @@
 */
 // get page elements
 const taskWidget = require("./taskWidget/taskWidgetInit");
-const chatWidgetInit = require("./chatWidget/chatWidgetInit")
+const chatWidget = require("./chatWidget/chatWidgetInit")
 const friendsWidgetInit = require("./friendsWidget/friendsWidgetInit")
 
 
@@ -25,7 +25,7 @@ const dashboardInit = function(user) {
     dashboard.style.display = "block";
 
     taskWidget.populate(taskWidget.getLatest());
-    chatWidgetInit();
+    chatWidget.populate();
     friendsWidgetInit();
 }
 

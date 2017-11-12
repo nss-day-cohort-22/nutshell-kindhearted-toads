@@ -10,7 +10,7 @@ const getDatabase = require("../database")
 let editMode = false
 let currentArticle = null
 
-const createChatListener = () => {
+const createChatListener = (chatWidget) => {
     // get control of Send button used to create a new chat message
     const addChatBtnEl = document.querySelector(".chatWidget__btn")
     const chatInputField = document.querySelector(".chatWidget__text")
@@ -34,8 +34,7 @@ const createChatListener = () => {
             newChatObject = currentArticle
             newChatObject.content = composeChatInput.value
 
-            // STUCK HERE, chatWidget is causing an error as "undefined"
-            console.log("chatWidget", chatWidget)
+            // use the function on our object to overwrite the chat message object in the database
             chatWidget.saveEdit("messages", newChatObject)
             editMode = false
         }
