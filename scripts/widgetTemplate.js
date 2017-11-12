@@ -4,7 +4,7 @@
 // add a require for autoScroll and all other functions/modules that are used
 const autoScroll = require("./autoScroll")
 const getDatabase = require("./database")
-
+const dataSetter = require("./dataSetter")
 const defaultWidget = Object.create(null, {
     "init": {
         "value": function(name, additionalContentString = ""){
@@ -32,10 +32,9 @@ const defaultWidget = Object.create(null, {
 
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
+  
                 // find the index in the array that matches the item that was edited
-                let editedIndexNum = DB[stringLabelOfArray].findIndex(e => {
-                    e.id === newEditedObject.id
-                })
+                let editedIndexNum = DB[stringLabelOfArray].findIndex(e => e.id ===newEditedObject.id);
                 // overwrite the object in the array with the edited object
                 DB[stringLabelOfArray][editedIndexNum] = newEditedObject
                     

@@ -3,8 +3,8 @@
  * Purpose is to handle initializing the structure for the dashboard
 */
 // get page elements
-const taskWidgetInit = require("./taskWidget/taskWidgetInit");
-const chatWidget = require("./chatWidget/chatWidgetInit")
+const taskWidget = require("./taskWidget/taskWidgetInit");
+const chatWidgetInit = require("./chatWidget/chatWidgetInit")
 const friendsWidgetInit = require("./friendsWidget/friendsWidgetInit")
 
 
@@ -24,8 +24,8 @@ const dashboardInit = function(user) {
     login.style.display = "none";
     dashboard.style.display = "block";
 
-    taskWidgetInit();
-    chatWidget.fillChats()
+    taskWidget.populate(taskWidget.getLatest());
+    chatWidgetInit();
     friendsWidgetInit();
 }
 

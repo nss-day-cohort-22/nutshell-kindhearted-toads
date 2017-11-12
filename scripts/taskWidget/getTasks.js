@@ -3,12 +3,19 @@
  * Gets task data from the database for the user
  */
 const database = require("../database");
+const getActiveUser = require("../auth/getActiveUser");
 
-const getData = function(user) {
+const getTasks = function() {
+    const user = getActiveUser();
     // get incomplete tasks for user
-    tasks = database()["tasks"].filter(task => task.userId === user.userID && task.complete === false);
-    return tasks;
+    let db = database() || {"tasks":[]};
+    let tasks = db.tasks || []
+    let filteredTasks = tasks
+        .filter(t=> t.userId === user.userId && !t.completed)
+        .sort((f,s)=> f.id - s.id);
 
+    return filteredTasks;
+    
 }
 
-module.exports = getData;
+module.exports = getTasks;
