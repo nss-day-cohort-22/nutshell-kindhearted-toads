@@ -3,8 +3,8 @@
     background-color: rgb(32, 109, 252);
     height: 200px;
     max-height: 200px;
-    width: 400px;
-    max-width: 400px;
+    width: 95%;
+    /* max-width: 400px; */
     padding: .4em;
     color: white;
 }
@@ -16,7 +16,8 @@
     height: 150px;
     width: 95%;
     padding: .3em;
-    margin-bottom: .3em;
+    margin: 0 auto .3em;
+    /* margin-bottom: .3em; */
     border-radius: 3px;
     border: 1px solid transparent;
     border-top: none;
@@ -30,6 +31,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    grid-gap: 1em;
     grid-template-areas: 
     "tasks news"
     "friends events"
@@ -53,6 +56,8 @@
 
 .chatWidget {
     grid-area: chat;
+    justify-self: center;   
+    
 }
 
 /* Task Widget Styling - could be applied globally */
