@@ -9,18 +9,18 @@ const {a, button, div, h1, header, p, span, article, input} = require("../domHel
 
 const createTaskStructure = function() {
     
-    const taskWidget = document.querySelector(".taskWidget");
+    const taskWidget = document.querySelector(".tasksWidget");
 
     // Widget Header
     taskWidget.appendChild(
-        header({"className": "taskWidget_header"},"Tasks")
+        header({"className": "tasksWidget_header"},"Tasks")
     );
 
     // Task container
     taskWidget.appendChild(
         div({"className": "taskContainer"},
-            input({ "className": "taskWidget__input", "type": "text" , "placeholder": "Enter task"}),
-            button({"className": "taskWidget__btnSubmit"},"Submit")
+            input({ "className": "tasksWidget__input", "type": "text" , "placeholder": "Enter task"}),
+            button({"className": "tasksWidget__btnSubmit"},"Submit")
         )
 
     );
