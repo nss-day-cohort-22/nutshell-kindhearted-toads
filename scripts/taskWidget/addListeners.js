@@ -35,7 +35,7 @@ const addEvents = function(taskWidget) {
 
     //
     tasksWidgetEl.addEventListener("keyup", function(e) {
-        if (e.target.className === "task__desc--input" && e.keyCode === 13 ) {
+        if (e.target.className === "task__desc--input" && e.keyCode === 13 && document.querySelector(".task__btn-update")) {
             const taskObj = createTaskObject(e.target,false);
             taskWidget.saveEdit("tasks",taskObj);
             taskWidget.refresh(taskWidget);
