@@ -2,7 +2,7 @@
 // listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userId and pass in these values to the messageTableFactory.js 
 
 const messagesFactory = require("../factories/messagesTableFactory")
-// const fillChats = require("./fillChats") /* I don't think I need this anymore, due to adding this function to my object on chatWidget.populate  */
+
 
 // require module to get Database
 const getDatabase = require("../database")
@@ -45,7 +45,7 @@ const createChatListener = (chatWidget) => {
         // clear chat input field
         composeChatInput.value = ""
         // refresh chat window with newest content
-        chatWidget.populate()
+        chatWidget.populate(chatWidget)
     }
     
     // add an event listener for Send button click and for Enter key press

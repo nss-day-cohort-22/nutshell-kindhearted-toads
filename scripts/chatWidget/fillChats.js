@@ -5,7 +5,7 @@ const getDatabase = require("../database")
 const autoScroll = require("../autoScroll")
 
 
-const fillChats = function() {
+const fillChats = function(chatWidget) {
     const DB = getDatabase()
    
     // create a string to post to Dom for each chat message
@@ -21,7 +21,7 @@ const fillChats = function() {
 
         // populate chat msg container dom string with data from each chat message
         chatMsgDomString += `
-            <p class="chatWidget__msg" data-id="msg_${msg.id}"><span class="chatWidget__author">${messageAuthor.userName}:</span><span class="chatWidget__msg"> ${msg.content}</span><button class="chatWidget__editBtn" id="btn_${msg.id}" data-author="${msg.userId}">Edit</button></p>
+            <p class="chatWidget__msg" data-id="msg_${msg.id}"><span class="chatWidget__author">${messageAuthor.userName}:</span><span class="chatWidget__content"> ${msg.content}</span><button class="chatWidget__editBtn" id="btn_${msg.id}" data-author="${msg.userId}">Edit</button></p>
             `
     })
 
@@ -29,8 +29,7 @@ const fillChats = function() {
     let chatContainerEl = document.querySelector(".chatContainer")
     // populate chat container with dom string
     chatContainerEl.innerHTML = chatMsgDomString
-
-    autoScroll("chatContainer")
+    autoScroll(chatWidget.containerName)
 }
 
 
