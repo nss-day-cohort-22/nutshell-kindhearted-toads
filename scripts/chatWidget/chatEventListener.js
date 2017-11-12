@@ -2,13 +2,16 @@
 // listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userId and pass in these values to the messageTableFactory.js 
 
 const messagesFactory = require("../factories/messagesTableFactory")
-const fillChats = require("./fillChats")
+// const fillChats = require("./fillChats") /* I don't think I need this anymore, due to adding this function to my object on chatWidget.populate  */
 
-// temporarily get database
+// require module to get Database
 const getDatabase = require("../database")
 
+// set edit mode to false by default
 let editMode = false
-let currentArticle = null
+// currentMessage will either hold a newly created chat message, or a edited chat message. 
+let currentMessage = null
+
 
 const createChatListener = (chatWidget) => {
     // get control of Send button used to create a new chat message
@@ -31,7 +34,7 @@ const createChatListener = (chatWidget) => {
             messagesFactory(newChatObject).save()
         } else if (editMode) {
             // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
-            newChatObject = currentArticle
+            newChatObject = currentMessage
             newChatObject.content = composeChatInput.value
 
             // use the function on our object to overwrite the chat message object in the database
@@ -79,7 +82,7 @@ const createChatListener = (chatWidget) => {
             // set editMode to true
             editMode = true
             //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
-            currentArticle = msgToEditFromDB
+            currentMessage = msgToEditFromDB
 
            
         }
