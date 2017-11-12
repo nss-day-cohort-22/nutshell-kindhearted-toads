@@ -26,7 +26,7 @@ let chatWidgetInit = function () {
     chatWidget.user = user;
     chatWidget.populate = fillChats
     chatWidget.containerName = "chatContainer"
-    //chatWidget.populate()
+    
     
     chatWidget.createChatListener = createChatListener
     chatWidget.createChatListener(chatWidget)
