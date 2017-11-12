@@ -25,11 +25,13 @@ const addEvents = function(taskWidget) {
             const task = document.createElement("div");
             task.className = "task";
 
-            task.innerHTML += "<input type='text' class='task__desc--input'>";
+            task.innerHTML += "<input type='text' class='task__desc--input' autofocus>";
             task.innerHTML += "<input type='date' class='task__completion-date--input' value='"+getCurrentDate()+"'>";
             task.innerHTML += "<button class='task__btn-commit'>Commit</button>"
             taskContainer.appendChild(task);
             autoScroll(taskWidget.containerName);
+            // set the focus on the input box
+            task.childNodes[0].focus();
         }
     });
 
