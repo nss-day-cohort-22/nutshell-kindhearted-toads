@@ -59,7 +59,7 @@ const createChatListener = (chatWidget) => {
     
     // event listener to check if user has clicked edit btn on a message
     chatContainerEl.addEventListener("click", event => {
-        console.log(event) 
+        //console.log(event) 
         let composeChatInput = document.querySelector(".chatWidget__text")
         
         // get message the user wants to edit
@@ -77,7 +77,7 @@ const createChatListener = (chatWidget) => {
             // put the contents of the message to edit back into the input field
             composeChatInput.value = msgToEditFromDB.content
             
-            console.log("msgToEditFromDB = ", msgToEditFromDB)
+            //console.log("msgToEditFromDB = ", msgToEditFromDB)
 
             // set editMode to true
             editMode = true
