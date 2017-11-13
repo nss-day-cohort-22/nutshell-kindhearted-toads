@@ -28,17 +28,9 @@ function taskWidgetInit() {
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     taskWidget.init("tasks", additionalElementDomString)
 
-    // invoke the fill function
-
-    // invoke the createFriendsListener
-    const user = getUser();
-    const tasks = getTasks(user);
-
-    // const generateTasksEls = function() {
-    //     generateTasks(tasks);
-    // }
+    // taskWidget enhancements
     taskWidget.widgetContainer = "tasksWidget";
-    taskWidget.user = user;
+    taskWidget.user = getUser();
     taskWidget.getLatest = getTasks;
     taskWidget.latest = taskWidget.getLatest();
     taskWidget.populate = generateTasks;
