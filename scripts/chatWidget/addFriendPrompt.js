@@ -9,27 +9,29 @@ const addFriendsPrompt = function (chatWidget, userIdClicked) {
     let addFriendModal = document.querySelector(".addFriendPrompt");
     let addFriendContent = document.querySelector(".addFriendPrompt__content");
     
-    // check if the user is already a friend
+    // use isFriend() function (from Krys) to check if a friendship already exits
 
 
     // else post this string
     addFriendMsgString = `<p> Do you want to add "{userName}" as a friend?</p>
     <button class="addFriend-yes">Yes</button><button class="addFriend-no">No</button>
     `
-
+    // post friend request string to dom
     addFriendContent.innerHTML = addFriendMsgString
     
+
     // Open the modal to add a friend
     addFriendModal.style.display = "block";
 
     // Get the <span> element that closes the modal
     let closeSpan = document.getElementById("closeFriendModal")
 
-
     // When the user clicks on <span> (x), close the addFriendModal
     closeSpan.onclick = function() {
         addFriendModal.style.display = "none";
     }
+
+    
 
     // When the user clicks anywhere outside of the addFriendModal, close it
     window.onclick = function(event) {
@@ -38,9 +40,9 @@ const addFriendsPrompt = function (chatWidget, userIdClicked) {
         }
     }
 
+    // add function to add friend to the "Yes" button. 
 
-
-
+    // Make the no button close the window
 
 }
 
