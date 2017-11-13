@@ -38,7 +38,6 @@ const addEvents = function (newsWidget) {
             newsWidget.populate()
             //editing = false;
         } else if (e.target.className === "news__btn-delete") {
-            debugger
             newsWidget.delete("news", e.target.parentNode.id.split("_")[1])
             newsWidget.populate()
         }
