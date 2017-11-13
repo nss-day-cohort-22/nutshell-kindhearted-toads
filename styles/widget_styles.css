@@ -1,12 +1,16 @@
+/* Styles for ALL widgets */
+
 .widget {
     border: 1px solid rgb(128, 128, 128);
     background-color: rgb(32, 109, 252);
     height: 200px;
-    max-height: 200px;
-    width: 400px;
-    max-width: 400px;
-    padding: .4em;
+    border-radius: 3px;
+    width: 95%;
+    max-width: 675px;
+    padding: .8em .5em;
     color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .widgetContainer {
@@ -14,9 +18,10 @@
     /* border: 2px solid grey; */
     overflow-y: auto;
     height: 150px;
-    width: 95%;
+    width: 98%;
     padding: .3em;
-    margin-bottom: .3em;
+    margin: 0 auto .4em;
+    /* margin-bottom: .3em; */
     border-radius: 3px;
     border: 1px solid transparent;
     border-top: none;
@@ -24,12 +29,20 @@
     box-shadow: inset 0 2px 3px rgba(0,0,0,.39), 0 -1px 1px rgb(211, 211, 211), 0 2px 0 rgb(211, 211, 211);
 }
 
+.widgetHeader {
+    margin-bottom: .3em;
+    text-transform: uppercase;
+}
+
 /* grid structure for widgets */
 
 .widget__container {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
+    justify-items: space-around;
+    grid-gap: 1em;
     grid-template-areas: 
     "tasks news"
     "friends events"
@@ -53,6 +66,7 @@
 
 .chatWidget {
     grid-area: chat;
+    justify-self: center;   
 }
 
 /* Task Widget Styling - could be applied globally */
@@ -74,11 +88,13 @@
 
 
 
+
+
 @media screen and (max-width: 850px) {
     .widget__container {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
+        /* grid-template-rows: repeat(3, 1fr); */
         justify-items: center;
         grid-template-areas: 
         "tasks"
@@ -88,4 +104,5 @@
         "chat";
     }
     
+  
 }
