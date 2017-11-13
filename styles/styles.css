@@ -120,11 +120,10 @@ body {
     display: flex;
 }
 
-<<<<<<< HEAD
 .hidden {
     display: none;
-=======
+}
+
 .dashboard {
     margin: 20px;
->>>>>>> task-widget
 }

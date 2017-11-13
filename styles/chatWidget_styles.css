@@ -1,4 +1,51 @@
+/* Styles specific to Chat Widget */
+
+.chatWidget {
+    width: 90%;
+    /* This overrides the generic max-width for all widgets since the chat widget spans two columns */
+    max-width: 90% 
+
+}
+
 .chatWidget__author {
-    font-weight: bold;
-    color: rgb(211, 206, 206);
+    font-weight: 500;
+    color: darkblue;
+    margin-right: .2em;
+}
+
+.chatWidget__editBtn {
+    height: 100%;
+    flex-grow: 0;
+    justify-content: right;
+    margin: .2em;
+}
+
+.chatWidget__msg {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Let the main content of the chat message fill all available area between user name and edit button as the container grows and shrinks. */
+.chatWidget__content {
+    flex-grow: 1;
+    margin: .1em;
+}
+
+.chatWidget__text {
+    width: 80%;
+    margin-left: .1em; 
+}
+
+.chatContainer {
+    width: 99%
+}
+
+
+/* changes the width of the chat widget when viewport is less than 850 to match all the other widgets as they stack vertically. */
+@media screen and (max-width: 850px) {
+    .chatWidget {
+        width: 95%;
+        max-width: 95%;
+    }
 }
