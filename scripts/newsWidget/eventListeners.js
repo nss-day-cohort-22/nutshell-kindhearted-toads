@@ -7,16 +7,16 @@ const newsFactory = require("../factories/newsTableFactory")
 
 
 const addEvents = function (newsWidget) {
-    //Add Button
+    //Add Button event handler
     document.querySelector(".newsWidget__btn-add").addEventListener("click", (e) => {
         if (true) {
             const newsContainer = document.querySelector(".newsContainer")
             const news = document.createElement("div")
             news.className = "news"
 
-            news.innerHTML += "<input type='text' class='news__title--input' autofocus>"
-            news.innerHTML += "<input type='text' class='news__synopsis--input'>"
-            news.innerHTML += "<input type='url' class='news__url--input'>"
+            news.innerHTML += "<input type='text' class='news__title--input' placeholder='title' autofocus>"
+            news.innerHTML += "<input type='text' class='news__synopsis--input' placeholder='synopsis'>"
+            news.innerHTML += "<input type='url' class='news__url--input' placeholder='url'>"
             news.innerHTML += "<button class='news__btn-save'>Save Article</button>"
             newsContainer.insertAdjacentElement("afterbegin", news);
             // set the focus on the input box
@@ -24,7 +24,7 @@ const addEvents = function (newsWidget) {
         }
     })
 
-
+    //
     newsWidget.container.addEventListener("click", function (e) {
         if (e.target.className === "news__btn-save") {
 
