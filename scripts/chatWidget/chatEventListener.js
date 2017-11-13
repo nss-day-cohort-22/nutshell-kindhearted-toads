@@ -109,10 +109,11 @@ const createChatListener = (chatWidget) => {
         if (event.target.dataset.authorId.length > 0) {
             
             let userIdClicked = parseInt(event.target.dataset.authorId)
+            let userNameClicked = event.target.dataset.author
 
             // check if the username clicked on is NOT the currentUser
             if (chatWidget.user.userId !== userIdClicked)
-                addFriendPrompt(chatWidget, userIdClicked)
+                addFriendPrompt(chatWidget, userIdClicked, userNameClicked)
         }
     })
 

@@ -1,7 +1,10 @@
 // Author: Greg Lawrence
 // displays a modal window with a prompt asking the user if they would like to add the user they clicked on in chat as a friend
 
-const addFriendsPrompt = function (chatWidget, userIdClicked) {
+const isFriend = require("../friendsWidget/checkFriendship")
+const createFriendship = require("./createFriendship")
+
+const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     
     // generate a visual popup or prompt to ask if you want to be friends with the user that you clicked on
 
@@ -10,12 +13,15 @@ const addFriendsPrompt = function (chatWidget, userIdClicked) {
     let addFriendContent = document.querySelector(".addFriendPrompt__content");
     
     // use isFriend() function (from Krys) to check if a friendship already exits
+    if (isFriend(userIdClicked)) {
+        addFriendMsgString = `<p>You are already friends with ${userClicked}.</p>`
 
-
+    } else {
     // else post this string
-    addFriendMsgString = `<p> Do you want to add "{userName}" as a friend?</p>
-    <button class="addFriend-yes">Yes</button><button class="addFriend-no">No</button>
-    `
+        addFriendMsgString = `<p> Do you want to add "${userClicked}" as a friend?</p>
+        <button class="addFriend-yes btn">Yes</button><button class="addFriend-no btn">No</button>
+        `
+    }
     // post friend request string to dom
     addFriendContent.innerHTML = addFriendMsgString
     
@@ -23,8 +29,17 @@ const addFriendsPrompt = function (chatWidget, userIdClicked) {
     // Open the modal to add a friend
     addFriendModal.style.display = "block";
 
-    // Get the <span> element that closes the modal
+    // Get the <span> element that closes the modal and the "No" button
     let closeSpan = document.getElementById("closeFriendModal")
+    
+
+    if (document.querySelector(".addFriend-no")) {
+        let noBtn = document.querySelector(".addFriend-no")
+
+        noBtn.onclick = function() {
+            addFriendModal.style.display = "none";
+        }
+    }
 
     // When the user clicks on <span> (x), close the addFriendModal
     closeSpan.onclick = function() {
@@ -39,11 +54,18 @@ const addFriendsPrompt = function (chatWidget, userIdClicked) {
             addFriendModal.style.display = "none";
         }
     }
-
-    // add function to add friend to the "Yes" button. 
-
-    // Make the no button close the window
-
+    
+    if (document.querySelector(".addFriend-yes")) {
+        // add function to add friend to the "Yes" button. 
+        let yesBtn = document.querySelector(".addFriend-yes")
+        // use createFriendship function to create a friend pairing and pass it the userId that was clicked
+        yesBtn.addEventListener("click", () => {
+            // console.log("You clicked Yes")
+            addFriendModal.style.display = "none";
+            createFriendship(userIdClicked)
+        })
+            
+    }
 }
 
 
