@@ -18,6 +18,10 @@ const friendsWidgetInit = () => {
     friendsWidget.init("friends", additionalElementDomString)
     const friends = getFriends();
     displayFriends(friends);
+    
+
+    friendsWidget.refresh = refreshFriends;
+    
     addFriendsListeners(friendsWidget);
 
     //friendsWidget enhancements

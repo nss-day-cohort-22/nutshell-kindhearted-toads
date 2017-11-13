@@ -9,6 +9,7 @@ const addFriendsListeners = (widget) => {
         if (e.target.className.includes("friend__btn-delete")) {
             const parent = e.target.parentNode;
             widget.delete("friends", parseInt(parent.dataset.friendshipId));
+            widget.refresh();
         }
     });
 }
