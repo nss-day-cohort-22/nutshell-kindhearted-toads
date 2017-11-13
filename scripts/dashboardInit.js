@@ -18,6 +18,7 @@ const dashboardInit = function(user) {
     // I need to require chatWidget inside this function so it won't run until a user has made it to the dashboard. If it's on top of this module, it runs before there is an active user, and on first page load, we can't use chatWidget.user because it is blank.
     const chatWidget = require("./chatWidget/chatWidgetInit")
     const taskWidget = require("./taskWidget/taskWidgetInit");
+    const eventWidget = require("./eventWidget/eventWidgetInit");
     const friendsWidgetInit = require("./friendsWidget/friendsWidgetInit")
     
     message.innerHTML = "";
@@ -27,6 +28,7 @@ const dashboardInit = function(user) {
 
     taskWidget.populate(taskWidget.getLatest());
     chatWidget.populate(chatWidget);
+    eventWidget.populate();
     friendsWidgetInit();
 }
 
