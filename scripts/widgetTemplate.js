@@ -13,16 +13,17 @@ const defaultWidget = Object.create(null, {
             let x = 1    
             // build up a DOM string for chat container
             let widgetContainerDomString = `
-                        <header class='${name}Widget__header widgetHeader'>${name}</header>
-                        <div class='${name}Container widgetContainer'>
-                        -- PLACEHOLDER DATA --
-                        </div>   
-                        `
-
+            <header class='${name}Widget__header widgetHeader'>${name}</header>
+            <div class='${name}Container widgetContainer'>
+            -- PLACEHOLDER DATA --
+            </div>   
+            `
+            
             // add the users additional dom string from parameter to this variable    
             widgetContainerDomString += additionalContentString
             // push DOM string to DOM element
             widgetEl.innerHTML = widgetContainerDomString
+            this.container = document.querySelector(`.${name}Container`)
         }
     },
     "saveEdit": {
@@ -60,6 +61,7 @@ const defaultWidget = Object.create(null, {
         }
     },
     "fill": {
+        "writable": true,
         "value": function(domString) {
             // document.querySelector(`.${this.name}Container`)
             this.container = domString
@@ -68,12 +70,14 @@ const defaultWidget = Object.create(null, {
             autoScroll(this.container)
         }
     },
-    "container": {
-        "value": document.querySelector(`.${this.name}Container`)
-    },
-    "name": {
-        "value": ""
-    }
+    // "container": {
+    //     "writable": true,
+    //     "value": document.querySelector(`.${this.name}Container`)
+    // },
+    // "name": {
+    //     "writable": true,
+    //     "value": ""
+    // }
 })
 
 
