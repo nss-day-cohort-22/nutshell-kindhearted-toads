@@ -21,12 +21,12 @@ const fillChats = function(chatWidget) {
 
         // populate chat msg container dom string with data from each chat message
         chatMsgDomString += `
-            <p class="chatWidget__msg" data-id="msg_${msg.id}"><span class="chatWidget__author">${messageAuthor.userName}:</span><span class="chatWidget__content"> ${msg.content}</span>
+            <p class="chatWidget__msg" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content"> ${msg.content}</span>
             `
         //debugger
         // check if the logged in user is the author of the message, if so, add edit button
         if (chatWidget.user.userId === messageAuthor.id) {
-            chatMsgDomString += `<button class="chatWidget__editBtn" id="btn_${msg.id}" data-author="${msg.userId}">Edit</button>
+            chatMsgDomString += `<button class="chatWidget__editBtn" id="editBtn_${msg.id}" data-author="${msg.userId}">Edit</button>
             `
         }
         chatMsgDomString += "</p>"
