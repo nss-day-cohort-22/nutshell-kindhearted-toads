@@ -72,7 +72,7 @@ const defaultWidget = Object.create(null, {
         "value": document.querySelector(`.${this.name}Container`)
     },
     "name": {
-        "value": ""
+        "value": "this.name"
     }
 })
 
