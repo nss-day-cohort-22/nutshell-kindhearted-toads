@@ -1,5 +1,7 @@
 const autoScroll = require("../autoScroll")
 const eventsTableFactory = require("./eventsTableFactory.js")
+const getCurrentDate = require("../getCurrentDate")
+
 
 const addlisteners = function(eventWidget) {
 
@@ -15,7 +17,7 @@ const addlisteners = function(eventWidget) {
                 <input type="text" class="create-event create-event__name" name="eventName" placeholder="Event Name" width="100%"><br>
                 <span class="eventDetails-bottom">
                     <input type="text" class="create-event create-event__location" name="eventLocation" placeholder="Event Location">
-                    <input type="date" class="create-event create-event__date" name="eventDate">
+                    <input type="date" name="eventDate" class="create-event create-event__date" value=${getCurrentDate()}>
                 </span>
             </span>
             <span class="event__eventAttending">
@@ -45,13 +47,54 @@ const addlisteners = function(eventWidget) {
     const eventWidgetContainer = document.querySelector(`.${eventWidget.containerName}`)
     eventWidgetContainer.addEventListener("click", (e)=>{
         //delete button
-        console.log(e)
         if(e.target.classList.contains("event-delete")){
             eventWidget.delete("events", e.target.dataset.id)
             eventWidget.populate()
         }
-    })
 
+        //replace an event with text inputs for editing
+        if (e.target.parentNode.parentNode.dataset.creator && !document.querySelector(".event__editDetails")) {
+            
+            let eventEl = e.target.parentNode.parentNode
+        
+            eventEl.innerHTML = `
+                <span class="event__editDetails">
+                    <input type="text" class="edit-event edit-event__name" name="eventName" value="${eventEl.dataset.eventName}" width="100%"><br>
+                    <span class="eventDetails-bottom">
+                        <input type="text" class="edit-event edit-event__location" name="eventLocation" value="${eventEl.dataset.eventLocation}">
+                        <input type="date" name="eventDate" class="edit-event edit-event__date" value="${eventEl.dataset.eventDate}">
+                    </span>
+                </span>
+                <span class="event__eventAttending">
+                    <p>Editing</p>
+                    <button class="edit-event__btn">Save</btn>
+                </span>
+            `
+
+            document.getElementsByClassName("eventWidget__btn")[0].classList.toggle("eventWidget__btn-hidden")
+        }
+
+        if (e.target.className === "edit-event__btn") {
+            
+            let eventId = parseInt(e.target.parentNode.parentNode.dataset.id)
+            let eventName = document.querySelector(".edit-event__name").value
+            let eventLocation = document.querySelector(".edit-event__location").value
+            let eventDate = document.querySelector(".edit-event__date").value
+            
+            let newEventObject = Object.create(null, {
+                "id" : {value: eventId, enumerable: true, writable: true},
+                "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
+                "userId" : {value: eventWidget.user.userId, enumerable: true, writable: true},
+                "name" : {value: eventName, enumerable: true, writable: true},
+                "eventDate" : {value: eventDate, enumerable: true, writable: true},
+                "location" : {value: eventLocation, enumerable: true, writable: true}
+            })
+
+            eventWidget.saveEdit("events", newEventObject)
+
+            eventWidget.populate()
+        }
+    })
 }
 
 module.exports = addlisteners

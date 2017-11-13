@@ -59,7 +59,7 @@ const popDB = function () {
     ]
 
     const events = [
-        { "name": "Event example :: Foo Fighters", "eventDate": "2017-12-5", "location": "Bridgestone" },
+        { "name": "Event example :: Foo Fighters", "eventDate": "2017-12-05", "location": "Bridgestone" },
         { "name": "Event example :: Boo Bighters", "eventDate": "2017-12-15", "location": "Bridgeblock" },
         { "name": "Event example :: Doo Dighters", "eventDate": "2017-12-30", "location": "Walkwayestone" }
     ]

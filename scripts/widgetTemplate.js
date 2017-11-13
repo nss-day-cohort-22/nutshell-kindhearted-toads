@@ -29,7 +29,7 @@ const defaultWidget = Object.create(null, {
         "value": function(stringLabelOfArray, newEditedObject){
             // assign new editedObject to proper database location
             const DB = getDatabase()
-            
+
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
                 

@@ -12,10 +12,12 @@ const generateEvents = function(events) {
             let checked = ""
             let disabled = ""
             let deleteButton = ""
+            let editIcon = ""
             
             if (event.creator){
                 disabled = "disabled"
                 deleteButton = `<button class="event-delete event-delete__${event.id}">Delete</button>`
+                editIcon = `<img src="/images/edit.svg" class="event-edit event-edit__${event.id}"></div>`
             }
 
             if (event.attending){
@@ -23,13 +25,19 @@ const generateEvents = function(events) {
             }
 
 
-            const newDiv = document.createElement("div");
-            newDiv.className = "event";
-            newDiv.dataset.userId = event.userId;
-            newDiv.dataset.id = event.id;
-            newDiv.dataset.creator = event.creator;
-            container.appendChild(newDiv);
+            const newDiv = document.createElement("div")
+            newDiv.className = `event  ${event.style}`
+            newDiv.dataset.userId = event.userId
+            newDiv.dataset.id = event.id
+            newDiv.dataset.creator = event.creator
+            newDiv.dataset.eventName = event.name
+            newDiv.dataset.eventDate = event.eventDate
+            newDiv.dataset.eventLocation = event.location
+            container.appendChild(newDiv)
             newDiv.innerHTML = `
+                <div class="event-edit__container">
+                    ${editIcon}
+                </div>
                 <span class="event__eventDetails">
                     <p>${event.name}</p>
                     <p>${event.location} / ${event.eventDate}</p>
