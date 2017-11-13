@@ -25,18 +25,6 @@ const friendsWidgetInit = () => {
     friendsWidget.addEvents = addFriendsListeners;
     friendsWidget.addEvents(friendsWidget);
 
-    //friendsWidget enhancements
-    // taskWidget enhancements
-    // taskWidget.widgetContainer = "tasksWidget";
-    // taskWidget.user = getUser();
-    // taskWidget.getLatest = getTasks;
-    // taskWidget.latest = taskWidget.getLatest();
-    // taskWidget.populate = generateTasks;
-    // taskWidget.refresh = refreshWidget;
-    // taskWidget.containerName = "tasksContainer";
-    // taskWidget.addEvents = addEvents;
-    // taskWidget.addEvents(taskWidget);
-
 }
 
 module.exports = friendsWidgetInit
