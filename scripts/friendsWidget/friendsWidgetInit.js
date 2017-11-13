@@ -27,11 +27,15 @@ const friendsWidgetInit = () => {
     friendsWidget.init("friends", additionalElementDomString)
     friendsWidget.getLatest = getFriends;
     friendsWidget.latest = friendsWidget.getLatest();
-    friendsWidget.populate = displayFriends;
-    friendsWidget.populate(friendsWidget.latest);
-    friendsWidget.refresh = refreshWidget;
+    friendsWidget.populate = function() {
+        displayFriends(getFriends());
+    }
+    friendsWidget.populate();
+    
+    // friendsWidget.populate(friendsWidget.latest);
+    // friendsWidget.refresh = refreshWidget;
     friendsWidget.addEvents = addFriendsListeners;
-    friendsWidget.addEvents(friendsWidget);
+    friendsWidget.addEvents(this);
 
 
 

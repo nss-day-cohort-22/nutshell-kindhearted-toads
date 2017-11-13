@@ -18,7 +18,7 @@ const addFriendsListeners = (widget) => {
             const parent = e.target.parentNode;
             const id = parseInt(parent.dataset.friendshipId);
             widget.delete("friends", id);
-            widget.refresh(widget);
+            widget.populate();
             // obj.latest = obj.getLatest();
             // //repaint the widget with latest
             // obj.populate(obj.latest)
@@ -66,14 +66,16 @@ const addFriendsListeners = (widget) => {
         } else {
             try {
                 friendFactory({"friendId": result.id}).save();
-                widget.refresh(widget);
+                widget.populate();
             } catch (err) {
                 console.warn(err);
             }
         }
-    }
+    })
 
-    )
+    document.querySelector(".friendsWidget__user-interaction").addEventListener("blur",() => {
+        console.log("out");
+    })
 }
 
 module.exports = addFriendsListeners;
