@@ -48,8 +48,7 @@ const popDB = function () {
 
     const friends = [
         { "friendId": 3 },
-        { "friendId": 1 },
-        { "friendId": 4 },
+        { "friendId": 5 },
         { "friendId": 2 }
     ]
 
@@ -60,9 +59,9 @@ const popDB = function () {
     ]
 
     const events = [
-        { "name": "Event example :: Foo Fighters", "eventDate": "10-10-17", "location": "Bridgestone" },
-        { "name": "Event example :: Boo Bighters", "eventDate": "10-12-17", "location": "Bridgeblock" },
-        { "name": "Event example :: Doo Dighters", "eventDate": "10-14-17", "location": "Walkwayestone" }
+        { "name": "Event example :: Foo Fighters", "eventDate": "2017-12-5", "location": "Bridgestone" },
+        { "name": "Event example :: Boo Bighters", "eventDate": "2017-12-15", "location": "Bridgeblock" },
+        { "name": "Event example :: Doo Dighters", "eventDate": "2017-12-30", "location": "Walkwayestone" }
     ]
 
     const eventsJoin = [

@@ -1,0 +1,40 @@
+.event {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.event-button__attending {
+    align-self: center;
+}
+
+.event p {
+    margin :0;
+
+}
+
+.event__eventAttending {
+    text-align: right;
+}
+
+.create-event {
+    height: 21px;
+}
+.create-event__name {
+    width: 250px;
+    margin-bottom: 5px;
+}
+
+.eventDetails-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.create-event__date {
+    width : 115px;
+}
+
+.eventWidget__btn-hidden {
+    visibility: hidden;
+}
