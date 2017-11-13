@@ -49,10 +49,18 @@ const createChatListener = (chatWidget) => {
     }
     
     // add an event listener for Send button click and for Enter key press
-    addChatBtnEl.addEventListener("click", createChatMsg)
-    chatInputField.addEventListener("keyup", e => {
-        // check if enter key is pressed inside input field, if so, run createChatMsg function
-        if (e.keyCode === 13) {
+    addChatBtnEl.addEventListener("click", event => {
+        // check that the input field is not blank before allow a message to be created
+        if (chatInputField.value.length > 0) {
+            createChatMsg()
+        }
+    }) 
+
+
+    chatInputField.addEventListener("keyup", event => {
+
+        // check if enter key is pressed inside input field and that the input field isn't empty, if so, run createChatMsg function
+        if (event.keyCode === 13 && event.target.value.length > 0) {
             createChatMsg()
         }
     })
@@ -60,6 +68,7 @@ const createChatListener = (chatWidget) => {
     // event listener to check if user has clicked edit btn on a message
     chatContainerEl.addEventListener("click", event => {
         //console.log(event) 
+        
         let composeChatInput = document.querySelector(".chatWidget__text")
         
         // get message the user wants to edit
@@ -67,25 +76,23 @@ const createChatListener = (chatWidget) => {
         // get the id of the author of the message
         let msgToEditAuthorId = parseInt(event.target.dataset.author)
         
-        // check if the current user is the author of the message. If not, don't let the user edit
-        if (chatWidget.user.userId === msgToEditAuthorId){
-            // get Database, and search messages array for the message that user wants to edit.
-            const DB = getDatabase()
-            msgToEditFromDB = DB.messages.find(msg => {
-                return msg.id === msgToEditId
-            })
-            // put the contents of the message to edit back into the input field
+
+        // get Database, and search messages array for the message that user wants to edit.
+        const DB = getDatabase()
+        msgToEditFromDB = DB.messages.find(msg => {
+            return msg.id === msgToEditId
+        })
+        // put the contents of the message to edit back into the input field
+        if (msgToEditFromDB) {
             composeChatInput.value = msgToEditFromDB.content
-            
-            //console.log("msgToEditFromDB = ", msgToEditFromDB)
-
-            // set editMode to true
-            editMode = true
-            //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
-            currentMessage = msgToEditFromDB
-
-           
         }
+        //console.log("msgToEditFromDB = ", msgToEditFromDB)
+
+        // set editMode to true
+        editMode = true
+        //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
+        currentMessage = msgToEditFromDB
+
      
     })
 

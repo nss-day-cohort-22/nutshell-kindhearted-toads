@@ -20,6 +20,8 @@ const dashboardInit = function(user) {
     const friendsWidgetInit = require("./friendsWidget/friendsWidgetInit")
     const chatWidget = require("./chatWidget/chatWidgetInit")
     const newsWidget = require("./newsWidget/newsWidgetInit")
+    const eventWidget = require("./eventWidget/eventWidgetInit");
+    
     message.innerHTML = "";
     welcome.style.display = "none";
     login.style.display = "none";
@@ -29,6 +31,7 @@ const dashboardInit = function(user) {
     chatWidget.populate(chatWidget);
     newsWidget.fill(newsWidget.getNews())
     
+    eventWidget.populate();
     friendsWidgetInit();
 }
 

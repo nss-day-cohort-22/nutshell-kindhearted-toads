@@ -1,38 +1,41 @@
-// friends - Chris Miller
+// eventsTableFactory - Chris Miller
 // returns new object for eventsTable
 
 const getDatabase = require("../database")
 const setDatabase = require("../datasetter")
 const getActiveUser = require("../auth/getActiveUser")
 
-const friendsJoinTableFactory = friendObject => {
+const eventsFactory = eventsInfoObject => {
 
     let db = getDatabase()
     
     let idValue = 0
     
-    if (db.friends.length > 0) {
-        idValue = db.friends[db.friends.length - 1].id
+    if (db.events.length > 0) {
+        idValue = db.events[db.events.length - 1].id
     }
 
     return Object.create(null, {
         "id" : {value: ++idValue, enumerable: true, writable: true},
         "timeStamp" : {value: Date.now(), enumerable: true, writable: true},
         "userId" : {value: getActiveUser().userId, enumerable: true, writable: true},
-        "friendId" : {value: friendObject.friendId, enumerable: true, writable: true},
+        "name" : {value: eventsInfoObject.name, enumerable: true, writable: true},
+        "eventDate" : {value: eventsInfoObject.eventDate, enumerable: true, writable: true},
+        "location" : {value: eventsInfoObject.location, enumerable: true, writable: true},
         "save": {value: function () {
-            db.friends.push({
+            db.events.push({
                 "id": this.id,
-                "userId": this.userId,
                 "timeStamp": this.timeStamp,
                 "userId": this.userId,
-                "friendId": this.friendId
+                "name": this.name,
+                "eventDate": this.eventDate,
+                "location": this.location
             })
-            setDatabase(db.friends, "friends")
+            setDatabase(db.events, "events")
             return this
         }}
     })
 
 }
 
-module.exports = friendsJoinTableFactory
+module.exports = eventsFactory
