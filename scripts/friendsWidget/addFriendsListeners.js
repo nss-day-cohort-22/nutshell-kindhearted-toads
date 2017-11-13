@@ -67,6 +67,7 @@ const addFriendsListeners = (widget) => {
             try {
                 friendFactory({"friendId": result.id}).save();
                 widget.populate();
+                document.querySelector(".friendsWidget__inputContainer").style.display = "none";
             } catch (err) {
                 console.warn(err);
             }

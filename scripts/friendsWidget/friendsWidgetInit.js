@@ -31,16 +31,11 @@ const friendsWidgetInit = () => {
         displayFriends(getFriends());
     }
     friendsWidget.populate();
-    
-    // friendsWidget.populate(friendsWidget.latest);
-    // friendsWidget.refresh = refreshWidget;
-    friendsWidget.addEvents = addFriendsListeners;
-    friendsWidget.addEvents(this);
-
-
-
-    
-
+    addFriendsListeners(friendsWidget);
+    // // friendsWidget.populate(friendsWidget.latest);
+    // // friendsWidget.refresh = refreshWidget;
+    // friendsWidget.addEvents = addFriendsListeners;
+    // friendsWidget.addEvents(friendsWidget);
 }
 
-module.exports = friendsWidgetInit
+module.exports = friendsWidgetInit;
