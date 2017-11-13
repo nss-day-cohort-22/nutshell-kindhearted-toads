@@ -29,7 +29,7 @@ const dashboardInit = function(user) {
 
     taskWidget.populate(taskWidget.getLatest());
     chatWidget.populate(chatWidget);
-    newsWidget.fill(newsWidget.getNews())
+    newsWidget.populate()
     
     eventWidget.populate();
     friendsWidgetInit();
