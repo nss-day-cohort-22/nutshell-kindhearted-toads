@@ -1,6 +1,7 @@
 const autoScroll = require("../autoScroll")
-const eventsTableFactory = require("./eventsTableFactory.js")
 const getCurrentDate = require("../getCurrentDate")
+const eventsTableFactory = require("../factories/eventsTableFactory.js")
+const eventFriendJoinTableFactory = require("../factories/eventFriendJoinTableFactory.js")
 
 
 const addlisteners = function(eventWidget) {
@@ -53,7 +54,8 @@ const addlisteners = function(eventWidget) {
         }
 
         //replace an event with text inputs for editing
-        if (e.target.parentNode.parentNode.dataset.creator && !document.querySelector(".event__editDetails")) {
+
+        if (e.target.parentNode.parentNode.dataset.creator === "true" && document.querySelector(".event__editDetails") === null) {
             
             let eventEl = e.target.parentNode.parentNode
         
@@ -91,8 +93,19 @@ const addlisteners = function(eventWidget) {
             })
 
             eventWidget.saveEdit("events", newEventObject)
-
+            document.getElementsByClassName("eventWidget__btn")[0].classList.toggle("eventWidget__btn-hidden")
             eventWidget.populate()
+        }
+
+        //click to set attending status
+        if (e.target.className === "event-button__attending") {
+            if(e.target.checked){
+                eventFriendJoinTableFactory({ "eventId":  parseInt(e.path[2].dataset.id)}).save()
+                eventWidget.populate()
+            } else if (!e.target.checked) {
+                eventWidget.delete("eventJoin", parseInt(e.path[2].dataset.eventJoin))
+                eventWidget.populate()
+            }
         }
     })
 }

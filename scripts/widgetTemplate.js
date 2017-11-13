@@ -13,19 +13,21 @@ const defaultWidget = Object.create(null, {
             let x = 1    
             // build up a DOM string for chat container
             let widgetContainerDomString = `
-                        <header class='${name}Widget__header widgetHeader'>${name}</header>
-                        <div class='${name}Container widgetContainer'>
-                        -- PLACEHOLDER DATA --
-                        </div>   
-                        `
-
+            <header class='${name}Widget__header widgetHeader'>${name}</header>
+            <div class='${name}Container widgetContainer'>
+            -- PLACEHOLDER DATA --
+            </div>   
+            `
+            
             // add the users additional dom string from parameter to this variable    
             widgetContainerDomString += additionalContentString
             // push DOM string to DOM element
             widgetEl.innerHTML = widgetContainerDomString
+            this.container = document.querySelector(`.${name}Container`)
         }
     },
     "saveEdit": {
+        "writable": true,
         "value": function(stringLabelOfArray, newEditedObject){
             // assign new editedObject to proper database location
             const DB = getDatabase()
@@ -44,6 +46,7 @@ const defaultWidget = Object.create(null, {
         }
     },
     "delete": {
+        "writable": true,
         "value": function(stringLabelOfArray, itemId) {
             const DB = getDatabase()
             
@@ -59,6 +62,7 @@ const defaultWidget = Object.create(null, {
         }
     },
     "fill": {
+        "writable": true,
         "value": function(domString) {
             // document.querySelector(`.${this.name}Container`)
             this.container = domString
@@ -66,12 +70,6 @@ const defaultWidget = Object.create(null, {
             // fun autoScroll function, make sure to require it
             autoScroll(this.container)
         }
-    },
-    "container": {
-        "value": document.querySelector(`.${this.name}Container`)
-    },
-    "name": {
-        "value": ""
     }
 })
 
