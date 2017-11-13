@@ -14,6 +14,9 @@ const displayFriends = (friends) => {
         const friendDiv = document.createElement("div");
         friendDiv.className = "friend";
         friendDiv.dataset.friendshipId = f.friendshipId;
+        friendDiv.dataset.userId = f.userId;
+        friendDiv.dataset.userName = f.userName;
+        friendDiv.dataset.email = f.email;
         //friendDiv.dataset.userId = f.userId;
         // populate the interior elements
         friendDiv.innerHTML += `<div class="friend__userName">${f.userName}</div>

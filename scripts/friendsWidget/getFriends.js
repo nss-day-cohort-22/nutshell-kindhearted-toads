@@ -25,9 +25,9 @@ const getFriends = function() {
             filteredUsers.push({
                 "friendshipId": f.id,
                 "userName": individualUser.userName,
-                "userId": individualUser.userId,
+                "userId": individualUser.id,
                 "email": individualUser.email
-            });
+            }); 
         });
     } catch (err) {
         console.warn(err);
