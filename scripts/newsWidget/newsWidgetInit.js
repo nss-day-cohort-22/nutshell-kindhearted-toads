@@ -30,8 +30,11 @@ function newsWidgetInit() {
 
     // invoke the createFriendsListener
     newsWidget.user = getUser();
-    newsWidget.news = getNews();
+    newsWidget.getNews = getNews;
     newsWidget.fill = fillFunc
+    newsWidget.populate = function () {
+        this.fill(this.getNews())
+    }
 
     addEvents(newsWidget)
 }

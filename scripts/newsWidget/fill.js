@@ -13,10 +13,11 @@ function fill(news) {
     news.forEach(function (article) {
         if (article.userId === user.userId) {
             domString += `
-            <div>
+            <div id=newsArticle_${article.id}>
                 <p>${article.title}</p>
                 <p>${article.synopsis}</p>
                 <p>${article.url}</p>
+                <button class='news__btn-delete'>Delete</button>
             </div>
             `
         } else {

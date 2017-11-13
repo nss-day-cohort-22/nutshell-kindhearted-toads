@@ -14,7 +14,7 @@ const getNews = function () {
     let news = db.news
     let filteredNews = news
         .filter(t => t.userId === user.userId || friends.includes(t.userID))
-        .sort((f, s) => f.timeStamp - s.timeStamp);
+        .sort((f, s) => s.timeStamp - f.timeStamp);
 
     return filteredNews
 

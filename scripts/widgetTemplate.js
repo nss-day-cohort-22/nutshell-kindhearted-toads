@@ -27,6 +27,7 @@ const defaultWidget = Object.create(null, {
         }
     },
     "saveEdit": {
+        "writable": true,
         "value": function(stringLabelOfArray, newEditedObject){
             // assign new editedObject to proper database location
             const DB = getDatabase()
@@ -45,6 +46,7 @@ const defaultWidget = Object.create(null, {
         }
     },
     "delete": {
+        "writable": true,
         "value": function(stringLabelOfArray, itemId) {
 
             // check if the stringLabel passed in is a valid database object
@@ -69,15 +71,7 @@ const defaultWidget = Object.create(null, {
             // fun autoScroll function, make sure to require it
             autoScroll(this.container)
         }
-    },
-    // "container": {
-    //     "writable": true,
-    //     "value": document.querySelector(`.${this.name}Container`)
-    // },
-    // "name": {
-    //     "writable": true,
-    //     "value": ""
-    // }
+    }
 })
 
 

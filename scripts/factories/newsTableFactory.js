@@ -29,7 +29,7 @@ const newsFactory = newsObject => {
                 "userId": this.userId,
                 "title": this.title,
                 "synopsis": this.synopsis,
-                "url": this.title
+                "url": this.url
             })
             setDatabase(db.news, "news")
             return this
