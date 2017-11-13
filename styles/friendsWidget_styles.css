@@ -1,0 +1,27 @@
+.friendsWidget__inputContainer {
+    display: none;
+}
+
+.friendsWidget__btn-commit {
+    ;
+}
+
+.friend {
+    display: grid;
+    grid-template-columns: 50% 40% 10%;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "username email btn-delete";
+}
+ 
+.friend__userName {
+    grid-area: username;
+}
+
+.friend__email {
+    grid-area: email;
+}
+
+.friend__btn-delete {
+    grid-area: btn-delete;
+}
