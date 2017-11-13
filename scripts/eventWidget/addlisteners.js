@@ -1,6 +1,6 @@
 const autoScroll = require("../autoScroll")
-const eventsTableFactory = require("./eventsTableFactory.js")
 const getCurrentDate = require("../getCurrentDate")
+const eventsTableFactory = require("../factories/eventsTableFactory.js")
 const eventFriendJoinTableFactory = require("../factories/eventFriendJoinTableFactory.js")
 
 
