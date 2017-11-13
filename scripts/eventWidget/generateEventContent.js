@@ -7,6 +7,11 @@ const generateEvents = function(events) {
 
     container.innerHTML = "";
 
+    //filter events by date
+    events = events.sort((a,b) => b.upcoming-a.upcoming)
+    console.log(events[events.length-1])
+    events[events.length-1].style += " event--nextEvent"
+
     events.forEach(event => {
         if (event.display) {
             let checked = ""
@@ -33,6 +38,8 @@ const generateEvents = function(events) {
             newDiv.dataset.eventName = event.name
             newDiv.dataset.eventDate = event.eventDate
             newDiv.dataset.eventLocation = event.location
+            newDiv.dataset.eventJoin = event.eventJoin
+
             container.appendChild(newDiv)
             newDiv.innerHTML = `
                 <div class="event-edit__container">
