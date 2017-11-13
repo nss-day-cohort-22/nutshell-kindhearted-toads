@@ -34,9 +34,9 @@ function taskWidgetInit() {
     const user = getUser();
     const tasks = getTasks(user);
 
-    const generateTasksEls = function() {
-        generateTasks(tasks);
-    }
+    // const generateTasksEls = function() {
+    //     generateTasks(tasks);
+    // }
     taskWidget.widgetContainer = "tasksWidget";
     taskWidget.user = user;
     taskWidget.getLatest = getTasks;
