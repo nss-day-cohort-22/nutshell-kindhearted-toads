@@ -14,9 +14,20 @@ const friendsWidgetInit = () => {
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     friendsWidget.init("friends", additionalElementDomString)
 
-    // invoke the fill function
+    //friendsWidget enhancements
+    // taskWidget enhancements
+    // taskWidget.widgetContainer = "tasksWidget";
+    // taskWidget.user = getUser();
+    // taskWidget.getLatest = getTasks;
+    // taskWidget.latest = taskWidget.getLatest();
+    // taskWidget.populate = generateTasks;
+    // taskWidget.refresh = refreshWidget;
+    // taskWidget.containerName = "tasksContainer";
+    // taskWidget.addEvents = addEvents;
+    // taskWidget.addEvents(taskWidget);
+    
 
-    // invoke the createFriendsListener
+
 
 }
-module.exports = friendsWidgetInit
+module.exports = friendsWidget

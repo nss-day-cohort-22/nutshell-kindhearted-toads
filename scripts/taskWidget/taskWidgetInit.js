@@ -11,7 +11,6 @@ const getTasks = require("./getTasks");
 const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
 const addEvents = require("./addListeners");
-const database = require("../database.js");
 const Widget = require("../widgetTemplate")
 const refreshWidget = require("./refreshWidget");
 //console.log(taskWidget);
