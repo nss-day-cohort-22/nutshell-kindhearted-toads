@@ -1,4 +1,7 @@
 const widgetTemplate = require("../widgetTemplate")
+const getFriends = require("./getFriends");
+const displayFriends = require("./displayFriends");
+const addFriendsListeners = require("./addFriendsListeners");
 
 const friendsWidgetInit = () => {
     //create new widget object
@@ -13,6 +16,9 @@ const friendsWidgetInit = () => {
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     friendsWidget.init("friends", additionalElementDomString)
+    const friends = getFriends();
+    displayFriends(friends);
+    addFriendsListeners(friendsWidget);
 
     //friendsWidget enhancements
     // taskWidget enhancements
@@ -25,9 +31,6 @@ const friendsWidgetInit = () => {
     // taskWidget.containerName = "tasksContainer";
     // taskWidget.addEvents = addEvents;
     // taskWidget.addEvents(taskWidget);
-    
-
-
 
 }
-module.exports = friendsWidget
+module.exports = friendsWidgetInit

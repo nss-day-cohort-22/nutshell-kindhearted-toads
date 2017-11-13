@@ -24,7 +24,7 @@ const friendsFactory = friendsInfoObject => {
             db.friends.push({
                 "id": this.id,
                 "timeStamp": this.timeStamp,
-                "eventId": this.eventId,
+                "userId": this.userId,
                 "friendId": this.friendId
             })
             setDatabase(db.friends, "friends")
