@@ -14,7 +14,8 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     
     // use isFriend() function (from Krys) to check if a friendship already exits
     if (isFriend(userIdClicked)) {
-        addFriendMsgString = `<p>You are already friends with ${userClicked}.</p>`
+        addFriendMsgString = `<p>You are already friends with ${userClicked}.</p>
+        <p><button class=".addFriendPrompt__ok-closeBtn">Ok</button>`
 
     } else {
     // else post this string
@@ -25,7 +26,6 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     // post friend request string to dom
     addFriendContent.innerHTML = addFriendMsgString
     
-
     // Open the modal to add a friend
     addFriendModal.style.display = "block";
 
@@ -46,8 +46,6 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
         addFriendModal.style.display = "none";
     }
 
-    
-
     // When the user clicks anywhere outside of the addFriendModal, close it
     window.onclick = function(event) {
         if (event.target === addFriendModal) {
@@ -60,8 +58,9 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
         let yesBtn = document.querySelector(".addFriend-yes")
         // use createFriendship function to create a friend pairing and pass it the userId that was clicked
         yesBtn.addEventListener("click", () => {
-            // console.log("You clicked Yes")
+            // close modal
             addFriendModal.style.display = "none";
+            // send userId to befriend to the function to create the friendship
             createFriendship(userIdClicked)
         })
             

@@ -73,8 +73,9 @@ const createChatListener = (chatWidget) => {
     
     // event listener to check if user has clicked edit btn on a message
     chatContainerEl.addEventListener("click", event => {
-        console.log(event) 
-        if (event.target.id.startsWith("btn_")) {
+        
+        // check if event.target is a btn
+        if (event.target.id.startsWith("editBtn_")) {
             let composeChatInput = document.querySelector(".chatWidget__text")
             
             // get message the user wants to edit
@@ -106,7 +107,7 @@ const createChatListener = (chatWidget) => {
         }
 
         // event listener to listen for click on userName
-        if (event.target.dataset.authorId.length > 0) {
+        if (event.target.dataset.authorId && event.target.dataset.authorId.length > 0) {
             
             let userIdClicked = parseInt(event.target.dataset.authorId)
             let userNameClicked = event.target.dataset.author

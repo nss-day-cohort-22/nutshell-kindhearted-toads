@@ -26,7 +26,7 @@ const fillChats = function(chatWidget) {
         //debugger
         // check if the logged in user is the author of the message, if so, add edit button
         if (chatWidget.user.userId === messageAuthor.id) {
-            chatMsgDomString += `<button class="chatWidget__editBtn" id="btn_${msg.id}" data-author="${msg.userId}">Edit</button>
+            chatMsgDomString += `<button class="chatWidget__editBtn" id="editBtn_${msg.id}" data-author="${msg.userId}">Edit</button>
             `
         }
         chatMsgDomString += "</p>"
