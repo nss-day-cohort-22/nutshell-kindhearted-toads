@@ -2,7 +2,7 @@
     border: 1px solid rgb(128, 128, 128);
     background-color: rgb(32, 109, 252);
     height: 200px;
-    max-height: 200px;
+    /* max-height: 200px; */
     width: 95%;
     /* max-width: 400px; */
     padding: .4em;
@@ -28,6 +28,7 @@
 /* grid structure for widgets */
 
 .widget__container {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
@@ -83,7 +84,7 @@
     .widget__container {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
+        /* grid-template-rows: repeat(3, 1fr); */
         justify-items: center;
         grid-template-areas: 
         "tasks"
@@ -93,4 +94,5 @@
         "chat";
     }
     
+  
 }
