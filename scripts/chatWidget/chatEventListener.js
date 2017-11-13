@@ -2,6 +2,7 @@
 // listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userId and pass in these values to the messageTableFactory.js 
 
 const messagesFactory = require("../factories/messagesTableFactory")
+const addFriendPrompt = require("../chatWidget/addFriendPrompt")
 
 
 // require module to get Database
@@ -48,48 +49,74 @@ const createChatListener = (chatWidget) => {
         chatWidget.populate(chatWidget)
     }
     
+
     // add an event listener for Send button click and for Enter key press
-    addChatBtnEl.addEventListener("click", createChatMsg)
-    chatInputField.addEventListener("keyup", e => {
-        // check if enter key is pressed inside input field, if so, run createChatMsg function
-        if (e.keyCode === 13) {
+    addChatBtnEl.addEventListener("click", event => {
+        // check that the input field is not blank before allow a message to be created
+        if (chatInputField.value.length > 0) {
+            createChatMsg()
+            
+            if (addChatBtnEl.textContent === "Save") {
+                addChatBtnEl.textContent = "Send"
+            }
+        }
+    }) 
+
+
+    chatInputField.addEventListener("keyup", event => {
+
+        // check if enter key is pressed inside input field and that the input field isn't empty, if so, run createChatMsg function
+        if (event.keyCode === 13 && event.target.value.length > 0) {
             createChatMsg()
         }
     })
     
     // event listener to check if user has clicked edit btn on a message
     chatContainerEl.addEventListener("click", event => {
-        //console.log(event) 
-        let composeChatInput = document.querySelector(".chatWidget__text")
         
-        // get message the user wants to edit
-        let msgToEditId = parseInt(event.target.id.split("_")[1])
-        // get the id of the author of the message
-        let msgToEditAuthorId = parseInt(event.target.dataset.author)
-        
-        // check if the current user is the author of the message. If not, don't let the user edit
-        if (chatWidget.user.userId === msgToEditAuthorId){
+        // check if event.target is a btn
+        if (event.target.id.startsWith("editBtn_")) {
+            let composeChatInput = document.querySelector(".chatWidget__text")
+            
+            // get message the user wants to edit
+            let msgToEditId = parseInt(event.target.id.split("_")[1])
+            // get the id of the author of the message
+            let msgToEditAuthorId = parseInt(event.target.dataset.author)
+            
+
             // get Database, and search messages array for the message that user wants to edit.
             const DB = getDatabase()
             msgToEditFromDB = DB.messages.find(msg => {
                 return msg.id === msgToEditId
             })
             // put the contents of the message to edit back into the input field
-            composeChatInput.value = msgToEditFromDB.content
-            
+            if (msgToEditFromDB) {
+                composeChatInput.value = msgToEditFromDB.content
+                composeChatInput.focus()
+                // console.log(addChatBtnEl.textContent)
+                if (addChatBtnEl.textContent === "Send") {
+                    addChatBtnEl.textContent = "Save"
+                }
+            }
             //console.log("msgToEditFromDB = ", msgToEditFromDB)
 
             // set editMode to true
             editMode = true
             //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
             currentMessage = msgToEditFromDB
-
-           
         }
-     
-    })
 
-    // event listener to listen for click on userName
+        // event listener to listen for click on userName
+        if (event.target.dataset.authorId && event.target.dataset.authorId.length > 0) {
+            
+            let userIdClicked = parseInt(event.target.dataset.authorId)
+            let userNameClicked = event.target.dataset.author
+
+            // check if the username clicked on is NOT the currentUser
+            if (chatWidget.user.userId !== userIdClicked)
+                addFriendPrompt(chatWidget, userIdClicked, userNameClicked)
+        }
+    })
 
 }
 module.exports = createChatListener

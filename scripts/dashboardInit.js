@@ -3,8 +3,6 @@
  * Purpose is to handle initializing the structure for the dashboard
 */
 // get page elements
-const taskWidget = require("./taskWidget/taskWidgetInit");
-const friendsWidgetInit = require("./friendsWidget/friendsWidgetInit")
 
 
 
@@ -18,7 +16,12 @@ const message = document.querySelector(".login__user-message");
 // control what elements exist on the page
 const dashboardInit = function(user) {
     // I need to require chatWidget inside this function so it won't run until a user has made it to the dashboard. If it's on top of this module, it runs before there is an active user, and on first page load, we can't use chatWidget.user because it is blank.
+    const taskWidget = require("./taskWidget/taskWidgetInit");
+    const friendsWidgetInit = require("./friendsWidget/friendsWidgetInit")
     const chatWidget = require("./chatWidget/chatWidgetInit")
+    const newsWidget = require("./newsWidget/newsWidgetInit")
+    const eventWidget = require("./eventWidget/eventWidgetInit");
+    
     message.innerHTML = "";
     welcome.style.display = "none";
     login.style.display = "none";
@@ -26,6 +29,9 @@ const dashboardInit = function(user) {
 
     taskWidget.populate(taskWidget.getLatest());
     chatWidget.populate(chatWidget);
+    newsWidget.populate()
+    
+    eventWidget.populate();
     friendsWidgetInit();
 }
 

@@ -13,40 +13,43 @@ const defaultWidget = Object.create(null, {
             let x = 1    
             // build up a DOM string for chat container
             let widgetContainerDomString = `
-                        <header class='${name}Widget__header widgetHeader'>${name}</header>
-                        <div class='${name}Container widgetContainer'>
-                        -- PLACEHOLDER DATA --
-                        </div>   
-                        `
-
+            <header class='${name}Widget__header widgetHeader'>${name}</header>
+            <div class='${name}Container widgetContainer'>
+            -- PLACEHOLDER DATA --
+            </div>   
+            `
+            
             // add the users additional dom string from parameter to this variable    
             widgetContainerDomString += additionalContentString
             // push DOM string to DOM element
             widgetEl.innerHTML = widgetContainerDomString
+            this.container = document.querySelector(`.${name}Container`)
         }
     },
     "saveEdit": {
+        "writable": true,
         "value": function(stringLabelOfArray, newEditedObject){
             // assign new editedObject to proper database location
             const DB = getDatabase()
 
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
-  
+                
                 // find the index in the array that matches the item that was edited
                 let editedIndexNum = DB[stringLabelOfArray].findIndex(e => e.id ===newEditedObject.id);
                 // overwrite the object in the array with the edited object
                 DB[stringLabelOfArray][editedIndexNum] = newEditedObject
-                    
+                
                 // call dataSetter() function to set the updated array into the database. 
                 dataSetter(DB[stringLabelOfArray], stringLabelOfArray)
             }
         }
     },
     "delete": {
+        "writable": true,
         "value": function(stringLabelOfArray, itemId) {
-
-            const DB = getDatabase();
+            const DB = getDatabase()
+            
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
                 let indexToDelete = DB[stringLabelOfArray].findIndex(e => e.id === itemId);
@@ -59,6 +62,7 @@ const defaultWidget = Object.create(null, {
         }
     },
     "fill": {
+        "writable": true,
         "value": function(domString) {
             // document.querySelector(`.${this.name}Container`)
             this.container = domString
@@ -66,12 +70,6 @@ const defaultWidget = Object.create(null, {
             // fun autoScroll function, make sure to require it
             autoScroll(this.container)
         }
-    },
-    "container": {
-        "value": document.querySelector(`.${this.name}Container`)
-    },
-    "name": {
-        "value": ""
     }
 })
 
