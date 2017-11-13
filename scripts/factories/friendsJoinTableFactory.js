@@ -25,6 +25,7 @@ const friendsJoinTableFactory = friendObject => {
                 "id": this.id,
                 "userId": this.userId,
                 "timeStamp": this.timeStamp,
+                "userId": this.userId,
                 "friendId": this.friendId
             })
             setDatabase(db.friends, "friends")

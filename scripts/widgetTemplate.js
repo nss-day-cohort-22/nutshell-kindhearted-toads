@@ -49,9 +49,7 @@ const defaultWidget = Object.create(null, {
             
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
-                let indexToDelete = DB[stringLabelOfArray].findIndex(e => {
-                    e.id === itemId
-                })
+                let indexToDelete = DB[stringLabelOfArray].findIndex(e => e.id === itemId);
                 // delete the item from the array
                 DB[stringLabelOfArray].splice(indexToDelete, 1)
 
