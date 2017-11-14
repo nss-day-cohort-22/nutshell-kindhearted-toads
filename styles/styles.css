@@ -84,7 +84,7 @@ body {
 }
 .login__container {
     background-color: rgba(128, 128, 128,.5);
-    border: 1px solid white;
+    border: px solid white;
     height: 200px;
     width: 300px;
     display: flex;
