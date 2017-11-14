@@ -42,7 +42,6 @@ taskWidget.init = function() {
 
  
 }
-taskWidgetInit();
 
 module.exports = taskWidget;
 
