@@ -8,11 +8,11 @@ const resetSearch = require("./resetSearch");
 const isFriend = require("./checkFriendship");
 const addFriend = require("./addFriend");
 
-
 const addFriendsListeners = (widget) => {
     
     let result = {}
     let users = [];
+    let readyToCommit = false;
     const commitButton = document.querySelector(".friendsWidget__btn-commit");
     const userMessage = document.querySelector(".friendsWidget__user-comment");
     const friendsInput = document.querySelector(".friendsWidget__input");
@@ -38,6 +38,7 @@ const addFriendsListeners = (widget) => {
         // prepopulate the users array with the current users
         users = getUsers();
         friendsInput.focus();
+        readyToCommit = false;
     })
 
     // When the user clicks away from the friends seach box while a 
@@ -47,6 +48,7 @@ const addFriendsListeners = (widget) => {
         if (commitButton.style.display === "none") {
             inputBox.style.display = "none";
         }
+        readyToCommit = false;
     });
 
     document.querySelector(".friendsWidget__input").addEventListener("keyup",(e) => {
@@ -73,6 +75,7 @@ const addFriendsListeners = (widget) => {
                 commitButton.style.display = "none";
                 userMessage.textContent = "Already friends..."
             } else {
+                readyToCommit = true;
                 commitButton.style.display = "";    
             }
 
@@ -84,10 +87,11 @@ const addFriendsListeners = (widget) => {
                 userMessage.classList.toggle("friendsWidget--red");
             }
             commitButton.style.display = "none";
+            readyToCommit = false;
         }
 
         // enter key behavior
-        if (e.keyCode === 13 && commitButton.style.display === "") {
+        if (e.keyCode === 13 && readyToCommit) {
             addFriend(result,widget);
         }
         
