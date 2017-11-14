@@ -38,7 +38,14 @@ const createChatListener = (chatWidget) => {
                 
                 if (!editMode) {
                     // send new chat message object to the messagesFactory to get saved and pushed to local storage
-                    messagesFactory(newChatObject).save()
+                    
+                    // send new chat message object to the messagesFactory to get saved and pushed to local storage
+                    if (newChatObject.content.charAt(0) === "@") {
+                        let rcp = newChatObject.content.split(" ")[0].slice(1)
+                        messagesFactory(newChatObject, rcp).save()
+                    } else {
+                        messagesFactory(newChatObject).save()
+                    }
 
                 } else if (editMode) {
                     // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
