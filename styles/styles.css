@@ -129,6 +129,9 @@ body {
 
 .task {
     display: flex;
+    align-items: center;
+    background-color: white;
+    color: black;
 }
 
 .hidden {
