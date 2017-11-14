@@ -20,6 +20,7 @@ const createChatListener = (chatWidget) => {
     const chatInputField = document.querySelector(".chatWidget__text")
     const chatMsgAuthorEl = document.querySelector(".chatWidget__author")
     const chatMsgEl = document.querySelector(".chatWidget__msg")
+    // const chatMsgContentEl = document.querySelector(".chatWidget__content")
     const chatContainerEl = document.querySelector(".chatContainer")
     const chatWidgetEditBtnEl = document.querySelector(".chatWidget__editBtn")
 
@@ -46,7 +47,7 @@ const createChatListener = (chatWidget) => {
         // clear chat input field
         composeChatInput.value = ""
         // refresh chat window with newest content
-        chatWidget.populate(chatWidget)
+        chatWidget.populate()
     }
     
 
@@ -117,6 +118,32 @@ const createChatListener = (chatWidget) => {
                 addFriendPrompt(chatWidget, userIdClicked, userNameClicked)
         }
     })
+    
+    // mouseover event to display an edit button 
+    chatContainerEl.addEventListener("mouseover", event => {
+        // check if the target has a next sibling
+        if (event.target.nextElementSibling) {
+            // check if the next sibling element is the Edit Button
+            let nextSiblingId = event.target.nextElementSibling.id
+            if (nextSiblingId.startsWith("editBtn_")) {
+                event.target.nextElementSibling.classList.toggle("hidden")
+            }
+        }
+    })
 
+    // mouseout event to hide the edit button after mouseover is done
+    chatContainerEl.addEventListener("mouseout", event => {
+        console.log(event)
+        // if (event.target.className === "chatWidget__msg" && event.target.dataset.msgId === event.target.nextElementSibling.dataset.msgId) {
+        //     // check if the target has a next sibling
+        if (event.target.nextElementSibling) {
+            // check if the next sibling element is the Edit Button
+            let nextSiblingId = event.target.nextElementSibling.id
+            if (nextSiblingId.startsWith("editBtn_")) {
+                event.target.nextElementSibling.classList.toggle("hidden")
+            }
+        }
+        // }
+    })
 }
 module.exports = createChatListener

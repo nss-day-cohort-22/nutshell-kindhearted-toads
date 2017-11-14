@@ -131,10 +131,6 @@ body {
     display: flex;
 }
 
-.hidden {
-    display: none;
-}
-
 .dashboard {
     margin: 20px;
 }
