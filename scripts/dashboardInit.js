@@ -27,6 +27,9 @@ const dashboardInit = function(user) {
     login.style.display = "none";
     dashboard.style.display = "block";
 
+
+    newsWidget.init()
+
     taskWidget.populate(taskWidget.getLatest());
     chatWidget.populate(chatWidget);
     newsWidget.populate()

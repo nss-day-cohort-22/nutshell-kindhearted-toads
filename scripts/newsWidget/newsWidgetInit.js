@@ -16,7 +16,7 @@ const addEvents = require("./eventListeners");
 const newsWidget = Widget()
 
 
-function newsWidgetInit() {
+newsWidget.init = function() {
     //create new widget object
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
@@ -24,7 +24,7 @@ function newsWidgetInit() {
     let additionalElementDomString = "<button class='newsWidget__btn-add'>New Article</button>";
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    newsWidget.init("news", additionalElementDomString)
+    newsWidget.prototype.init("news", additionalElementDomString)
 
     // invoke the fill function
 
@@ -39,6 +39,5 @@ function newsWidgetInit() {
     addEvents(newsWidget)
 }
 
-newsWidgetInit()
 
 module.exports = newsWidget
