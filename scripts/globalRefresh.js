@@ -8,7 +8,6 @@ const global =  {
 
     "refresh":  
             function() {
-                console.log(this.widgets)
                 this.widgets.forEach(x => x.populate())
             }
 }
