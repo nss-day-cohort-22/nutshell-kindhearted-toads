@@ -1,6 +1,9 @@
 //Generate Event Content - Chris Miller
 //take the filtered events and display them to the DOM
 
+const getUserName = require("./getUserName")
+const getNumberOfAtendees = require("./getNumberOfAttendees")
+
 const generateEvents = function(events) {
 
     const container = document.querySelector(".eventsContainer");
@@ -16,16 +19,19 @@ const generateEvents = function(events) {
             let checked = ""
             let disabled = ""
             let deleteButton = ""
-            let editIcon = ""
+            let status = `Created by ${getUserName(event.userId)}`
             
             if (event.creator){
+                let eventAttendees = getNumberOfAtendees(event.id)
                 disabled = "disabled"
                 deleteButton = `<button class="event-delete event-delete__${event.id}">Delete</button>`
-                editIcon = `<img src="/images/edit.svg" class="event-edit event-edit__${event.id}"></div>`
-            }
-
-            if (event.attending){
+                status = `Creator - <strong style="font-size:.8em">${eventAttendees} Guests</strong>`
                 checked = "checked"
+            } else if (event.attending){
+                checked = "checked"
+                deleteButton = "Attending : "
+            } else {
+                deleteButton = "Attend? : "
             }
 
 
@@ -41,15 +47,12 @@ const generateEvents = function(events) {
 
             container.appendChild(newDiv)
             newDiv.innerHTML = `
-                <div class="event-edit__container">
-                    ${editIcon}
-                </div>
                 <span class="event__eventDetails">
                     <p>${event.name}</p>
                     <p>${event.location} -- ${event.eventDate}</p>
                 </span>
                 <span class="event__eventAttending">
-                    <p>Attending</p>
+                    <p style="font-size:.7em">${status}</p>
                     ${deleteButton}
                     <input type="checkbox" class="event-button__attending" ${disabled} ${checked}>
                 </span>
