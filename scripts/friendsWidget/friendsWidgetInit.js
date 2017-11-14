@@ -40,6 +40,5 @@ friendsWidget.init = function() {
     friendsWidget.populate();
     addFriendsListeners(friendsWidget);
 }
-friendsWidgetInit();
 
 module.exports = friendsWidget
