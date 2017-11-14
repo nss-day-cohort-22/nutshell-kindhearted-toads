@@ -1,15 +1,15 @@
 // Author: Greg Lawrence
 // creates the chatWidget
 
-const widgetTemplate = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const getUser = require("../auth/getActiveUser");
 const fillChats = require("./fillChats")
 const createChatListener = require("./chatEventListener")
 
 //create new widget object
-const chatWidget = widgetTemplate()
+const chatWidget = makeWidget()
 
-let chatWidgetInit = function () { 
+chatWidget.init = function () { 
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
     let additionalDomElementString = `
@@ -18,7 +18,7 @@ let chatWidgetInit = function () {
     `
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    chatWidget.init("chat", additionalDomElementString)
+    defaultWidget.init("chat", additionalDomElementString)
     
     const user = getUser();
 
@@ -30,8 +30,8 @@ let chatWidgetInit = function () {
     chatWidget.populate()
     chatWidget.createChatListener = createChatListener
     chatWidget.createChatListener(chatWidget)
+    chatWidget.populate()
 }
 
-chatWidgetInit()
 
 module.exports = chatWidget

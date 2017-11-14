@@ -9,7 +9,7 @@ const loginInit = require("./loginInit");
 
 const appInit = () => {
     if (activeUser()) {
-        dashboardInit(activeUser());
+        dashboardInit();
     } else {
         loginInit;
     }

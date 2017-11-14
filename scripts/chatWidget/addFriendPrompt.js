@@ -3,6 +3,7 @@
 
 const isFriend = require("../friendsWidget/checkFriendship")
 const createFriendship = require("./createFriendship")
+const global = require("../globalRefresh")
 
 const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     
@@ -72,6 +73,7 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
             addFriendModal.style.display = "none";
             // send userId to befriend to the function to create the friendship
             createFriendship(userIdClicked)
+            global.refresh()
         })
             
     }

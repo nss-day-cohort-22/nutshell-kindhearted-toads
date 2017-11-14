@@ -14,3 +14,5 @@ const loginInit = () => {
     loginPage.style.display = "none";
     dashboardPage.style.display = "none";
 }
+
+module.exports = loginInit

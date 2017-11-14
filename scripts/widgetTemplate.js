@@ -7,6 +7,7 @@ const getDatabase = require("./database")
 const dataSetter = require("./dataSetter")
 const defaultWidget = Object.create(null, {
     "init": {
+        "writable": true,
         "value": function(name, additionalContentString = ""){
             this.name = name
             let widgetEl = document.querySelector(`.${name}Widget`)
@@ -49,7 +50,6 @@ const defaultWidget = Object.create(null, {
         "writable": true,
         "value": function(stringLabelOfArray, itemId) {
             const DB = getDatabase()
-            
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
                 let indexToDelete = DB[stringLabelOfArray].findIndex(e => e.id === itemId);
@@ -78,4 +78,4 @@ const makeWidget = function(){
     return Object.create(defaultWidget, {})
 }
 
-module.exports = makeWidget
+module.exports = {makeWidget, defaultWidget}

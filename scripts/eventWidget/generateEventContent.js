@@ -9,7 +9,6 @@ const generateEvents = function(events) {
 
     //filter events by date
     events = events.sort((a,b) => b.upcoming-a.upcoming)
-    console.log(events[events.length-1])
     events[events.length-1].style += " event--nextEvent"
 
     events.forEach(event => {
@@ -47,7 +46,7 @@ const generateEvents = function(events) {
                 </div>
                 <span class="event__eventDetails">
                     <p>${event.name}</p>
-                    <p>${event.location} / ${event.eventDate}</p>
+                    <p>${event.location} -- ${event.eventDate}</p>
                 </span>
                 <span class="event__eventAttending">
                     <p>Attending</p>
