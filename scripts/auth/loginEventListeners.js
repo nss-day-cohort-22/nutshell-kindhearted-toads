@@ -6,12 +6,14 @@
 const login = require("./login");
 const createNewUser = require("./createNewUser");
 const dashboardInit = require("../dashboardInit");
+const Toaster = require("../toaster/toaster");
 
 // elements you would click
 const btnLogin = document.querySelector(".login__button-login");
 const btnCreate = document.querySelector(".login__button-create");
 const loginLink = document.querySelector(".welcome__link");
 
+const toaster = Toaster();
 // function to navigate through login
 document.addEventListener("click", (event) => {
 
@@ -32,21 +34,48 @@ document.addEventListener("click", (event) => {
 
     // handle the login button errors
     if (event.target === btnLogin) {
+        if (username.length < 1) {
+            toaster.makeToast("please enter a valid username",5000);
+            toaster.makeToast("Oops...",2000)
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            toaster.makeToast("please enter a valid email",5000)
+            toaster.makeToast("Oops...",2000)
+            return;
+        }
         if (login(username, email)) {
             dashboardInit();
         } else {
             //display inline error message
-            message.innerHTML = "username/email does not exist"
+            //message.innerHTML = "username/email does not exist"
+            toaster.makeToast("username/email does not exist",7000);
         }
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
     }
 
     // handle the create button errors
     if (event.target === btnCreate) {
+        if (username.length === 0) {
+            toaster.makeToast("please enter a username");
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            toaster.makeToast("please enter your emaill");
+            return;
+        }
+
         if (createNewUser(username, email)) {
             dashboardInit();
         } else {
             // your username or email matches an existing user
-            message.innerHTML = "username/email already exists"
+            toaster.makeToast("username/email already exists",7000);
         }
     }
 

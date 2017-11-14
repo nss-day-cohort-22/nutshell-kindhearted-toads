@@ -73,26 +73,57 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.login__username-label,
+.login__email-label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 .login__username {
     width: 100%;
     font-size: 1em;
+    padding: 5px;
 }
 
 .login__email {
     font-size: 1em;
+    padding: 5px;
+    width: 100%;
 }
 .login__container {
-    background-color: rgba(128, 128, 128,.5);
+    background-color: white;
     border: px solid white;
-    height: 200px;
+    height: 300px;
     width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     font-size: 1.25em;
+    padding: 50px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    border-radius: 10px;
 }
+
+.login__button-container {
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+}
+
+.login__button-login,
+.login__button-create {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: .75em;
+    border: 1px solid gray;
+
+}
+
+.login__button-login:focus {outline:0;}
+.login__button-create:focus {outline:0;}
+
+
 .login__form {
     padding: 5px;
     display: inline-block;
@@ -104,7 +135,9 @@ body {
 } 
 
 .login__user-message {
+    display: none;
     background-color: red;
+    padding: 10px;
 }
 
 .nutshellNavbar {
