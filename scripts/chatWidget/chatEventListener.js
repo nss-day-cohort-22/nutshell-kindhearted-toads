@@ -8,21 +8,19 @@ const addFriendPrompt = require("../chatWidget/addFriendPrompt")
 // require module to get Database
 const getDatabase = require("../database")
 
-// set edit mode to false by default
-let editMode = false
-// currentMessage will either hold a newly created chat message, or a edited chat message. 
-let currentMessage = null
 
 
 const createChatListener = (chatWidget) => {
+    // set edit mode to false by default
+    let editMode = false
+    // currentMessage will either hold a newly created chat message, or a edited chat message. 
+    let currentMessage = null
     // get control of Send button used to create a new chat message
     const addChatBtnEl = document.querySelector(".chatWidget__btn")
     const chatInputField = document.querySelector(".chatWidget__text")
     const chatMsgAuthorEl = document.querySelector(".chatWidget__author")
     const chatMsgEl = document.querySelector(".chatWidget__msg")
-    // const chatMsgContentEl = document.querySelector(".chatWidget__content")
     const chatContainerEl = document.querySelector(".chatContainer")
-    const chatWidgetEditBtnEl = document.querySelector(".chatWidget__editBtn")
 
     // function to create a chat message object
     const createChatMsg = function() {
@@ -68,6 +66,7 @@ const createChatListener = (chatWidget) => {
         if (chatInputField.value.length > 0) {
             createChatMsg()
             
+            // check if the button next to the input says "Save", if so, change back to Send
             if (addChatBtnEl.textContent === "Save") {
                 addChatBtnEl.textContent = "Send"
             }
