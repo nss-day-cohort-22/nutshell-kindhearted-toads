@@ -15,7 +15,7 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     // use isFriend() function (from Krys) to check if a friendship already exits
     if (isFriend(userIdClicked)) {
         addFriendMsgString = `<p>You are already friends with ${userClicked}.</p>
-        <p><button class=".addFriendPrompt__ok-closeBtn">Ok</button>`
+        <p><button class="addFriendPrompt__okBtn">Ok</button>`
 
     } else {
     // else post this string
@@ -32,11 +32,20 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     // Get the <span> element that closes the modal and the "No" button
     let closeSpan = document.getElementById("closeFriendModal")
     
-
+    // If user clicked "No", to not add a new friend, then close modal
     if (document.querySelector(".addFriend-no")) {
         let noBtn = document.querySelector(".addFriend-no")
-
+        
         noBtn.onclick = function() {
+            addFriendModal.style.display = "none";
+        }
+    }
+
+    // If user clicks the "OK" button when told they are already friends, then close modal
+    if (document.querySelector(".addFriendPrompt__okBtn")) {
+        let okBtn = document.querySelector(".addFriendPrompt__okBtn")
+
+        okBtn.onclick = function() {
             addFriendModal.style.display = "none";
         }
     }
@@ -53,6 +62,7 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
         }
     }
     
+    // if user clicks "Yes" to add a friend
     if (document.querySelector(".addFriend-yes")) {
         // add function to add friend to the "Yes" button. 
         let yesBtn = document.querySelector(".addFriend-yes")
