@@ -30,7 +30,6 @@ chatWidget.init = function () {
     chatWidget.populate()
     chatWidget.createChatListener = createChatListener
     chatWidget.createChatListener(chatWidget)
-    chatWidget.populate()
 }
 
 

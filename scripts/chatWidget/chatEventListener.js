@@ -20,9 +20,7 @@ const createChatListener = (chatWidget) => {
     const chatInputField = document.querySelector(".chatWidget__text")
     const chatMsgAuthorEl = document.querySelector(".chatWidget__author")
     const chatMsgEl = document.querySelector(".chatWidget__msg")
-    // const chatMsgContentEl = document.querySelector(".chatWidget__content")
     const chatContainerEl = document.querySelector(".chatContainer")
-    const chatWidgetEditBtnEl = document.querySelector(".chatWidget__editBtn")
 
     // function to create a chat message object
     const createChatMsg = function() {
