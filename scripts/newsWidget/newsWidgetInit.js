@@ -26,9 +26,6 @@ newsWidget.init = function() {
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     newsWidget.prototype.init("news", additionalElementDomString)
 
-    // invoke the fill function
-
-    // invoke the createFriendsListener
     newsWidget.user = getUser();
     newsWidget.getNews = getNews;
     newsWidget.fill = fillFunc

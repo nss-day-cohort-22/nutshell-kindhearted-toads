@@ -4,9 +4,11 @@ const displayFriends = require("./displayFriends");
 const addFriendsListeners = require("./addFriendsListeners");
 const refreshWidget = require("../refreshWidget");
 
-const friendsWidgetInit = () => {
+
+const friendsWidget = widgetTemplate()
+
+friendsWidget.init = function() {
     //create new widget object
-    const friendsWidget = widgetTemplate()
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
 
@@ -27,4 +29,4 @@ const friendsWidgetInit = () => {
 
 }
 
-module.exports = friendsWidgetInit
+module.exports = friendsWidget

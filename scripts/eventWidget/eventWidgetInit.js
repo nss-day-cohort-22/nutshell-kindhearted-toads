@@ -10,7 +10,7 @@ const Widget = require("../widgetTemplate")
 
 const eventWidget = Widget()
 
-function eventWidgetInit() {
+eventWidget.init = function() {
 
     //create new widget object
 
@@ -24,7 +24,7 @@ function eventWidgetInit() {
     `
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    eventWidget.init("events", additionalElementDomString)
+    eventWidget.prototype.init("events", additionalElementDomString)
 
     // invoke the createFriendsListener
     const user = getUser();
@@ -43,7 +43,6 @@ function eventWidgetInit() {
     eventWidget.addlisteners = addlisteners
     eventWidget.addlisteners(eventWidget)
 }
-eventWidgetInit()
 
 module.exports = eventWidget;
 

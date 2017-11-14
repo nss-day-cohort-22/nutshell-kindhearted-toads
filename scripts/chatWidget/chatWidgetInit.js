@@ -9,7 +9,7 @@ const createChatListener = require("./chatEventListener")
 //create new widget object
 const chatWidget = widgetTemplate()
 
-let chatWidgetInit = function () { 
+chatWidget.init = function () { 
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
     let additionalDomElementString = `
@@ -18,7 +18,7 @@ let chatWidgetInit = function () {
     `
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    chatWidget.init("chat", additionalDomElementString)
+    chatWidget.prototype.init("chat", additionalDomElementString)
     
     const user = getUser();
 
@@ -32,6 +32,5 @@ let chatWidgetInit = function () {
     chatWidget.createChatListener(chatWidget)
 }
 
-chatWidgetInit()
 
 module.exports = chatWidget

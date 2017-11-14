@@ -14,9 +14,11 @@ const addEvents = require("./addListeners");
 const Widget = require("../widgetTemplate")
 const refreshWidget = require("../refreshWidget");
 //console.log(taskWidget);
+
+
 const taskWidget = Widget()
 
-function taskWidgetInit() {
+taskWidget.init = function() {
 
     //create new widget object
 
@@ -25,7 +27,7 @@ function taskWidgetInit() {
     let additionalElementDomString = "<button class='tasksWidget__btn-add'>Add</button>";
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    taskWidget.init("tasks", additionalElementDomString)
+    taskWidget.prototype.init("tasks", additionalElementDomString)
 
     // taskWidget enhancements
     taskWidget.widgetContainer = "tasksWidget";
