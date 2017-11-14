@@ -3,6 +3,7 @@
 
 const getDatabase = require("../database")
 const autoScroll = require("../autoScroll")
+const validate = require("./validate")
 
 const isPrivate = function (msg) {
     if (msg.rcp) {
@@ -26,6 +27,8 @@ const fillChats = function () {
         })
 
         if (isPrivate(msg)) {
+
+            validate(msg, DB.users)
 
             if (messageAuthor.id === this.user.userId || msg.rcp.toLowerCase() === this.user.userName.toLowerCase()) {
                 // populate chat msg container dom string with data from each chat message
