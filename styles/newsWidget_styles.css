@@ -58,3 +58,7 @@
     font-size: .75em;
     text-align: left;
 }
+
+.newsArticle__url a, .newsArticle__url a:visited  {
+    color: grey;
+}

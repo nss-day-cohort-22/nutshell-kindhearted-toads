@@ -16,7 +16,7 @@ function fill(news) {
             <div id=newsArticle_${article.id}>
                 <p class="newsArticle__title">${article.title}</p>
                 <p class="newsArticle__synopsis">${article.synopsis}</p>
-                <p class="newsArticle__url">${article.url}</p>
+                <p class="newsArticle__url"><a href="${article.url}" target="_blank">${article.url}</a></p>
                 <button class='news__btn-delete'>Delete</button>
             </div>
             `
@@ -25,7 +25,7 @@ function fill(news) {
             <div class="ownedByFriend">
                 <p class="newsArticle__title">${article.title}</p>
                 <p class="newsArticle__synopsis">${article.synopsis}</pv>
-                <p class="newsArticle__url">${article.url}</p>
+                <p class="newsArticle__url"><a href="${article.url}" target="_blank">${article.url}</a></p>
             </div>`
         }
 
