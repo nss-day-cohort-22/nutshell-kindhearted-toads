@@ -1,3 +1,9 @@
+/**
+ * Krys Mathis
+ * This accepts a message for the user
+ * And resets elements of the friends widget to include the message supplied to the user.
+ */
+
 const resetSearch = (msg) => {
     
     const commitButton = document.querySelector(".friendsWidget__btn-commit");

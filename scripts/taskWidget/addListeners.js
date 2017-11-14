@@ -25,7 +25,7 @@ const addEvents = function(taskWidget) {
             const task = document.createElement("div");
             task.className = "task";
 
-            task.innerHTML += "<input type='text' class='task__desc--input' autofocus>";
+            task.innerHTML += "<input type='text' class='task__desc--input' placeholder='Enter task and expected completion date' autofocus>";
             task.innerHTML += "<input type='date' class='task__completion-date--input' value='"+getCurrentDate()+"'>";
             task.innerHTML += "<button class='task__btn-commit'>Commit</button>"
             taskContainer.appendChild(task);
