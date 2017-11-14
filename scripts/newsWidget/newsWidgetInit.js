@@ -24,7 +24,7 @@ newsWidget.init = function () {
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     defaultWidget.init("news", additionalElementDomString)
-
+    newsWidget.container = document.querySelector(".newsContainer")
     newsWidget.user = getUser();
     newsWidget.getNews = getNews;
     newsWidget.fill = fillFunc
