@@ -29,20 +29,29 @@ document.addEventListener("click", (event) => {
 
     // get elements and values
     const username = document.querySelector(".login__username").value;
+    const usernameEl = document.querySelector(".login__username");
     const email = document.querySelector(".login__email").value;
+    const emailEl = document.querySelector(".login__email");
     const message = document.querySelector(".login__user-message");
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
 
     // handle the login button errors
     if (event.target === btnLogin) {
         if (username.length < 1) {
             toaster.makeToast("please enter a valid username",5000);
             toaster.makeToast("Oops...",2000)
+            usernameEl.focus();
             return;
         }
 
         if (!validateEmail(email)) {
             toaster.makeToast("please enter a valid email",5000)
             toaster.makeToast("Oops...",2000)
+            emailEl.focus();
             return;
         }
         if (login(username, email)) {
@@ -51,23 +60,23 @@ document.addEventListener("click", (event) => {
             //display inline error message
             //message.innerHTML = "username/email does not exist"
             toaster.makeToast("username/email does not exist",7000);
+            usernameEl.focus();
         }
     }
 
-    function validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
+
 
     // handle the create button errors
     if (event.target === btnCreate) {
         if (username.length === 0) {
             toaster.makeToast("please enter a username");
+            usernameEl.focus();
             return;
         }
 
         if (!validateEmail(email)) {
             toaster.makeToast("please enter your emaill");
+            emailEl.focus();
             return;
         }
 
@@ -76,6 +85,7 @@ document.addEventListener("click", (event) => {
         } else {
             // your username or email matches an existing user
             toaster.makeToast("username/email already exists",7000);
+            usernameEl.focus();
         }
     }
 

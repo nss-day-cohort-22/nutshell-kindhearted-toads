@@ -1,3 +1,5 @@
+
+
 body {
     margin: 0;
     padding: 0;
@@ -13,21 +15,29 @@ body {
     text-align: center;
 }
 
+
 .welcome__interaction {
+    position: relative;
     margin: 10px;
     height: 200px;
-    width: 300px;
+    width: 600px;
     padding: 10px;
 }
 
 .welcome__message {
     margin: 20px;
     font-size: 2em;
+    color: white;
+    font-family: serif;
+    background-color: rgba(185, 106, 22,.90);
+    border-radius: 25px;
 }
 
 .welcome__brand {
-    font-size: 2.25em;
-    font-family: sans;
+    font-size: 2.5em;
+    font-family: serif;
+    background-color: rgba(208, 127, 46, 0.9);
+    border-radius: 15px;
 
 }
 .welcome__background {
@@ -50,12 +60,12 @@ body {
 
 .welcome__link {
 
-    height: 50px;
+    height: 20px;
     width: 100px;
     border: 1px solid white;
     color: white;
     border-radius: 15px;
-    padding-top: 10%;
+    padding: 15px;
 }
 
 .welcome__link:hover {
