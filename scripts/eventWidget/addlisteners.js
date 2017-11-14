@@ -2,6 +2,7 @@ const autoScroll = require("../autoScroll")
 const getCurrentDate = require("../getCurrentDate")
 const eventsTableFactory = require("../factories/eventsTableFactory.js")
 const eventFriendJoinTableFactory = require("../factories/eventFriendJoinTableFactory.js")
+const eventAtendeeToaster = require("./eventAtendeeToaster")
 
 
 const addlisteners = function(eventWidget) {
@@ -54,7 +55,6 @@ const addlisteners = function(eventWidget) {
         }
 
         //replace an event with text inputs for editing
-
         else if (e.target.parentNode.parentNode.dataset.creator === "true" && document.querySelector(".event__editDetails") === null) {
             
             let eventEl = e.target.parentNode.parentNode
@@ -106,6 +106,11 @@ const addlisteners = function(eventWidget) {
                 eventWidget.delete("eventJoin", parseInt(e.path[2].dataset.eventJoin))
                 eventWidget.populate()
             }
+        }
+
+        //display a toaster of event attendees
+        else if (e.target.tagName === "STRONG") {
+            eventAtendeeToaster(parseInt(e.path[3].dataset.id))
         }
     })
 }
