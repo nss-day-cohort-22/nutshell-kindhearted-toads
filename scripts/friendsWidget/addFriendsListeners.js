@@ -27,7 +27,9 @@ const addFriendsListeners = (widget) => {
 
     document.querySelector(".friendsWidget__btn-add").addEventListener("click",() =>{
         // display the input fields
-        document.querySelector(".friendsWidget__inputContainer").style.display = "inline";
+        const inputBox = document.querySelector(".friendsWidget__inputContainer")
+        inputBox.style.display = "inline";
+        inputBox.value = "";
         users = getUsers();
         commitButton.style.display = "none";
         userMessage.textContent = "";
@@ -35,7 +37,7 @@ const addFriendsListeners = (widget) => {
 
     document.querySelector(".friendsWidget__input").addEventListener("keyup",(e) => {
         
-        let currentResults = document.querySelector(".friendsWidget__search-results").textContent;
+        //let currentResults = document.querySelector(".friendsWidget__search-results").textContent;
         let searchString = e.target.value.toLowerCase();
         commitButton.style.display = "none";
         userMessage.textContent = "";
