@@ -2,13 +2,40 @@
     display: none;
 }
 
+.friendsContainer {
+    height: 125px;
+}
+
+.friendsWidget__search-results {
+    display: block;
+    padding-left: 87px;
+    padding-top: 4px;
+    font-size: 12px;
+    color: lightgreen;
+}
+
+.friendsWidget--green {
+    color: green;
+}
+
+.friendsWidget--red {
+    color: red;
+}
+
+.friendsWidget__user-comment {
+    font-size: 12px;
+}
+
 .friendsWidget__btn-commit {
-    ;
+    
 }
 
 .friend {
+    border: 1px solid white;
+    margin: 5px;
+    padding: 5px;
     display: grid;
-    grid-template-columns: 50% 40% 10%;
+    grid-template-columns: 30% 1fr 10%;
     grid-template-rows: 1fr;
     grid-template-areas: 
     "username email btn-delete";

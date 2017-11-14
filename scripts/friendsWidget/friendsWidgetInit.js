@@ -16,9 +16,9 @@ const friendsWidgetInit = () => {
         <button class="friendsWidget__btn-add widgetBtn">Add a friend</button>
         <span class="friendsWidget__inputContainer">
             <input type="text" class="friendsWidget__input" placeholder="Search for a user">
-            <span class="friendsWidget__search-results">Type To Search</span>
             <button class="friendsWidget__btn-commit widgetBtn">Commit</button>
             <span class="friendsWidget__user-comment"></span>
+            <div class="friendsWidget__search-results">Type To Search</div>
         </span>
         </div>
         `
