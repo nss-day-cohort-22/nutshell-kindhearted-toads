@@ -12,7 +12,6 @@ const getNews = require("./getNews")
 const addEvents = require("./eventListeners");
 
 
-debugger
 const newsWidget = Widget()
 
 

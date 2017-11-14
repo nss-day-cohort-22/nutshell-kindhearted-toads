@@ -27,7 +27,6 @@ const dashboardInit = function() {
     login.style.display = "none";
     dashboard.style.display = "block";
 
-    debugger
     newsWidget.init()
     taskWidget.init()
     chatWidget.init()
