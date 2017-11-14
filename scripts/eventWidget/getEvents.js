@@ -13,10 +13,11 @@ const getEvents = function(user) {
     let events = database().events
 
 
-    let filteredEvents = events.map( event => {
+    let filteredEvents = []
+    
+    events.forEach( event => {
 
-        event.upcoming = Date.parse(event.eventDate) - Date.now()
-        
+        event.upcoming = Date.parse(event.eventDate.replace(/-/g, "/")) - Date.now()
         if (event.upcoming > 0) {
 
             event.creator = false
@@ -44,9 +45,9 @@ const getEvents = function(user) {
                 event.style = "ownedByFriend event--tertiary"
             }
 
+            filteredEvents.push(event)
         }
         
-        return event
     })
 
     // console.log(filteredEvents)
