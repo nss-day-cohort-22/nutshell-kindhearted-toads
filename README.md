@@ -3,7 +3,7 @@
 
 ## Instructions on how to download and run Nutshell
 
-1. Create a directory on your local machine
+1. Navigate a directory on your local machine where you want the project to be located
 1. Clone this directory using either ssh or https into your directory
 1. Open a termianl and navigate to the folder containing "package.json"
 1. Type the command "npm install" to install all dependancies
