@@ -14,9 +14,9 @@ function fill(news) {
         if (article.userId === user.userId) {
             domString += `
             <div id=newsArticle_${article.id}>
-                <p>${article.title}</p>
-                <p>${article.synopsis}</p>
-                <p>${article.url}</p>
+                <p class="newsArticle__title">${article.title}</p>
+                <p class="newsArticle__synopsis">${article.synopsis}</p>
+                <p class="newsArticle__url">${article.url}</p>
                 <button class='news__btn-delete'>Delete</button>
             </div>
             `
