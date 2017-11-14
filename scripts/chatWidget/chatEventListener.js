@@ -21,7 +21,7 @@ const createChatListener = (chatWidget) => {
 
     // function to create a chat message object
     const createChatMsg = function() {
-        // console.log(event)
+        
         let newChatObject = {}
         
         // get control of dom input element
@@ -35,7 +35,7 @@ const createChatListener = (chatWidget) => {
               
                 // put the value of the input field into an object
                 newChatObject.content = composeChatInputEl.value
-                let y = 8
+                
                 if (!editMode) {
                     // send new chat message object to the messagesFactory to get saved and pushed to local storage
                     messagesFactory(newChatObject).save()
