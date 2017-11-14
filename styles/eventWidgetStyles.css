@@ -70,11 +70,8 @@
     z-index: 1;
 }
 
-.event__eventDetails {
-    width: 73%;
-}
-
 .event--nextEvent {
-    font-size: 1.2em;
-    font-weight: 700;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: solid 1px navy;
 }

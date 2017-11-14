@@ -54,6 +54,10 @@
     cursor: pointer;
 }
 
+.isPrivate {
+    color: purple;
+    font-style: italic;
+}
 .hidden {
     visibility: hidden;
     opacity: 0;

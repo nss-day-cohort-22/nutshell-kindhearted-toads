@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/taskWidget_styles.css">
     <link rel="stylesheet" href="./styles/chatWidget_styles.css">
     <link rel="stylesheet" href="./styles/friendsWidget_styles.css">
+    <link rel="stylesheet" href="./styles/newsWidget_styles.css">
     <link rel="stylesheet" href="./styles/addFriendModal_styles.css">
     <link rel="stylesheet" href="./styles/eventWidgetStyles.css">
     <link rel="stylesheet" href="./styles/toaster.css">
@@ -28,7 +29,7 @@
                             <div class="welcome__brand">Nutshell</div>
                         </div>
                         <div class="welcome__link-container">
-                            <div class="welcome__link" href="#">Register</div>
+                            <div class="welcome__link" href="#">Enter</div>
                         </div>
                     </div>
                 </div>
@@ -40,11 +41,11 @@
                     <!-- <form name="login" class="login__form"> -->
                     <div class="login__username-container">
                         <div class="login__username-label">username:</div>
-                        <input class="login__username" value="Steve" type="text">
+                        <input class="login__username" type="text" autofocus>
                     </div>
                     <div class="login__username-email">
                         <div class="login__email-label">email:</div>
-                        <input class="login__email" type="text" value="me@me.com">
+                        <input class="login__email" type="text">
                     </div>
                     <div class="login__button-container">
                         <button class="login__button-login">Login</button>
@@ -63,7 +64,6 @@
                 <section class="newsWidget widget">newsWidget</section>
                 <section class="friendsWidget widget">friendsWidget</section>
             </section>
-            <section class="toaster__container"></section>
         </section>
         <!-- The Modal -->
         <section class="modal addFriendPrompt" id="addFriendPrompt">
@@ -74,11 +74,10 @@
                 </section>
             </section>
         </section>
-
-        </div>
+    </div>
+    <section class="toaster__container"></section>
     </main>
     <footer></footer>
-
     <script src="./build/bundle.js"></script>
 
 </body>
