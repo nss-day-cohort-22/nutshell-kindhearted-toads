@@ -34,7 +34,9 @@ taskWidget.init = function() {
     taskWidget.user = getUser();
     taskWidget.getLatest = getTasks;
     taskWidget.latest = taskWidget.getLatest();
-    taskWidget.populate = generateTasks;
+    taskWidget.populate = function() {
+        generateTasks(this.getLatest())
+    }
     taskWidget.refresh = refreshWidget;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;

@@ -12,11 +12,11 @@ const getNews = require("./getNews")
 const addEvents = require("./eventListeners");
 
 
-
+debugger
 const newsWidget = Widget()
 
 
-newsWidget.init = function() {
+newsWidget.init = function () {
     //create new widget object
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
