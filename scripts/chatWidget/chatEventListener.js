@@ -1,9 +1,9 @@
 // Author: Greg Lawrence
 // listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userId and pass in these values to the messageTableFactory.js 
 
-const messagesFactory = require("../factories/messagesTableFactory")
+// const messagesFactory = require("../factories/messagesTableFactory")
 const addFriendPrompt = require("../chatWidget/addFriendPrompt")
-
+const createChatMsg = require("../chatWidget/createChatMsg")
 
 // require module to get Database
 const getDatabase = require("../database")
@@ -11,10 +11,12 @@ const getDatabase = require("../database")
 
 
 const createChatListener = (chatWidget) => {
+
     // set edit mode to false by default
     let editMode = false
     // currentMessage will either hold a newly created chat message, or a edited chat message. 
     let currentMessage = null
+
     // get control of Send button used to create a new chat message
     const addChatBtnEl = document.querySelector(".chatWidget__btn")
     const chatInputField = document.querySelector(".chatWidget__text")
@@ -22,38 +24,41 @@ const createChatListener = (chatWidget) => {
     const chatMsgEl = document.querySelector(".chatWidget__msg")
     const chatContainerEl = document.querySelector(".chatContainer")
 
-    // function to create a chat message object
-    const createChatMsg = function() {
-        let newChatObject
-        // get control of dom input element
-        let composeChatInput = document.querySelector(".chatWidget__text")
-        if (!editMode) {
-            // put the value of the input field into an object
-            newChatObject = {"content": composeChatInput.value}
-            // send new chat message object to the messagesFactory to get saved and pushed to local storage
-            messagesFactory(newChatObject).save()
-        } else if (editMode) {
-            // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
-            newChatObject = currentMessage
-            newChatObject.content = composeChatInput.value
+    // // function to create a chat message object
+    // const createChatMsg = function(editMode) {
+    //     let newChatObject
+    //     // get control of dom input element
+    //     let composeChatInput = document.querySelector(".chatWidget__text")
+    //     if (!editMode) {
+    //         // put the value of the input field into an object
+    //         newChatObject = {"content": composeChatInput.value}
+    //         // send new chat message object to the messagesFactory to get saved and pushed to local storage
+    //         messagesFactory(newChatObject).save()
+    //     } else if (editMode) {
+    //         // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
+    //         newChatObject = currentMessage
+    //         newChatObject.content = composeChatInput.value
 
-            // use the function on our object to overwrite the chat message object in the database
-            chatWidget.saveEdit("messages", newChatObject)
-            editMode = false
-        }
+    //         // use the function on our object to overwrite the chat message object in the database
+    //         chatWidget.saveEdit("messages", newChatObject)
+            
+    //     }
 
-        // clear chat input field
-        composeChatInput.value = ""
-        // refresh chat window with newest content
-        chatWidget.populate()
-    }
+    //     // clear chat input field
+    //     composeChatInput.value = ""
+    //     // refresh chat window with newest content
+    //     chatWidget.populate()
+    // }
     
 
     // add an event listener for Send button click and for Enter key press
     addChatBtnEl.addEventListener("click", event => {
         // check that the input field is not blank before allow a message to be created
         if (chatInputField.value.length > 0) {
-            createChatMsg()
+            createChatMsg(editMode, chatWidget)
+            
+            // change edit mode to false if coming from an edit
+            editMode = false
             
             // check if the button next to the input says "Save", if so, change back to Send
             if (addChatBtnEl.textContent === "Save") {
@@ -67,7 +72,10 @@ const createChatListener = (chatWidget) => {
 
         // check if enter key is pressed inside input field and that the input field isn't empty, if so, run createChatMsg function
         if (event.keyCode === 13 && event.target.value.length > 0) {
-            createChatMsg()
+            createChatMsg(editMode, chatWidget)
+           
+            // change edit mode to false if coming from an edit
+            editMode = false
         }
     })
     
