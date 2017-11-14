@@ -20,6 +20,7 @@ const createChatListener = (chatWidget) => {
     const chatInputField = document.querySelector(".chatWidget__text")
     const chatMsgAuthorEl = document.querySelector(".chatWidget__author")
     const chatMsgEl = document.querySelector(".chatWidget__msg")
+    // const chatMsgContentEl = document.querySelector(".chatWidget__content")
     const chatContainerEl = document.querySelector(".chatContainer")
     const chatWidgetEditBtnEl = document.querySelector(".chatWidget__editBtn")
 
@@ -28,11 +29,22 @@ const createChatListener = (chatWidget) => {
         let newChatObject
         // get control of dom input element
         let composeChatInput = document.querySelector(".chatWidget__text")
+
         if (!editMode) {
             // put the value of the input field into an object
             newChatObject = {"content": composeChatInput.value}
+
             // send new chat message object to the messagesFactory to get saved and pushed to local storage
-            messagesFactory(newChatObject).save()
+            if (newChatObject.content.charAt(0) === "@") {
+                let rcp = newChatObject.content.split(" ")[0].slice(1)
+                messagesFactory(newChatObject, rcp).save()
+            } else {
+                messagesFactory(newChatObject).save()
+            }
+
+
+
+
         } else if (editMode) {
             // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
             newChatObject = currentMessage
@@ -46,7 +58,7 @@ const createChatListener = (chatWidget) => {
         // clear chat input field
         composeChatInput.value = ""
         // refresh chat window with newest content
-        chatWidget.populate(chatWidget)
+        chatWidget.populate()
     }
     
 
@@ -62,7 +74,7 @@ const createChatListener = (chatWidget) => {
         }
     }) 
 
-
+    // event listener to check if user clicked the "Enter" key in the input field
     chatInputField.addEventListener("keyup", event => {
 
         // check if enter key is pressed inside input field and that the input field isn't empty, if so, run createChatMsg function
@@ -71,10 +83,10 @@ const createChatListener = (chatWidget) => {
         }
     })
     
-    // event listener to check if user has clicked edit btn on a message
+    // event listener to check if user has clicked edit button OR a username on a message
     chatContainerEl.addEventListener("click", event => {
         
-        // check if event.target is a btn
+        // check if event.target is the Edit Button
         if (event.target.id.startsWith("editBtn_")) {
             let composeChatInput = document.querySelector(".chatWidget__text")
             
@@ -98,12 +110,13 @@ const createChatListener = (chatWidget) => {
                     addChatBtnEl.textContent = "Save"
                 }
             }
-            //console.log("msgToEditFromDB = ", msgToEditFromDB)
 
             // set editMode to true
             editMode = true
-            //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
+
+            // Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
             currentMessage = msgToEditFromDB
+
         }
 
         // event listener to listen for click on userName
@@ -115,6 +128,19 @@ const createChatListener = (chatWidget) => {
             // check if the username clicked on is NOT the currentUser
             if (chatWidget.user.userId !== userIdClicked)
                 addFriendPrompt(chatWidget, userIdClicked, userNameClicked)
+        }
+
+    })
+    
+    // mouseover event to display an edit button 
+    chatContainerEl.addEventListener("click", event => {
+        // check if the target has a next sibling
+        if (event.target.nextElementSibling) {
+            // check if the next sibling element is the Edit Button
+            let nextSiblingId = event.target.nextElementSibling.id
+            if (nextSiblingId.startsWith("editBtn_")) {
+                event.target.nextElementSibling.classList.toggle("hidden")
+            }
         }
     })
 
