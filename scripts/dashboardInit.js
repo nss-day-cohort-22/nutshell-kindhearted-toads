@@ -2,11 +2,16 @@
  * Krys Mathis
  * Purpose is to handle initializing the structure for the dashboard
 */
+
+const generateNavbar = require("./navbar/generateNavbar")
+
 // get page elements
 const welcome = document.querySelector(".welcome");
 const login = document.querySelector(".login");
 const dashboard = document.querySelector(".dashboard");
 const message = document.querySelector(".login__user-message");
+const navbar = document.querySelector(".nutshellNavbar")
+
 
 // control what elements exist on the page
 const dashboardInit = function(user) {
@@ -17,6 +22,11 @@ const dashboardInit = function(user) {
     const newsWidget = require("./newsWidget/newsWidgetInit")
     const eventWidget = require("./eventWidget/eventWidgetInit");
     
+    navbar.style.display = "flex"
+
+    // populate navbar with items
+    generateNavbar()
+
     message.innerHTML = "";
     welcome.style.display = "none";
     login.style.display = "none";

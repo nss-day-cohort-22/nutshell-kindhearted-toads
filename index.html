@@ -1,81 +1,84 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Nashville Software School</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./styles/styles.css">
-  <link rel="stylesheet" href="./styles/widget_styles.css">
-  <link rel="stylesheet" href="./styles/chatWidget_styles.css">
-  <link rel="stylesheet" href="./styles/friendsWidget_styles.css">
-  <link rel="stylesheet" href="./styles/addFriendModal_styles.css">
-  <link rel="stylesheet" href="./styles/eventWidgetStyles.css">
-</head>
-<body>
-  <nav></nav>
-  <header></header>
-  <main class="main-content">
-  <section class="welcome">
-    <div class="welcome__container">
-      <div class="welcome__background">
-        <div class="welcome__interaction">
-        <div class="welcome__message">
-          Welcome to
-          <div class="welcome__brand">Nutshell</div>
-        </div>
-        <div class="welcome__link-container">
-          <div class="welcome__link" href="#">Register</div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </section>
-    <section class="login" id="login">
-      <div class="login__page-wrapper">
-      <div class="login__container">
-        <!-- <form name="login" class="login__form"> -->
-        <div class="login__username-container">
-            <div class="login__username-label">username:</div>
-            <input class="login__username" value="Steve"type="text">
-        </div>
-        <div class="login__username-email">
-          <div class="login__email-label">email:</div>
-          <input class="login__email" type="text" value="me@me.com">
-        </div>
-        <div class="login__button-container">
-          <button class="login__button-login">Login</button>
-          <button class="login__button-create">Create Account</button>
-        </div>
-        <div class="login__user-message"></div>
-        <!-- </form> -->
-      </div>
-    </div>
-    </section>
-    <section class="dashboard" id="dashboard">
-      <h1>The dashboard</h1>
-      <section class="widget__container">
-        <section class="tasksWidget widget">taskWidget</section>
-        <section class="chatWidget widget">chatWidget</section>
-        <section class="eventsWidget widget">eventsWidget</section>
-        <section class="newsWidget widget">newsWidget</section>
-        <section class="friendsWidget widget">friendsWidget</section>
-      </section>
-    </section>
-    <!-- The Modal -->
-    <section class="modal addFriendPrompt" id="addFriendPrompt">
-      <!-- Modal content -->
-      <section class="modal-content">
-        <span id="closeFriendModal">&times;</span>
-        <section class="addFriendPrompt__content">
-        </section>
-      </section>
-    </section>
-    
-    </div>
- </main>
-  <footer></footer>
 
-  <script src="./build/bundle.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>Nutshell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/widget_styles.css">
+    <link rel="stylesheet" href="./styles/chatWidget_styles.css">
+    <link rel="stylesheet" href="./styles/friendsWidget_styles.css">
+    <link rel="stylesheet" href="./styles/addFriendModal_styles.css">
+    <link rel="stylesheet" href="./styles/eventWidgetStyles.css">
+</head>
+
+<body>
+    <nav class="navbar nutshellNavbar"></nav>
+    <header></header>
+    <main class="main-content">
+        <section class="welcome">
+            <div class="welcome__container">
+                <div class="welcome__background">
+                    <div class="welcome__interaction">
+                        <div class="welcome__message">
+                            Welcome to
+                            <div class="welcome__brand">Nutshell</div>
+                        </div>
+                        <div class="welcome__link-container">
+                            <div class="welcome__link" href="#">Register</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="login" id="login">
+            <div class="login__page-wrapper">
+                <div class="login__container">
+                    <!-- <form name="login" class="login__form"> -->
+                    <div class="login__username-container">
+                        <div class="login__username-label">username:</div>
+                        <input class="login__username" value="Steve" type="text">
+                    </div>
+                    <div class="login__username-email">
+                        <div class="login__email-label">email:</div>
+                        <input class="login__email" type="text" value="me@me.com">
+                    </div>
+                    <div class="login__button-container">
+                        <button class="login__button-login">Login</button>
+                        <button class="login__button-create">Create Account</button>
+                    </div>
+                    <div class="login__user-message"></div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </section>
+        <section class="dashboard" id="dashboard">
+            <h1>The dashboard</h1>
+            <section class="widget__container">
+                <section class="tasksWidget widget">taskWidget</section>
+                <section class="chatWidget widget">chatWidget</section>
+                <section class="eventsWidget widget">eventsWidget</section>
+                <section class="newsWidget widget">newsWidget</section>
+                <section class="friendsWidget widget">friendsWidget</section>
+            </section>
+        </section>
+        <!-- The Modal -->
+        <section class="modal addFriendPrompt" id="addFriendPrompt">
+            <!-- Modal content -->
+            <section class="modal-content">
+                <span id="closeFriendModal">&times;</span>
+                <section class="addFriendPrompt__content">
+                </section>
+            </section>
+        </section>
+
+        </div>
+    </main>
+    <footer></footer>
+
+    <script src="./build/bundle.js"></script>
 
 </body>
+
 </html>
