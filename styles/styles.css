@@ -107,6 +107,17 @@ body {
     background-color: red;
 }
 
+.nutshellNavbar {
+    display: none;
+    background-color: rgb(32, 109, 252);
+    color: white;
+    justify-content: space-between;
+    padding: .6em 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+
 .dashboard {
     display: none;
     color: black;
