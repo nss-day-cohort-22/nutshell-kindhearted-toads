@@ -29,11 +29,22 @@ const createChatListener = (chatWidget) => {
         let newChatObject
         // get control of dom input element
         let composeChatInput = document.querySelector(".chatWidget__text")
+
         if (!editMode) {
             // put the value of the input field into an object
             newChatObject = {"content": composeChatInput.value}
+
             // send new chat message object to the messagesFactory to get saved and pushed to local storage
-            messagesFactory(newChatObject).save()
+            if (newChatObject.content.charAt(0) === "@") {
+                let rcp = newChatObject.content.split(" ")[0].slice(1)
+                messagesFactory(newChatObject, rcp).save()
+            } else {
+                messagesFactory(newChatObject).save()
+            }
+
+
+
+
         } else if (editMode) {
             // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
             newChatObject = currentMessage
