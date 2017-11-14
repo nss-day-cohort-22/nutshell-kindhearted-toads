@@ -1,16 +1,23 @@
 /* Task Widget Styling - could be applied globally */
 .task__desc,
 .task__desc--input {
-    width: 70%;
+    width: 80%;
     word-wrap: break-word;
     font-size: 12px;
     text-align: left;
 }
 
+.task__btn-commit {
+    width: 100px;
+}
 .task__completion-date {
     font-size: 12px;
-    text-align: center;
+    text-align: right;
     width: 100px;
+}
+
+.task__checkbox {
+    margin-right: 10px;
 }
 
 .task__btn-update {
@@ -22,11 +29,18 @@
     width: 150px;
 }
 
+
 .task {
     padding: 5px;
-    border: 1px solid white;
-    margin: 5px;
+    border: 1px solid gray;
+    margin: 2px;
     text-align: center;
+    /* box-shadow: 2px 2px 5px rgba(0,0,0,.5) */
+}
+
+.task:hover {
+    background-color: #67F990;
+    font-weight: bold;
 }
 
 

@@ -26,12 +26,11 @@
     font-size: 12px;
 }
 
-.friendsWidget__btn-commit {
-    
-}
 
 .friend {
-    border: 1px solid white;
+    border: 1px solid gray;
+    color: black;
+    background-color: white;
     margin: 5px;
     padding: 5px;
     display: grid;
@@ -41,6 +40,11 @@
     "username email btn-delete";
 }
  
+.friend:hover {
+    background-color: #67F990;
+    font-weight: bold;
+}
+
 .friend__userName {
     grid-area: username;
 }
