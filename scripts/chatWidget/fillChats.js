@@ -11,12 +11,12 @@ const isPrivate = function (msg) {
         return false
     }
 }
-const fillChats = function() {
+const fillChats = function () {
     const DB = getDatabase()
-   
+
     // create a string to post to Dom for each chat message
     let chatMsgDomString = ""
-    
+
     // get access to userName attached to the userId to display next to each message
     // iterate through messages array and look at each message
     DB.messages.forEach(msg => {
@@ -25,16 +25,19 @@ const fillChats = function() {
             return msg.userId === user.id
         })
 
-        if(isPrivate(msg) && (messageAuthor.id === this.user.userId || msg.rcp === this.user.useName)) {
-            // populate chat msg container dom string with data from each chat message
-            chatMsgDomString += `
+        if (isPrivate(msg)) {
+
+            if (messageAuthor.id === this.user.userId || msg.rcp.toLowerCase() === this.user.userName.toLowerCase()) {
+                // populate chat msg container dom string with data from each chat message
+                chatMsgDomString += `
                 <p class="chatWidget__msg isPrivate" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
                 `
+            }
         } else {
             // populate chat msg container dom string with data from each chat message
             chatMsgDomString += `
-                <p class="chatWidget__msg" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
-                `
+                    <p class="chatWidget__msg" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
+                    `
         }
         //debugger
         // check if the logged in user is the author of the message, if so, add edit button

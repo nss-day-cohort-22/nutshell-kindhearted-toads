@@ -54,9 +54,9 @@
 }
 
 .isPrivate {
-    background-color: purple;
-    color: white;
+    color: purple;
     font-style: italic;
+}
 .hidden {
     visibility: hidden;
     opacity: 0;
