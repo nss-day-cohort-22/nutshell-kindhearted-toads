@@ -15,7 +15,7 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     // use isFriend() function (from Krys) to check if a friendship already exits
     if (isFriend(userIdClicked)) {
         addFriendMsgString = `<p>You are already friends with ${userClicked}.</p>
-        <p><button class="addFriendPrompt__okBtn">Ok</button>`
+        <p><button class="addFriendPrompt__okBtn btn">Ok</button>`
 
     } else {
     // else post this string
