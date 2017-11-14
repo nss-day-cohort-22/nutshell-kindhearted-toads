@@ -3,13 +3,11 @@
 
 
 // const fillChats = require("./chatwidget/fillChats")
-const eventWidget = require("./eventWidget/eventWidgetInit");
-const chatWidget = require("./chatWidget/chatWidgetInit")
+const global = require("./globalRefresh")
 
 window.addEventListener("storage", function (event) {
     if (event.key === "NutshellDatabase") {
-        eventWidget.populate()
-        chatWidget.populate()
+        global.refresh()
         ///
     }
 })

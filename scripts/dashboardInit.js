@@ -9,6 +9,7 @@ const friendsWidget = require("./friendsWidget/friendsWidgetInit")
 const chatWidget = require("./chatWidget/chatWidgetInit")
 const newsWidget = require("./newsWidget/newsWidgetInit")
 const eventWidget = require("./eventWidget/eventWidgetInit")
+const global = require("./globalRefresh")
 
 
 const generateNavbar = require("./navbar/generateNavbar")
@@ -39,9 +40,10 @@ const dashboardInit = function() {
     newsWidget.init()
     taskWidget.init()
     chatWidget.init()
-    newsWidget.init()
     eventWidget.init()
     friendsWidget.init()
+    
+    global.set([newsWidget, taskWidget, chatWidget, eventWidget, friendsWidget])
 }
 
 

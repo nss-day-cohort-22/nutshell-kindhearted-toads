@@ -8,6 +8,7 @@ const resetSearch = require("./resetSearch");
 const isFriend = require("./checkFriendship");
 const addFriend = require("./addFriend");
 const Toaster = require("../toaster/toaster");
+const global = require("../globalRefresh");
 
 const addFriendsListeners = (widget) => {
     let toaster = Toaster();
@@ -25,10 +26,11 @@ const addFriendsListeners = (widget) => {
     friendsWidget.addEventListener("click", (e)=>{
 
         if (e.target.className.includes("friend__btn-delete")) {
+            // debugger
             const parent = e.target.parentNode;
             const id = parseInt(parent.dataset.friendshipId);
             widget.delete("friends", id)
-            setTimeout(() => widget.populate(),200);
+            setTimeout(() => global.refresh(), 200);
         }
     });
 
@@ -95,6 +97,7 @@ const addFriendsListeners = (widget) => {
         // enter key behavior
         if (e.keyCode === 13 && readyToCommit) {
             addFriend(result,widget);
+            global.refresh()
         }
         
     })
@@ -102,6 +105,7 @@ const addFriendsListeners = (widget) => {
     document.querySelector(".friendsWidget__btn-commit").addEventListener("click",() => {
         if (result) {
             addFriend(result,widget);
+            global.refresh()
         }
     })
 

@@ -17,7 +17,6 @@ const addFriend = function(friend,widget) {
     } else {
         try {
             friendFactory({"friendId": friend.id}).save();
-            widget.populate();
             inputContainer.style.display = "none";
             autoScroll("friendsContainer");
         } catch (err) {

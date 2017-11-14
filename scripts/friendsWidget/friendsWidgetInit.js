@@ -34,9 +34,7 @@ friendsWidget.init = function() {
         displayFriends(this.getLatest())
     }
     friendsWidget.refresh = refreshWidget;
-    friendsWidget.addEvents = addFriendsListeners;
-    
-    friendsWidget.addEvents(friendsWidget);
+
     friendsWidget.populate();
     addFriendsListeners(friendsWidget);
 }

@@ -50,7 +50,6 @@ const defaultWidget = Object.create(null, {
         "writable": true,
         "value": function(stringLabelOfArray, itemId) {
             const DB = getDatabase()
-            
             // check if the stringLabel passed in is a valid database object
             if (DB.hasOwnProperty(stringLabelOfArray)) {
                 let indexToDelete = DB[stringLabelOfArray].findIndex(e => e.id === itemId);
