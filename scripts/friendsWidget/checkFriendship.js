@@ -1,3 +1,8 @@
+/**
+ * Krys Mathis
+ * This module takes a user Id and returns
+ * True or false if the current user is friends with the submitted userId
+ */
 // const getUser = require("../auth/getActiveUser");
 const getFriends = require("./getFriends");
 

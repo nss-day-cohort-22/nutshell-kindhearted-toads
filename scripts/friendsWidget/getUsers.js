@@ -1,3 +1,8 @@
+/**
+ * Krys Mathis
+ * Pulls the filtered users from the database
+ * Excludes the current user
+ */
 const database = require("../database");
 const getCurrentUser = require("../auth/getActiveUser");
 
