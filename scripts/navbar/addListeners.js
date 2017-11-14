@@ -1,7 +1,6 @@
 // Author: Greg Lawrence
 // Create event listener for the log-out button on the navbar
 
-const appInit = require("./auth/appInit")
 const logoutUser = require("../auth/logout")
 
 const addEventListeners = function () {
@@ -12,8 +11,9 @@ const addEventListeners = function () {
     logoutBtnEl.addEventListener("click", event => {
         // log the user out using the logout.js module
         logoutUser()
-        // run appInit() to get the user back to the main welcome page
-        appInit()
+        // // run appInit() to get the user back to the main welcome page
+        // appInit()
+        location.reload()
     })
 }
 
