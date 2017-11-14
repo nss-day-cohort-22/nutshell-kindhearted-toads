@@ -7,9 +7,10 @@ const getUsers = require("./getUsers");
 const resetSearch = require("./resetSearch");
 const isFriend = require("./checkFriendship");
 const addFriend = require("./addFriend");
+const Toaster = require("../toaster/toaster");
 
 const addFriendsListeners = (widget) => {
-    
+    let toaster = Toaster();
     let result = {}
     let users = [];
     let readyToCommit = false;
@@ -39,6 +40,7 @@ const addFriendsListeners = (widget) => {
         users = getUsers();
         friendsInput.focus();
         readyToCommit = false;
+
     })
 
     // When the user clicks away from the friends seach box while a 
