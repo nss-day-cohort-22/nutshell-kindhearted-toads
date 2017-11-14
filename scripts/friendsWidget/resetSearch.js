@@ -1,4 +1,5 @@
 const resetSearch = (msg) => {
+    
     const commitButton = document.querySelector(".friendsWidget__btn-commit");
     const userMessage = document.querySelector(".friendsWidget__user-comment");
     const friendsInput = document.querySelector(".friendsWidget__input");

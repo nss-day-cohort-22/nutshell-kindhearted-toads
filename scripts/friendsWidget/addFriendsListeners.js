@@ -1,7 +1,12 @@
+/**
+ * Krys Mathis
+ * Event listeners for friends widget
+ */
+
 const getUsers = require("./getUsers");
-const isFriend = require("./checkFriendship");
-const friendFactory = require("../factories/friendsJoinTableFactory");
 const resetSearch = require("./resetSearch");
+const isFriend = require("./checkFriendship");
+const addFriend = require("./addFriend");
 
 
 const addFriendsListeners = (widget) => {
@@ -21,11 +26,8 @@ const addFriendsListeners = (widget) => {
         if (e.target.className.includes("friend__btn-delete")) {
             const parent = e.target.parentNode;
             const id = parseInt(parent.dataset.friendshipId);
-            widget.delete("friends", id);
-            widget.populate();
-            // obj.latest = obj.getLatest();
-            // //repaint the widget with latest
-            // obj.populate(obj.latest)
+            widget.delete("friends", id)
+            setTimeout(() => widget.populate(),200);
         }
     });
 
@@ -38,7 +40,10 @@ const addFriendsListeners = (widget) => {
         friendsInput.focus();
     })
 
+    // When the user clicks away from the friends seach box while a 
+    // friend has not been identified
     friendsInput.addEventListener("focusout", (e)=> {
+        // if the commitButton is still hidden OK to hide
         if (commitButton.style.display === "none") {
             inputBox.style.display = "none";
         }
@@ -55,45 +60,47 @@ const addFriendsListeners = (widget) => {
         }
         
         searchUsers = users.find(u=> u.userName.toLowerCase().includes(searchString.toLowerCase()));
+        
         if (searchUsers) {
             result = searchUsers;
             const searchResults = `${searchUsers.userName}: ${searchUsers.email}`;
-            const searchEl = document.querySelector(".friendsWidget__search-results");
-            searchEl.textContent = searchResults;
+            friendsSearchResults.textContent = searchResults;
             userMessage.textContent = "";
             if (userMessage.classList.contains("friendsWidget--red")) {
                 userMessage.classList.toggle("friendsWidget--red");
             }
-            
-            commitButton.style.display = "";
+            if (isFriend(searchUsers.id)) {
+                commitButton.style.display = "none";
+                userMessage.textContent = "Already friends..."
+            } else {
+                commitButton.style.display = "";    
+            }
+
         } else {
             friendsSearchResults.textContent = "";
             userMessage.textContent = "No User Found";
+            
             if (!userMessage.classList.contains("friendsWidget--red")) {
                 userMessage.classList.toggle("friendsWidget--red");
             }
             commitButton.style.display = "none";
         }
+
+        // enter key behavior
+        if (e.keyCode === 13 && commitButton.style.display === "") {
+            addFriend(result,widget);
+        }
         
     })
     
     document.querySelector(".friendsWidget__btn-commit").addEventListener("click",() => {
-        if (isFriend(result.id)) {
-            userMessage.textContent = "Already friends..."
-        } else {
-            try {
-                friendFactory({"friendId": result.id}).save();
-                widget.populate();
-                document.querySelector(".friendsWidget__inputContainer").style.display = "none";
-            } catch (err) {
-                console.warn(err);
-            }
+        if (result) {
+            addFriend(result,widget);
         }
     })
 
-    document.querySelector(".friendsWidget__user-interaction").addEventListener("blur",() => {
-        console.log("out");
-    })
+
+
 }
 
 module.exports = addFriendsListeners;
