@@ -33,7 +33,7 @@ const addEvents = function (newsWidget) {
                 "synopsis": document.querySelector(".news__synopsis--input").value,
                 "url": document.querySelector(".news__url--input").value
             }
-            debugger
+            
             newsFactory(newNews).save()
             newsWidget.populate()
             //editing = false;

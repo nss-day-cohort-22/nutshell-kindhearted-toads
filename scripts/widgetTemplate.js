@@ -79,4 +79,4 @@ const makeWidget = function(){
     return Object.create(defaultWidget, {})
 }
 
-module.exports = makeWidget
+module.exports = {makeWidget, defaultWidget}

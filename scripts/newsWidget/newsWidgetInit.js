@@ -5,14 +5,14 @@
 
 
 
-const Widget = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const getUser = require("../auth/getActiveUser")
 const fillFunc = require("./fill")
 const getNews = require("./getNews")
 const addEvents = require("./eventListeners");
 
 
-const newsWidget = Widget()
+const newsWidget = makeWidget()
 
 
 newsWidget.init = function () {
@@ -23,7 +23,7 @@ newsWidget.init = function () {
     let additionalElementDomString = "<button class='newsWidget__btn-add'>New Article</button>";
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    newsWidget.prototype.init("news", additionalElementDomString)
+    defaultWidget.init("news", additionalElementDomString)
 
     newsWidget.user = getUser();
     newsWidget.getNews = getNews;
@@ -31,7 +31,7 @@ newsWidget.init = function () {
     newsWidget.populate = function () {
         this.fill(this.getNews())
     }
-
+    newsWidget.populate()
     addEvents(newsWidget)
 }
 

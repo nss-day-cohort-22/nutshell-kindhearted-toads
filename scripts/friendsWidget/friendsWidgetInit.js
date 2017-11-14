@@ -1,11 +1,11 @@
-const widgetTemplate = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const getFriends = require("./getFriends");
 const displayFriends = require("./displayFriends");
 const addFriendsListeners = require("./addFriendsListeners");
 const refreshWidget = require("../refreshWidget");
 
 
-const friendsWidget = widgetTemplate()
+const friendsWidget = makeWidget()
 
 friendsWidget.init = function() {
     //create new widget object
@@ -18,15 +18,18 @@ friendsWidget.init = function() {
         `
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    friendsWidget.init("friends", additionalElementDomString)
+    defaultWidget.init("friends", additionalElementDomString)
+
     friendsWidget.getLatest = getFriends;
     friendsWidget.latest = friendsWidget.getLatest();
-    friendsWidget.populate = displayFriends;
-    friendsWidget.populate(friendsWidget.latest);
+    friendsWidget.populate = function(){
+        displayFriends(this.getLatest())
+    }
     friendsWidget.refresh = refreshWidget;
     friendsWidget.addEvents = addFriendsListeners;
+    
     friendsWidget.addEvents(friendsWidget);
-
+    friendsWidget.populate();
 }
 
 module.exports = friendsWidget

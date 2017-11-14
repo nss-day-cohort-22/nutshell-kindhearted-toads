@@ -1,13 +1,13 @@
 // Author: Greg Lawrence
 // creates the chatWidget
 
-const widgetTemplate = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const getUser = require("../auth/getActiveUser");
 const fillChats = require("./fillChats")
 const createChatListener = require("./chatEventListener")
 
 //create new widget object
-const chatWidget = widgetTemplate()
+const chatWidget = makeWidget()
 
 chatWidget.init = function () { 
 
@@ -18,7 +18,7 @@ chatWidget.init = function () {
     `
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    chatWidget.prototype.init("chat", additionalDomElementString)
+    defaultWidget.init("chat", additionalDomElementString)
     
     const user = getUser();
 
@@ -30,6 +30,7 @@ chatWidget.init = function () {
     
     chatWidget.createChatListener = createChatListener
     chatWidget.createChatListener(chatWidget)
+    chatWidget.populate()
 }
 
 

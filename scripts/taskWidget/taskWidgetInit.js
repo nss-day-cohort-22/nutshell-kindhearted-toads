@@ -11,12 +11,12 @@ const getTasks = require("./getTasks");
 const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
 const addEvents = require("./addListeners");
-const Widget = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const refreshWidget = require("../refreshWidget");
 //console.log(taskWidget);
 
 
-const taskWidget = Widget()
+const taskWidget = makeWidget()
 
 taskWidget.init = function() {
 
@@ -27,7 +27,7 @@ taskWidget.init = function() {
     let additionalElementDomString = "<button class='tasksWidget__btn-add'>Add</button>";
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    taskWidget.prototype.init("tasks", additionalElementDomString)
+    defaultWidget.init("tasks", additionalElementDomString)
 
     // taskWidget enhancements
     taskWidget.widgetContainer = "tasksWidget";
@@ -40,8 +40,9 @@ taskWidget.init = function() {
     taskWidget.refresh = refreshWidget;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;
+    
     taskWidget.addEvents(taskWidget);
-
+    taskWidget.populate()
  
 }
 

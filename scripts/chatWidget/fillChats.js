@@ -5,7 +5,7 @@ const getDatabase = require("../database")
 const autoScroll = require("../autoScroll")
 
 
-const fillChats = function(chatWidget) {
+const fillChats = function() {
     const DB = getDatabase()
    
     // create a string to post to Dom for each chat message
@@ -25,7 +25,7 @@ const fillChats = function(chatWidget) {
             `
         //debugger
         // check if the logged in user is the author of the message, if so, add edit button
-        if (chatWidget.user.userId === messageAuthor.id) {
+        if (this.user.userId === messageAuthor.id) {
             chatMsgDomString += `<button class="chatWidget__editBtn" id="editBtn_${msg.id}" data-author="${msg.userId}">Edit</button>
             `
         }
@@ -36,7 +36,7 @@ const fillChats = function(chatWidget) {
     let chatContainerEl = document.querySelector(".chatContainer")
     // populate chat container with dom string
     chatContainerEl.innerHTML = chatMsgDomString
-    autoScroll(chatWidget.containerName)
+    autoScroll(this.containerName)
 }
 
 

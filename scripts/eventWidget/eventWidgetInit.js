@@ -6,9 +6,9 @@ const getUser = require("../auth/getActiveUser")
 const generateEventContent = require("./generateEventContent")
 const addlisteners = require("./addlisteners")
 const autoScroll = require("../autoScroll")
-const Widget = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 
-const eventWidget = Widget()
+const eventWidget = makeWidget()
 
 eventWidget.init = function() {
 
@@ -24,7 +24,7 @@ eventWidget.init = function() {
     `
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    eventWidget.prototype.init("events", additionalElementDomString)
+    defaultWidget.init("events", additionalElementDomString)
 
     // invoke the createFriendsListener
     const user = getUser();
@@ -42,6 +42,7 @@ eventWidget.init = function() {
     eventWidget.containerName = "eventsContainer"
     eventWidget.addlisteners = addlisteners
     eventWidget.addlisteners(eventWidget)
+    eventWidget.populate()
 }
 
 module.exports = eventWidget;
