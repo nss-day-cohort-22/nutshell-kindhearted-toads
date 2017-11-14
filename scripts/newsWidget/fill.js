@@ -23,9 +23,9 @@ function fill(news) {
         } else {
             domString += `
             <div class="ownedByFriend">
-                <p>${article.title}</p>
-                <p>${article.synopsis}</p>
-                <p>${article.url}</p>
+                <p class="newsArticle__title">${article.title}</p>
+                <p class="newsArticle__synopsis">${article.synopsis}</pv>
+                <p class="newsArticle__url">${article.url}</p>
             </div>`
         }
 
