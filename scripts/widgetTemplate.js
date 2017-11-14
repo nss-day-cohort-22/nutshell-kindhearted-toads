@@ -7,6 +7,7 @@ const getDatabase = require("./database")
 const dataSetter = require("./dataSetter")
 const defaultWidget = Object.create(null, {
     "init": {
+        "writable": true,
         "value": function(name, additionalContentString = ""){
             this.name = name
             let widgetEl = document.querySelector(`.${name}Widget`)
@@ -78,4 +79,4 @@ const makeWidget = function(){
     return Object.create(defaultWidget, {})
 }
 
-module.exports = makeWidget
+module.exports = {makeWidget, defaultWidget}

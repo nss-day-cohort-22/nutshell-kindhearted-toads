@@ -11,12 +11,14 @@ const getTasks = require("./getTasks");
 const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
 const addEvents = require("./addListeners");
-const Widget = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const refreshWidget = require("../refreshWidget");
 //console.log(taskWidget);
-const taskWidget = Widget()
 
-function taskWidgetInit() {
+
+const taskWidget = makeWidget()
+
+taskWidget.init = function() {
 
     //create new widget object
 
@@ -25,22 +27,24 @@ function taskWidgetInit() {
     let additionalElementDomString = "<button class='tasksWidget__btn-add'>Add</button>";
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    taskWidget.init("tasks", additionalElementDomString)
+    defaultWidget.init("tasks", additionalElementDomString)
 
     // taskWidget enhancements
     taskWidget.widgetContainer = "tasksWidget";
     taskWidget.user = getUser();
     taskWidget.getLatest = getTasks;
     taskWidget.latest = taskWidget.getLatest();
-    taskWidget.populate = generateTasks;
+    taskWidget.populate = function() {
+        generateTasks(this.getLatest())
+    }
     taskWidget.refresh = refreshWidget;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;
+    
     taskWidget.addEvents(taskWidget);
-
+    taskWidget.populate()
  
 }
-taskWidgetInit();
 
 module.exports = taskWidget;
 

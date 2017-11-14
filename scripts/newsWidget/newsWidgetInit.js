@@ -5,18 +5,17 @@
 
 
 
-const Widget = require("../widgetTemplate")
+const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const getUser = require("../auth/getActiveUser")
 const fillFunc = require("./fill")
 const getNews = require("./getNews")
 const addEvents = require("./eventListeners");
 
 
+const newsWidget = makeWidget()
 
-const newsWidget = Widget()
 
-
-function newsWidgetInit() {
+newsWidget.init = function () {
     //create new widget object
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
@@ -24,21 +23,17 @@ function newsWidgetInit() {
     let additionalElementDomString = "<button class='newsWidget__btn-add'>New Article</button>";
 
     // initialize new widget and pass in the name of the widget and the addition elements dom string
-    newsWidget.init("news", additionalElementDomString)
+    defaultWidget.init("news", additionalElementDomString)
 
-    // invoke the fill function
-
-    // invoke the createFriendsListener
     newsWidget.user = getUser();
     newsWidget.getNews = getNews;
     newsWidget.fill = fillFunc
     newsWidget.populate = function () {
         this.fill(this.getNews())
     }
-
+    newsWidget.populate()
     addEvents(newsWidget)
 }
 
-newsWidgetInit()
 
 module.exports = newsWidget
