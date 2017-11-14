@@ -8,32 +8,41 @@ const addFriendPrompt = require("../chatWidget/addFriendPrompt")
 // require module to get Database
 const getDatabase = require("../database")
 
-// set edit mode to false by default
-let editMode = false
-// currentMessage will either hold a newly created chat message, or a edited chat message. 
-let currentMessage = null
 
 
 const createChatListener = (chatWidget) => {
+    // set edit mode to false by default
+    let editMode = false
+    // currentMessage will either hold a newly created chat message, or a edited chat message. 
+    let currentMessage = null
     // get control of Send button used to create a new chat message
     const addChatBtnEl = document.querySelector(".chatWidget__btn")
     const chatInputField = document.querySelector(".chatWidget__text")
     const chatMsgAuthorEl = document.querySelector(".chatWidget__author")
     const chatMsgEl = document.querySelector(".chatWidget__msg")
-    // const chatMsgContentEl = document.querySelector(".chatWidget__content")
     const chatContainerEl = document.querySelector(".chatContainer")
-    const chatWidgetEditBtnEl = document.querySelector(".chatWidget__editBtn")
 
     // function to create a chat message object
     const createChatMsg = function() {
         let newChatObject
         // get control of dom input element
         let composeChatInput = document.querySelector(".chatWidget__text")
+
         if (!editMode) {
             // put the value of the input field into an object
             newChatObject = {"content": composeChatInput.value}
+
             // send new chat message object to the messagesFactory to get saved and pushed to local storage
-            messagesFactory(newChatObject).save()
+            if (newChatObject.content.charAt(0) === "@") {
+                let rcp = newChatObject.content.split(" ")[0].slice(1)
+                messagesFactory(newChatObject, rcp).save()
+            } else {
+                messagesFactory(newChatObject).save()
+            }
+
+
+
+
         } else if (editMode) {
             // put the msg object currently being edited into newChatObject variable. Add the new content that's been edited, then use saveEdit() to replace item in database
             newChatObject = currentMessage
@@ -57,6 +66,7 @@ const createChatListener = (chatWidget) => {
         if (chatInputField.value.length > 0) {
             createChatMsg()
             
+            // check if the button next to the input says "Save", if so, change back to Send
             if (addChatBtnEl.textContent === "Save") {
                 addChatBtnEl.textContent = "Send"
             }

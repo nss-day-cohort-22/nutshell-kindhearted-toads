@@ -35,6 +35,7 @@
     /* Keeps content area from making button smaller when large messages are made */
     max-width: 88%;
     margin: .1em;
+    cursor: pointer;
 }
 
 .chatWidget__text {
@@ -53,6 +54,10 @@
     cursor: pointer;
 }
 
+.isPrivate {
+    color: purple;
+    font-style: italic;
+}
 .hidden {
     visibility: hidden;
     opacity: 0;
