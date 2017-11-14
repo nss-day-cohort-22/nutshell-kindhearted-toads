@@ -55,7 +55,7 @@ const addlisteners = function(eventWidget) {
 
         //replace an event with text inputs for editing
 
-        if (e.target.parentNode.parentNode.dataset.creator === "true" && document.querySelector(".event__editDetails") === null) {
+        else if (e.target.parentNode.parentNode.dataset.creator === "true" && document.querySelector(".event__editDetails") === null) {
             
             let eventEl = e.target.parentNode.parentNode
         
@@ -76,7 +76,7 @@ const addlisteners = function(eventWidget) {
             document.getElementsByClassName("eventWidget__btn")[0].classList.toggle("eventWidget__btn-hidden")
         }
 
-        if (e.target.className === "edit-event__btn") {
+        else if (e.target.className === "edit-event__btn") {
             
             let eventId = parseInt(e.target.parentNode.parentNode.dataset.id)
             let eventName = document.querySelector(".edit-event__name").value
@@ -98,7 +98,7 @@ const addlisteners = function(eventWidget) {
         }
 
         //click to set attending status
-        if (e.target.className === "event-button__attending") {
+        else if (e.target.className === "event-button__attending") {
             if(e.target.checked){
                 eventFriendJoinTableFactory({ "eventId":  parseInt(e.path[2].dataset.id)}).save()
                 eventWidget.populate()
