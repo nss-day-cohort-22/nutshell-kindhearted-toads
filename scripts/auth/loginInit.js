@@ -11,6 +11,7 @@ const loginInit = () => {
     const loginPage = document.querySelector(".login");
     const dashboardPage = document.querySelector(".dashboard");
     
+    document.title = "Nutshell"
     welcomePage.style.display = "";
     loginPage.style.display = "none";
     dashboardPage.style.display = "none";

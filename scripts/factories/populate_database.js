@@ -83,7 +83,6 @@ const popDB = function () {
     friends.forEach(obj => friendsJoinTableFactory(obj).save())
     tasks.forEach(obj => tasksFactory(obj).save())
     events.forEach(obj => eventsTableFactory(obj).save())
-    eventsJoin.forEach(obj => eventFriendJoinTableFactory(obj).save())
 
     sessionStorage.removeItem("userInfo")
 }

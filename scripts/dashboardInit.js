@@ -51,7 +51,7 @@ const dashboardInit = function() {
 
     // display welcome message
     const user = getUser();
-    toaster.makeToast(`We've freshened up the widgets for you ${user.userName}`,5000);
+    toaster.makeToast(`We've freshened up the widgets for you ${user.userName}`,3000);
 }
 
 
