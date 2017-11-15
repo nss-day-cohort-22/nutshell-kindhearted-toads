@@ -2,7 +2,7 @@
 //take the filtered events and display them to the DOM
 
 const getUserName = require("./getUserName")
-const getNumberOfAtendees = require("./getNumberOfAttendees")
+const getNumberOfAttendees = require("./getNumberOfAttendees")
 
 const generateEvents = function(events) {
 
@@ -21,14 +21,14 @@ const generateEvents = function(events) {
             //Set default conditions
             let checked = ""
             let disabled = ""
-            let deleteButton = ""
+            let statusElement = ""
             let status = `Created by ${getUserName(event.userId)}`
             
             //Set conditions if you are the event creator
             if (event.creator){
-                let eventAttendees = getNumberOfAtendees(event.id)
+                let eventAttendees = getNumberOfAttendees(event.id)
                 disabled = "disabled"
-                deleteButton = `<button class="event-delete event-delete__${event.id}">Delete</button>`
+                statusElement = `<button class="event-delete event-delete__${event.id}">Delete</button>`
                 status = `Creator - <strong style="font-size:.8em">${eventAttendees} Guests</strong>`
                 checked = "checked"
 
@@ -36,11 +36,11 @@ const generateEvents = function(events) {
             //but are attending
             } else if (event.attending){
                 checked = "checked"
-                deleteButton = "Attending : "
+                statusElement = "Attending : "
 
             //Set Conditions if a friend created the event and you are not attending
             } else {
-                deleteButton = "Attend? : "
+                statusElement = "Attend? : "
             }
         
         
@@ -64,7 +64,7 @@ const generateEvents = function(events) {
                 </span>
                 <span class="event__eventAttending">
                     <p style="font-size:.7em">${status}</p>
-                    ${deleteButton}
+                    ${statusElement}
                     <input type="checkbox" class="event-button__attending" ${disabled} ${checked}>
                 </span>
             `

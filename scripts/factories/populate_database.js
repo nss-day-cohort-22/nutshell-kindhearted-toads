@@ -8,7 +8,6 @@ const newsFactory = require("./newsTableFactory")
 const messagesFactory = require("./messagesTableFactory")
 const friendsJoinTableFactory = require("./friendsJoinTableFactory.js")
 const eventsTableFactory = require("./eventsTableFactory.js")
-const eventFriendJoinTableFactory = require("./eventFriendJoinTableFactory.js")
 
 sessionStorage.setItem("userInfo", JSON.stringify({ "userId": 1, "userName": "Steve", "isEditing": false }))
 

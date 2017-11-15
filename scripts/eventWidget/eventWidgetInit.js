@@ -5,7 +5,6 @@ const getEvents = require("./getEvents")
 const getUser = require("../auth/getActiveUser")
 const generateEventContent = require("./generateEventContent")
 const addlisteners = require("./addlisteners")
-const autoScroll = require("../autoScroll")
 const {makeWidget, defaultWidget} = require("../widgetTemplate")
 
 //create new widget object

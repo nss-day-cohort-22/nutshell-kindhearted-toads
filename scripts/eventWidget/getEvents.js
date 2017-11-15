@@ -7,11 +7,12 @@ const getFriends = require("../auth/getFriends");
 const getEvents = function(user) {
     
     //generate neccessary info
+    let db = database()
     let userId = user.userId
     let friendsList = getFriends()
-    let eventsAttending = database().eventJoin.filter(el => el.userId === userId)
+    let eventsAttending = db.eventJoin.filter(el => el.userId === userId)
     let eventsAttendingIds = eventsAttending.map(el => el.eventId)
-    let events = database().events
+    let events = db.events
     let filteredEvents = []
     
     events.forEach( event => {
