@@ -102,7 +102,6 @@ const addEvents = function(taskWidget) {
             }
             taskWidget.populate();
             autoScroll(taskWidget.containerName);
-            //editing = false;
         }
 
         // Commit button after an update is made

@@ -3,9 +3,6 @@
  * This module unhides the sections
  * 
  */
-const addEvents = require("./loginEventListeners");
-
-
 const loginInit = () => {
     const welcomePage = document.querySelector(".welcome");
     const loginPage = document.querySelector(".login");

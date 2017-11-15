@@ -1,15 +1,17 @@
+/**
+ * Krys Mathis
+ * Init of friends widget
+ */
 const {makeWidget, defaultWidget} = require("../widgetTemplate")
 const getFriends = require("./getFriends");
 const displayFriends = require("./displayFriends");
 const addFriendsListeners = require("./addFriendsListeners");
-const refreshWidget = require("../refreshWidget");
 
 
 const friendsWidget = makeWidget()
 
+//create new widget object
 friendsWidget.init = function() {
-
-    //create new widget object
 
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
 
@@ -33,7 +35,6 @@ friendsWidget.init = function() {
     friendsWidget.populate = function(){
         displayFriends(this.getLatest())
     }
-    friendsWidget.refresh = refreshWidget;
 
     friendsWidget.populate();
     addFriendsListeners(friendsWidget);

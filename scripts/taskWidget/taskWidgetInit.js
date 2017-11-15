@@ -11,7 +11,6 @@ const getUser = require("../auth/getActiveUser");
 const generateTasks = require("./generateTasks");
 const addEvents = require("./addListeners");
 const {makeWidget, defaultWidget} = require("../widgetTemplate")
-const refreshWidget = require("../refreshWidget");
 
 const taskWidget = makeWidget()
 
@@ -34,7 +33,6 @@ taskWidget.init = function() {
     taskWidget.populate = function() {
         generateTasks(this.getLatest());
     }
-    taskWidget.refresh = refreshWidget;
     taskWidget.containerName = "tasksContainer";
     taskWidget.addEvents = addEvents;
     
