@@ -1,6 +1,10 @@
 /**
  * Krys Mathis
- * Return a child element from a parent task element given the class name
+ * What task information is in the current element?
+ * Returns the task desc element and value + the date element and value as an object
+ * The task widget can either be in input status or display status. If it is display
+ * mode then we need to pull the textContent, if it is in input mode we want the 
+ * value from the input box
  */
 
 const getTaskSiblings = function( element ) {

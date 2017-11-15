@@ -17,8 +17,7 @@ const displayFriends = (friends) => {
         friendDiv.dataset.userId = f.userId;
         friendDiv.dataset.userName = f.userName;
         friendDiv.dataset.email = f.email;
-        //friendDiv.dataset.userId = f.userId;
-        // populate the interior elements
+
         friendDiv.innerHTML += `<div class="friend__userName">${f.userName}</div>
         <div class="friend__email">${f.email}</div>
         <button class="friend__btn-delete">X</button>`

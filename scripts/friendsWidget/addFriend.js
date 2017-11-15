@@ -9,11 +9,19 @@ const autoScroll = require("../autoScroll");
 const Toaster = require("../toaster/toaster")
 const toaster = Toaster()
 
+
 const addFriend = function(friend, widget) {
-    
+
     const userMessage = document.querySelector(".friendsWidget__user-comment");
     const inputContainer = document.querySelector(".friendsWidget__inputContainer")
 
+    /**
+     * 1. Check if the users are already friends
+     * 2. If not, create a new friend
+     *  2.1 send a new friend object to the obj factory
+     *  2.2 Update the DOM: Hide the add a friend forms 
+     *  2.3 Update the DOM: Enable the autoscroll function
+     */
     if (isFriend(friend.id)) {
         userMessage.textContent = "Already friends..."
     } else {
@@ -23,7 +31,7 @@ const addFriend = function(friend, widget) {
             toaster.makeToast(`You are now friends with ${friend.userName}`, 2000)
             autoScroll("friendsContainer");
         } catch (err) {
-            console.warn("Problem adding record to database");
+            console.warn("Error while adding friend -", err);
         }
     }
 }
