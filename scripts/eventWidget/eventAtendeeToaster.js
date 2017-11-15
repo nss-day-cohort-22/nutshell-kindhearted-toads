@@ -8,7 +8,11 @@ const eventAtendeeToaster = function (eventId) {
     let eventJoinTable = db().eventJoin
 
     let eventAtendee = eventJoinTable.filter(x => x.eventId === eventId).map(x => userTable.find(a => a.id === x.userId).userName)
-    toaster.makeToast(eventAtendee.toString().replace(/,/g, ", "), 5000)
+    if(eventAtendee.length > 0){
+        toaster.makeToast(eventAtendee.toString().replace(/,/g, ", "), 5000)
+    } else {
+        toaster.makeToast("Sorry! No one wants to come!", 5000)
+    }
 }
 
 module.exports = eventAtendeeToaster
