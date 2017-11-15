@@ -39,6 +39,7 @@ const createChatListener = (chatWidget) => {
                 if (!editMode) {
                     // send new chat message object to the messagesFactory to get saved and pushed to local storage
 
+
                     if (newChatObject.content.charAt(0) === "@") {
                         let rcp = newChatObject.content.split(" ")[0].slice(1)
                         messagesFactory(newChatObject, rcp).save()
