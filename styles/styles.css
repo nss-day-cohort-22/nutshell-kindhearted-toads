@@ -134,6 +134,9 @@ body {
 .login__button-login:focus {outline:0;}
 .login__button-create:focus {outline:0;}
 
+.login__button-login:hover {background-color:lightgreen;}
+.login__button-create:hover {background-color:lightgreen;}
+
 
 .login__form {
     padding: 5px;
