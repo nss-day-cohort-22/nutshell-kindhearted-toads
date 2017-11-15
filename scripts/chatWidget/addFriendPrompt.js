@@ -4,9 +4,12 @@
 const isFriend = require("../friendsWidget/checkFriendship")
 const createFriendship = require("./createFriendship")
 const global = require("../globalRefresh")
+const Toaster = require("../toaster/toaster")
+const toaster = Toaster()
 
 const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
     
+
     // generate a visual popup or prompt to ask if you want to be friends with the user that you clicked on
 
     // Get the modal
@@ -74,6 +77,7 @@ const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
             // send userId to befriend to the function to create the friendship
             createFriendship(userIdClicked)
             global.refresh()
+            toaster.makeToast(`You are now friends with ${userClicked}`, 2000)
         })
             
     }
