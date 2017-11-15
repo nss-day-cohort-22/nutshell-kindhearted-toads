@@ -1,6 +1,5 @@
 const getDatabase = require("./database")
 const appInit = require("./auth/appInit")
-const dbEventHandler = require("./dbEvent")
 
 
 if(!getDatabase()){
