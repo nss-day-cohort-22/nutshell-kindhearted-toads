@@ -4,13 +4,14 @@
     width: 90%;
     /* This overrides the generic max-width for all widgets since the chat widget spans two columns */
     max-width: 90% 
-
 }
 
 .chatWidget__author {
-    font-weight: 500;
+    font-weight: 600;
     color: darkblue;
+    margin: 0;
     margin-right: .2em;
+    padding: 0 0 .2em;
 }
 
 .chatWidget__editBtn {
@@ -19,36 +20,37 @@
     height: 100%;
     flex-grow: 0;
     justify-content: right;
-    margin: .2em;
+    margin: .1em 0 0;
 }
-
 
 .chatWidget__msg {
     width: 100%;
     display: flex;
     flex-direction: row;
-    /* background-color: white; */
-    padding: 0 0 .5em .2em;
-    margin-right: .5em;
+    padding: 0 0 0 .2em;
+    margin: 0 .5em 0 .1em;
 }
 
 p {
-    margin: .2em 0;
+    margin: .2em 0 0;
 }
 
 .chatWidget__msgTimeStamp {
-    font-size: .7em;
+    text-align: right;
+    font-size: .6em;
     color: darkblue;
-    padding: 0 0 0 .4em;
+    padding: 0 .2em 0 0;
     margin: 0;
 }
 
 /* Let the main content of the chat message fill all available area between user name and edit button as the container grows and shrinks. */
 .chatWidget__content {
+    font-size: .9em;
     flex-grow: 1;
     /* Keeps content area from making button smaller when large messages are made */
     max-width: 88%;
-    margin: .1em;
+    margin: 0;
+    padding-bottom: .1em;
     cursor: pointer;
     color: black;
 }
