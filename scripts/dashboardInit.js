@@ -25,6 +25,8 @@ const toaster = Toaster();
 // control what elements exist on the page
 const dashboardInit = function() {
 
+    // display welcome message
+    const user = getUser();
     document.title = user.userName + "'s Nutshell"
     
     // populate navbar with items
@@ -50,8 +52,7 @@ const dashboardInit = function() {
     // populate each widget with content
     global.set([newsWidget, taskWidget, chatWidget, eventWidget, friendsWidget])
 
-    // display welcome message
-    const user = getUser();
+    // show toast message
     toaster.makeToast(`We've freshened up the widgets for you ${user.userName}`,3000);
 }
 
