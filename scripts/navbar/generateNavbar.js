@@ -18,6 +18,12 @@ const generateNavbar = () => {
     // place name of valid user next to logOut button
     
     navbarItemsString += `
+        <div class="nutshellNavbar__color-container">
+        <span class="nutshellNavbar__instructions">Select Color</span>
+            <div class="nutshellNavbar__select-color--blue"></div>
+            <div class="nutshellNavbar__select-color--brown"></div>
+            <div class="nutshellNavbar__select-color--black"></div>
+        </div>
         <span class="nutshellNavbar__activeUser">${currentUser.userName}<span>
         <button class="nutshellNavbar__logout">Logout</button>
         `
