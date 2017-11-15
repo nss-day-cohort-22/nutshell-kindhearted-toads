@@ -2,7 +2,6 @@
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
 }
@@ -13,6 +12,7 @@
 
 .event p {
     margin :0;
+    cursor: pointer;
 
 }
 
