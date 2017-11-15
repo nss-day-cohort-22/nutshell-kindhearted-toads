@@ -4,7 +4,7 @@
 ## Instructions on how to download and run Nutshell
 
 1. Navigate into a directory on your local machine where you want the project to be located
-1. Clone this repository using either ssh or https into your directory
+1. Clone this Github Repository using either ssh or https into your directory
 1. Open a terminal window and navigate to the folder containing "package.json"
 1. Type the command ``` npm install ``` to install all dependencies
 1. Start a http-server in the terminal; if needed download http-server via npm by typing ``` npm install -g http-server ``` more info: https://www.npmjs.com/package/http-server
