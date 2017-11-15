@@ -2,7 +2,7 @@
  * Krys Mathis
  * This function takes an existing element and turns it into in input field
  */
-
+/*
 const makeInput = function(taskElement) {
     // take a task element and break it into children
     // return a new task element that is input boxes instead
@@ -17,13 +17,12 @@ const makeInput = function(taskElement) {
     // get the individual task elements
         const taskDesc = childNodes.find(c => c.className === "task__desc");
         const taskCompletionDate = childNodes.find(c=> c.className === "task__completion-date");
-        const taskCheckbox = childNodes.find(c=> c.className === "task__checkbox");
+        //const taskCheckbox = childNodes.find(c=> c.className === "task__checkbox");
 
         const taskDescContent = taskDesc ? taskDesc.textContent : "";
         const taskCompletionDateContent = taskCompletionDate ? taskCompletionDate.textContent : "";
 
         // replace the desc element with an input box
-        //taskElement.replaceChild(taskInputDesc, taskDesc);
         const taskInputDesc = document.createElement("input");
         taskInputDesc.type = "text";
         taskInputDesc.className = "task__desc--input";
@@ -42,3 +41,4 @@ const makeInput = function(taskElement) {
 }
 // makeInput(taskElement);
 module.exports = makeInput;
+*/

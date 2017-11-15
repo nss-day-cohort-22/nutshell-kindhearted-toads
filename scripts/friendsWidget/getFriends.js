@@ -9,14 +9,13 @@ const getActiveUser = require("../auth/getActiveUser");
 const getFriends = function() {
     const user = getActiveUser();
     let filteredUsers = [];
-    // get incomplete tasks for user
+    // get all the current users friends
     try {
         let db = database();
         let friends = db.friends;
         let filteredFriends = friends
-            .filter(t=> t.userId === user.userId)
-            .sort((f,s)=> f.id - s.id);
-    
+            .filter(t=> t.userId === user.userId);
+
         // now you have filteredFriends;
         let users = db.users;
         let individualUser = {};

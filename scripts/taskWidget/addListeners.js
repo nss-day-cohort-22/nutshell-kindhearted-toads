@@ -2,10 +2,8 @@
  * Krys Mathis
  * Event listeners for the task widget
  */
-const replaceInput = require("./replaceInput");
 const autoScroll = require("../autoScroll")
 const taskFactory = require ("../factories/tasksTableFactory")
-const makeInput = require("./makeInput");
 const createTaskObject = require("./createTaskObject");
 const domIsClean = require("./verifyDOM");
 const getTaskSiblings = require("./getTaskSiblings");
@@ -41,7 +39,7 @@ const addEvents = function(taskWidget) {
         if (e.keyCode === 13 && e.target.className === "task__desc--input" && document.querySelector(".task__btn-update")) {
             const taskObj = createTaskObject(e.target,false);
             taskWidget.saveEdit("tasks",taskObj);
-            taskWidget.refresh(taskWidget);
+            taskWidget.populate();
         }
     });
 
@@ -50,6 +48,8 @@ const addEvents = function(taskWidget) {
 
         /**
          * Edit Mode
+         * Here's I'm using replaceChild to replace the existing elements with input boxes
+         * This could also work by just replacing the mark-up inside the task container div
          */
         if (e.target.className === "task__desc" || e.target.className === "task__completion-date") {
 
@@ -88,9 +88,7 @@ const addEvents = function(taskWidget) {
 
         }
 
-        /**
-         * Commiting a change after edit mode
-         */
+        // Commiting a change after edit mode
         if (e.target.className === "task__btn-commit") {
             // validate the input
             // take the input and add it to the database
@@ -102,7 +100,7 @@ const addEvents = function(taskWidget) {
             if (taskDetail.length > 0){
                 taskFactory({taskName: taskDetail, completionDate: taskCompletionDate }).save();
             }
-            taskWidget.refresh(taskWidget);
+            taskWidget.populate();
             autoScroll(taskWidget.containerName);
             //editing = false;
         }
@@ -117,7 +115,7 @@ const addEvents = function(taskWidget) {
                 const taskObj = createTaskObject(e.target,false);
                 taskWidget.saveEdit("tasks",taskObj);
             }
-            taskWidget.refresh(taskWidget);
+            taskWidget.populate();
 
         }
     });
@@ -128,7 +126,7 @@ const addEvents = function(taskWidget) {
             setTimeout(function() {
                 const taskObj = createTaskObject(e.target,true);
                 taskWidget.saveEdit("tasks",taskObj);
-                taskWidget.refresh(taskWidget);
+                taskWidget.populate();
             }, 200);
         }
     });
