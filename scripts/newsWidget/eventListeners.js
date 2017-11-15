@@ -36,7 +36,7 @@ const addEvents = function (newsWidget) {
             
             newsFactory(newNews).save()
             newsWidget.populate()
-            //editing = false;
+            
         } else if (e.target.className === "news__btn-delete") {
             newsWidget.delete("news", e.target.parentNode.id.split("_")[1])
             newsWidget.populate()

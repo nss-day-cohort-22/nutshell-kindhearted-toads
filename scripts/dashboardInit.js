@@ -25,9 +25,11 @@ const toaster = Toaster();
 // control what elements exist on the page
 const dashboardInit = function() {
 
+
     // display welcome message
     const user = getUser();
     document.title = user.userName + "'s Nutshell"
+
     
     // populate navbar with items
     generateNavbar()

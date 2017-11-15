@@ -4,7 +4,6 @@
 
 
 const getUser = require("../auth/getActiveUser");
-const newsWidget = require("./newsWidgetInit")
 
 
 function fill(news) {
