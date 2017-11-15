@@ -21,7 +21,7 @@ const addEventListeners = function () {
     colorSelector.addEventListener("click", (event) => {
         let color = "";
         if (event.target.className === "nutshellNavbar__select-color--brown") {
-            color = "#b96a16e6"
+            color = "#b96a16"
         } else if (event.target.className === "nutshellNavbar__select-color--blue") {
             color = "#206dfc"
         } else if (event.target.className === "nutshellNavbar__select-color--black") {
