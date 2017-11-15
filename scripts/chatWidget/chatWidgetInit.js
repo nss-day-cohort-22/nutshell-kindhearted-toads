@@ -20,15 +20,22 @@ chatWidget.init = function () {
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     defaultWidget.init("chat", additionalDomElementString)
     
+    // get the current Active user
     const user = getUser();
 
+    // Add info to the chatWidget
     chatWidget.widgetContainer = "chatWidget";
+    // attach active user object to chatWidget
     chatWidget.user = user;
+    // attach the function to fill the chatWidget container with chat messages
     chatWidget.populate = fillChats
     chatWidget.containerName = "chatContainer"
     
+    // run populate() function to start the chatWidget with any chat messages in database
     chatWidget.populate()
+    // attach the function to create event listeners to chatWidget object
     chatWidget.createChatListener = createChatListener
+    // run function to create event listeners on chatWidget
     chatWidget.createChatListener(chatWidget)
 }
 

@@ -1,5 +1,5 @@
 // Author: Greg Lawrence
-// listen for click on the "add" button used to create a new chat message. Pull data from input field, the current userId and pass in these values to the messageTableFactory.js 
+// Creates event listeners for the chatWidget, to handle creating new messages, editing messages and clicking and  
 
 const messagesFactory = require("../factories/messagesTableFactory")
 const addFriendPrompt = require("../chatWidget/addFriendPrompt")
@@ -15,13 +15,11 @@ const createChatListener = (chatWidget) => {
     // get control of Send button used to create a new chat message
     const addChatBtnEl = document.querySelector(".chatWidget__btn")
     const chatInputField = document.querySelector(".chatWidget__text")
-    const chatMsgAuthorEl = document.querySelector(".chatWidget__author")
-    const chatMsgEl = document.querySelector(".chatWidget__msg")
     const chatContainerEl = document.querySelector(".chatContainer")
 
     // function to create a chat message object
     const createChatMsg = function() {
-        
+        // create a empty object to hold the content of the new chat message
         let newChatObject = {}
         
         // get control of dom input element
@@ -37,13 +35,13 @@ const createChatListener = (chatWidget) => {
                 newChatObject.content = composeChatInputEl.value
                 
                 if (!editMode) {
-                    // send new chat message object to the messagesFactory to get saved and pushed to local storage
-
-
+                    
+                    // check if the new chat message starts with a @userName. If it does, splice off the username at the beginning and create a private message using the messagesFactory.
                     if (newChatObject.content.charAt(0) === "@") {
                         let rcp = newChatObject.content.split(" ")[0].slice(1)
                         messagesFactory(newChatObject, rcp).save()
                     } else {
+                        // send new chat message object that isn't a private message to the messagesFactory to get saved and pushed to local storage
                         messagesFactory(newChatObject).save()
                     }
 
@@ -58,7 +56,7 @@ const createChatListener = (chatWidget) => {
                     // change edit mode to false
                     editMode = false
 
-                    // check if the button next to the input says "Save", if so, change back to Send
+                    // check if the button next to the input field says "Save", if so, change back to Send
                     if (addChatBtnEl.textContent === "Save") {
                         addChatBtnEl.textContent = "Send"
                     }
@@ -88,11 +86,8 @@ const createChatListener = (chatWidget) => {
             
             // get message the user wants to edit
             let msgToEditId = parseInt(event.target.id.split("_")[1])
-            // get the id of the author of the message
-            let msgToEditAuthorId = parseInt(event.target.dataset.author)
-            
-
-            // get Database, and search messages array for the message that user wants to edit.
+        
+            // get Database, and search messages array for the message that the user wants to edit.
             const DB = getDatabase()
             msgToEditFromDB = DB.messages.find(msg => {
                 return msg.id === msgToEditId
@@ -112,23 +107,23 @@ const createChatListener = (chatWidget) => {
 
             //Set the current article variable to the newly edited message object. This will later be passed into a function to write it to the database. 
             currentMessage = msgToEditFromDB
-
         }
 
         // event listener to listen for click on userName in Chat Widget
         if (event.target.dataset.authorId && event.target.dataset.authorId.length > 0) {
-            
+            // get the Id of the author of the message
             let userIdClicked = parseInt(event.target.dataset.authorId)
+            // get the userName of the author of the message
             let userNameClicked = event.target.dataset.author
 
             // check if the username clicked on is NOT the currentUser
             if (chatWidget.user.userId !== userIdClicked)
-                addFriendPrompt(chatWidget, userIdClicked, userNameClicked)
+                // load the function to creates a popup modal to allow the user to add a new friend
+                addFriendPrompt(userIdClicked, userNameClicked)
         }
-
     })
     
-    // click event to display an edit button 
+    // create a click event to display an edit button on each message
     chatContainerEl.addEventListener("click", event => {
         // check if the target has a next sibling
         if (event.target.nextElementSibling) {

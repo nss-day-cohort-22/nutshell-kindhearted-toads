@@ -5,14 +5,18 @@
 const autoScroll = require("./autoScroll")
 const getDatabase = require("./database")
 const dataSetter = require("./dataSetter")
+
+
 const defaultWidget = Object.create(null, {
     "init": {
         "writable": true,
         "value": function(name, additionalContentString = ""){
+            // Add the passed in name variable to the widget object
             this.name = name
+            // get control of dom element for the widget 
             let widgetEl = document.querySelector(`.${name}Widget`)
-            let x = 1    
-            // build up a DOM string for chat container
+                
+            // build up a DOM string for widget container
             let widgetContainerDomString = `
             <header class='${name}Widget__header widgetHeader'>${name}</header>
             <div class='${name}Container widgetContainer'>
@@ -20,10 +24,11 @@ const defaultWidget = Object.create(null, {
             </div>   
             `
             
-            // add the users additional dom string from parameter to this variable    
+            // add the users additional dom string from passed in parameter     
             widgetContainerDomString += additionalContentString
             // push DOM string to DOM element
             widgetEl.innerHTML = widgetContainerDomString
+            // add the widget container name to the widget object to use later
             this.container = document.querySelector(`.${name}Container`)
         }
     },
@@ -67,13 +72,13 @@ const defaultWidget = Object.create(null, {
             // document.querySelector(`.${this.name}Container`)
             this.container = domString
             
-            // fun autoScroll function, make sure to require it
+            // use the autoScroll function, make sure to require it
             autoScroll(this.container)
         }
     }
 })
 
-
+// make a function that can be used to create widgets from the template object and inherit the template objects functions
 const makeWidget = function(){
     return Object.create(defaultWidget, {})
 }

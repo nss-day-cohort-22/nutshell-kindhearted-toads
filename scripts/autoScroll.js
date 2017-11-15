@@ -1,5 +1,5 @@
 // Author: Greg Lawrence
-// This module will automatically scroll the dom element to the bottom when there are more items than will fit in the window.
+// This module will automatically scroll the dom element to the bottom when there are more items than will fit in the container.
 
 const autoScroll = function (elementToScroll) {
     // uses the passed in parameter to get control of a dom element
