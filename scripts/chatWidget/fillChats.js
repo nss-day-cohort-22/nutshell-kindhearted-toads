@@ -26,26 +26,30 @@ const fillChats = function () {
             return msg.userId === user.id
         })
 
+        let readableTimeStamp = new Date(msg.timeStamp).toLocaleString()
+
         if (isPrivate(msg)) {
-
+            
             validate(msg, DB.users)
-
+            // chatMsgDomString += 
+            
             if (messageAuthor.id === this.user.userId || msg.rcp.toLowerCase() === this.user.userName.toLowerCase()) {
                 // populate chat msg container dom string with data from each chat message
                 chatMsgDomString += `
-                <p class="chatWidget__msg isPrivate" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
+                <p class="chatWidget__msgTimeStamp">${readableTimeStamp}</p><p class="chatWidget__msg isPrivate" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
                 `
             }
         } else {
             // populate chat msg container dom string with data from each chat message
             chatMsgDomString += `
-                    <p class="chatWidget__msg" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
-                    `
+            <p class="chatWidget__msgTimeStamp">${readableTimeStamp}</p><p class="chatWidget__msg" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
+            `
         }
-        //debugger
+        
+        
         // check if the logged in user is the author of the message, if so, add edit button
         if (this.user.userId === messageAuthor.id) {
-
+            
             chatMsgDomString += `<button class="chatWidget__editBtn btn hidden" id="editBtn_${msg.id}" data-msg-id="${msg.id}" data-author="${msg.userId}">Edit</button>
             `
         }
