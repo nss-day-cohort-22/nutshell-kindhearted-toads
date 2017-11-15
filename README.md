@@ -3,13 +3,16 @@
 
 ## Instructions on how to download and run Nutshell
 
-1. Navigate a directory on your local machine where you want the project to be located
-1. Clone this directory using either ssh or https into your directory
-1. Open a terminal and navigate to the folder containing "package.json"
-1. Type the command "npm install" to install all dependancies
-1. Start a http-server in the terminal
+1. Navigate into a directory on your local machine where you want the project to be located
+1. Clone this repository using either ssh or https into your directory
+1. Open a terminal window and navigate to the folder containing "package.json"
+1. Type the command ``` $ npm install ``` to install all dependencies
+1. Start a http-server in the terminal; if needed download http-server via npm by typing ``` npm install -g http-server ``` more info: https://www.npmjs.com/package/http-server
+1. Open another terminal window or tab and type in ``` $grunt ```
 1. Open up a window in your prefered browser
 1. In the navigation bar type "127.0.0.1:" followed by the port number of your http-server
+
+
 
 Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
 
