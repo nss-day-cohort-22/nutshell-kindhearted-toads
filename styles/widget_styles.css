@@ -1,8 +1,10 @@
 /* Styles for ALL widgets */
 
 .widget {
+    --widget-background: rgb(32, 109, 252);
+    /* --widget-background: rgb(32, 109, 252); */
     border: 1px solid rgb(128, 128, 128);
-    background-color: rgb(32, 109, 252);
+    background-color: var(--widget-background);
     height: 200px;
     border-radius: 3px;
     width: 95%;
@@ -14,7 +16,9 @@
 }
 
 .widgetContainer {
-    background-color: rgba(218, 218, 218, 0.671);
+    --widget-container-background: rgba(218, 218, 218, 0.671);
+    /* --widget-container-background: rgba(218, 218, 218, 0.671); */
+    background-color: var(--widget-container-background);
     /* border: 2px solid grey; */
     overflow-y: auto;
     height: 150px;

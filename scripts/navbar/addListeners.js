@@ -15,6 +15,27 @@ const addEventListeners = function () {
         // appInit()
         location.reload()
     })
+
+    const colorSelector = document.querySelector(".nutshellNavbar__color-container")
+    
+    colorSelector.addEventListener("click", (event) => {
+        let color = "";
+        if (event.target.className === "nutshellNavbar__select-color--brown") {
+            color = "#b96a16e6"
+        } else if (event.target.className === "nutshellNavbar__select-color--blue") {
+            color = "#206dfc"
+        } else if (event.target.className === "nutshellNavbar__select-color--black") {
+            color = "black"
+        }
+
+        if (color.length > 0) {
+            const allWidgets = document.querySelectorAll(".widget");
+            Array.from(allWidgets).forEach(w=>w.style.backgroundColor=color);
+            document.querySelector(".nutshellNavbar").style.backgroundColor=color;
+        }
+
+
+    })
 }
 
 
