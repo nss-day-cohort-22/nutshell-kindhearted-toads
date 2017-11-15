@@ -7,7 +7,6 @@ const getActiveUser = require("../auth/getActiveUser")
 
 const taskFactory = taskObject => {
 
-    const getDatabase = require("../database")
     let db = getDatabase()
 
     let idValue = 0
