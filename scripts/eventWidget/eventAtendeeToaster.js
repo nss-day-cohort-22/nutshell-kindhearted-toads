@@ -1,3 +1,6 @@
+//Event Toaster - Chris Miller
+//Use the toaster fuctionality Krys wrote to display a toaster of all atendees of an event
+
 const Toaster = require("../toaster/toaster")
 const db = require("../database")
 

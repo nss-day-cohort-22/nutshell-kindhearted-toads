@@ -1,3 +1,7 @@
+//Populate database - Chris Miller
+//If there is no databse stored in local storage, create a blank onject
+//fill it with dummy data, and save it to localStorage
+
 const userFactory = require("./usersTableFactory")
 const tasksFactory = require("./tasksTableFactory")
 const newsFactory = require("./newsTableFactory")
