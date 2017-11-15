@@ -7,34 +7,44 @@ const getNumberOfAtendees = require("./getNumberOfAttendees")
 const generateEvents = function(events) {
 
     const container = document.querySelector(".eventsContainer");
-
     container.innerHTML = "";
 
-    //filter events by date
+    //filter events by date - screw you javascript
     events = events.sort((a,b) => b.upcoming-a.upcoming)
     events[events.length-1].style += " event--nextEvent"
-
+    
     events.forEach(event => {
+
+        //Check if the event is in the future
         if (event.display) {
+
+            //Set default conditions
             let checked = ""
             let disabled = ""
             let deleteButton = ""
             let status = `Created by ${getUserName(event.userId)}`
             
+            //Set conditions if you are the event creator
             if (event.creator){
                 let eventAttendees = getNumberOfAtendees(event.id)
                 disabled = "disabled"
                 deleteButton = `<button class="event-delete event-delete__${event.id}">Delete</button>`
                 status = `Creator - <strong style="font-size:.8em">${eventAttendees} Guests</strong>`
                 checked = "checked"
+
+            //Set conditions if you did not create the event
+            //but are attending
             } else if (event.attending){
                 checked = "checked"
                 deleteButton = "Attending : "
+
+            //Set Conditions if a friend created the event and you are not attending
             } else {
                 deleteButton = "Attend? : "
             }
-
-
+        
+        
+            //Set dataset of the node
             const newDiv = document.createElement("div")
             newDiv.className = `event  ${event.style}`
             newDiv.dataset.userId = event.userId
@@ -44,7 +54,8 @@ const generateEvents = function(events) {
             newDiv.dataset.eventDate = event.eventDate
             newDiv.dataset.eventLocation = event.location
             newDiv.dataset.eventJoin = event.eventJoin
-
+            
+            //Add node to dom and write the inner HTML
             container.appendChild(newDiv)
             newDiv.innerHTML = `
                 <span class="event__eventDetails">

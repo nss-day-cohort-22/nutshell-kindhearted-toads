@@ -1,4 +1,5 @@
 // messageTableFactory - Chris Miller
+// adds a recipient property if the message is a private message
 
 const getDatabase = require("../database")
 const setDatabase = require("../datasetter")

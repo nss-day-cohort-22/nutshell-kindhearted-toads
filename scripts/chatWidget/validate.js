@@ -1,3 +1,5 @@
+// Validae Private Message Reciepient - Chris Miller
+// Validate that the text between the the @ and the ' '  at the beggining of a private message is a valid user - or append a message at the end of the message
 
 const validate = function(msg, users) {
 

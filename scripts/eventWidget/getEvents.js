@@ -5,18 +5,19 @@ const database = require("../database");
 const getFriends = require("../auth/getFriends");
 
 const getEvents = function(user) {
+    
+    //generate neccessary info
     let userId = user.userId
     let friendsList = getFriends()
     let eventsAttending = database().eventJoin.filter(el => el.userId === userId)
     let eventsAttendingIds = eventsAttending.map(el => el.eventId)
-
     let events = database().events
-
-
     let filteredEvents = []
     
     events.forEach( event => {
-
+        
+        //add a property of the miliseconds from the current time that the event takes place
+        //we will use this to not display any events in the past, negative values, and sort by date
         event.upcoming = Date.parse(event.eventDate.replace(/-/g, "/")) - Date.now()
         if (event.upcoming > 0) {
 

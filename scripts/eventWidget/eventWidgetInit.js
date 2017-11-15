@@ -1,5 +1,5 @@
 //Event Widget Init - Chris Miller
-//Initialize task widget and add methods
+//Initialize event widget and add methods
 
 const getEvents = require("./getEvents")
 const getUser = require("../auth/getActiveUser")
@@ -8,14 +8,12 @@ const addlisteners = require("./addlisteners")
 const autoScroll = require("../autoScroll")
 const {makeWidget, defaultWidget} = require("../widgetTemplate")
 
+//create new widget object
 const eventWidget = makeWidget()
 
 eventWidget.init = function() {
 
-    //create new widget object
-
     // build up a dom string for the additional unique elements for this widget, such as input fields and buttons that will be placed under the nested widgetContainer
-
     let additionalElementDomString = `
         <div class="eventWidget__btn-container">
             <button class="eventWidget__btn eventWidget__btn-create">Create Event</button>
@@ -26,7 +24,6 @@ eventWidget.init = function() {
     // initialize new widget and pass in the name of the widget and the addition elements dom string
     defaultWidget.init("events", additionalElementDomString)
 
-    // invoke the createFriendsListener
     const user = getUser();
     
     const fillEvents = function() {
