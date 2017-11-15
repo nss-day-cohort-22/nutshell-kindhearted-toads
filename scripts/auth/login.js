@@ -11,7 +11,6 @@ const login = function (userName, email) {
     if (user) {
         const storedUserInfo = JSON.stringify({ "userId": user.id, "userName": user.userName, "isEditing": false })
         sessionStorage.setItem("userInfo", storedUserInfo)
-        document.title = user.userName + "'s Nutshell"
         return true
     }
     else {

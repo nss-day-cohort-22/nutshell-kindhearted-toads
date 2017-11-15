@@ -25,6 +25,7 @@ const toaster = Toaster();
 // control what elements exist on the page
 const dashboardInit = function() {
 
+    document.title = user.userName + "'s Nutshell"
     
     // populate navbar with items
     generateNavbar()

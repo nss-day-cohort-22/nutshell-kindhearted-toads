@@ -8,6 +8,8 @@ const dashboardInit = require("../dashboardInit");
 const loginInit = require("./loginInit");
 
 const appInit = () => {
+
+    document.title = "Nutshell"
     if (activeUser()) {
         dashboardInit();
     } else {
