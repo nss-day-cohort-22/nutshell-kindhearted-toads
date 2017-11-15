@@ -27,6 +27,20 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    /* background-color: white; */
+    padding: 0 0 .5em .2em;
+    margin-right: .5em;
+}
+
+p {
+    margin: .2em 0;
+}
+
+.chatWidget__msgTimeStamp {
+    font-size: .7em;
+    color: darkblue;
+    padding: 0 0 0 .4em;
+    margin: 0;
 }
 
 /* Let the main content of the chat message fill all available area between user name and edit button as the container grows and shrinks. */
@@ -36,6 +50,7 @@
     max-width: 88%;
     margin: .1em;
     cursor: pointer;
+    color: black;
 }
 
 .chatWidget__text {

@@ -25,6 +25,10 @@ const fillChats = function () {
         const messageAuthor = DB.users.find(user => {
             return msg.userId === user.id
         })
+        // debugger
+        let readableTimeStamp = new Date(msg.timeStamp).toLocaleString()
+
+        chatMsgDomString += `<span class="chatWidget__msgTimeStamp">${readableTimeStamp}</span>`
 
         if (isPrivate(msg)) {
 
