@@ -29,8 +29,6 @@ const Toaster = function() {
         // get the toaster
         const toast = document.createElement("li");
             
-        //let toastMessage = document.createTextNode(message);
-        //toast.appendChild(toastMessage);
         toast.innerHTML = message;
         toast.className = "toaster__toast";
         toast.dataset.timeout = timeout;

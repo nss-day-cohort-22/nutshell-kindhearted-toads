@@ -11,11 +11,10 @@ const getUsers = require("./getUsers");
 const resetSearch = require("./resetSearch");
 const isFriend = require("./checkFriendship");
 const addFriend = require("./addFriend");
-const Toaster = require("../toaster/toaster");
 const global = require("../globalRefresh");
 
 const addFriendsListeners = (widget) => {
-    let toaster = Toaster();
+
     let result = {}
     let users = [];
     let readyToCommit = false;
