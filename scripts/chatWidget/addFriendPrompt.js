@@ -7,7 +7,7 @@ const global = require("../globalRefresh")
 const Toaster = require("../toaster/toaster")
 const toaster = Toaster()
 
-const addFriendsPrompt = function (chatWidget, userIdClicked, userClicked) {
+const addFriendsPrompt = function (userIdClicked, userClicked) {
     
 
     // generate a visual popup or prompt to ask if you want to be friends with the user that you clicked on

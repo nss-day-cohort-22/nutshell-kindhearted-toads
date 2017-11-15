@@ -8,18 +8,20 @@ const addEventListeners = function () {
     const logoutBtnEl = document.querySelector(".nutshellNavbar__logout")
 
     // add event listener for the click on logout button
-    logoutBtnEl.addEventListener("click", event => {
+    logoutBtnEl.addEventListener("click", () => {
         // log the user out using the logout.js module
         logoutUser()
-        // // run appInit() to get the user back to the main welcome page
-        // appInit()
+        // refresh page to bring the next user to the welcome screen
         location.reload()
     })
 
+    // get control of the DOM element to select a color theme for dashboard
     const colorSelector = document.querySelector(".nutshellNavbar__color-container")
     
+    // add event listener to color theme selector
     colorSelector.addEventListener("click", (event) => {
         let color = "";
+        // get the color the user has chosen when they click on the color selector
         if (event.target.className === "nutshellNavbar__select-color--brown") {
             color = "#b96a16"
         } else if (event.target.className === "nutshellNavbar__select-color--blue") {
@@ -28,13 +30,12 @@ const addEventListeners = function () {
             color = "black"
         }
 
+        // get control of all the widget Dom elements, then iterate through the widgets and set the background color to the color chosen. Also set the navbar background color to the color chosen
         if (color.length > 0) {
             const allWidgets = document.querySelectorAll(".widget");
             Array.from(allWidgets).forEach(w=>w.style.backgroundColor=color);
             document.querySelector(".nutshellNavbar").style.backgroundColor=color;
         }
-
-
     })
 }
 

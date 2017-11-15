@@ -1,5 +1,5 @@
 // Author: Greg Lawrence
-// create the navbar when the dashboard is created, for now, include a logo and a log-out button
+// create the navbar when the dashboard is created. Hide when on welcome screen and display when on dashboard
 
 const addEventListeners = require("./addListeners")
 const getActiveUser = require("../auth/getActiveUser")
@@ -15,14 +15,15 @@ const generateNavbar = () => {
 
     // get Active user
     const currentUser = getActiveUser()
-    // place name of valid user next to logOut button
     
+    // add color picker and log out button markup to the dom string for navbar
+    // place name of valid user next to logOut button
     navbarItemsString += `
-        <div class="nutshellNavbar__color-container">
-        <span class="nutshellNavbar__instructions">Select Color</span>
-            <div class="nutshellNavbar__select-color--blue"></div>
-            <div class="nutshellNavbar__select-color--brown"></div>
-            <div class="nutshellNavbar__select-color--black"></div>
+    <div class="nutshellNavbar__color-container">
+    <span class="nutshellNavbar__instructions">Select Color</span>
+    <div class="nutshellNavbar__select-color--blue"></div>
+                <div class="nutshellNavbar__select-color--brown"></div>
+                <div class="nutshellNavbar__select-color--black"></div>
         </div>
         <span class="nutshellNavbar__activeUser">${currentUser.userName}<span>
         <button class="nutshellNavbar__logout">Logout</button>
