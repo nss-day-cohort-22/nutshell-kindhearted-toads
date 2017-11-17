@@ -1,7 +1,5 @@
 // Author: Greg Lawrence
 // This module populates chatWidget with current message data from database
-
-const getDatabase = require("../database")
 const autoScroll = require("../autoScroll")
 const validate = require("./validate")
 
@@ -17,9 +15,7 @@ const isPrivate = function (msg) {
 }
 
 
-const fillChats = function () {
-    // get the freshest database
-    const DB = getDatabase()
+const fillChats = (DB, containerName, user) => {
 
     // create a string to post to Dom for each chat message
     let chatMsgDomString = ""
@@ -41,7 +37,7 @@ const fillChats = function () {
             validate(msg, DB.users)
             
             // check if the author of the message is the current Active user OR the recipient of the message is the current Active user
-            if (messageAuthor.id === this.user.userId || msg.rcp.toLowerCase() === this.user.userName.toLowerCase()) {
+            if (messageAuthor.id === user.userId || msg.rcp.toLowerCase() === user.userName.toLowerCase()) {
                 // populate chat msg container dom string with data from each chat message
                 chatMsgDomString += `
                 <p class="chatWidget__msgTimeStamp">${readableTimeStamp}</p><p class="chatWidget__msg isPrivate" data-msg-id="${msg.id}"><span class="chatWidget__author" data-author-id="${messageAuthor.id}" data-author="${messageAuthor.userName}">${messageAuthor.userName}:</span><span class="chatWidget__content" data-msg-id="${msg.id}"> ${msg.content}</span>
@@ -56,7 +52,7 @@ const fillChats = function () {
         
         
         // check if the current Active user is the author of the message, if so, add edit button
-        if (this.user.userId === messageAuthor.id) {
+        if (user.userId === messageAuthor.id) {
             
             chatMsgDomString += `<button class="chatWidget__editBtn btn hidden" id="editBtn_${msg.id}" data-msg-id="${msg.id}" data-author="${msg.userId}">Edit</button>
             `
@@ -69,7 +65,7 @@ const fillChats = function () {
     // populate chat container with dom string
     chatContainerEl.innerHTML = chatMsgDomString
     // run autoScroll function automatically scroll to the bottom of the list of messages 
-    autoScroll(this.containerName)
+    autoScroll(containerName)
 }
 
 

@@ -15,5 +15,8 @@
         "quotes": ["error", "double"],
         "eqeqeq": 2,
         "no-trailing-spaces": 0
+    },
+    "env": {
+        "jquery": true
     }
 }

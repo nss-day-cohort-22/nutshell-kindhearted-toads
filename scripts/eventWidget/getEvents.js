@@ -1,15 +1,13 @@
 //getEvents - Chris Miller
 //Pull all events from data base to be displayed - 
 
-const database = require("../database");
 const getFriends = require("../auth/getFriends");
 
-const getEvents = function(user) {
+const getEvents = function(user,db,friends) {
     
     //generate neccessary info
-    let db = database()
     let userId = user.userId
-    let friendsList = getFriends()
+    let friendsList = friends
     let eventsAttending = db.eventJoin.filter(el => el.userId === userId)
     let eventsAttendingIds = eventsAttending.map(el => el.eventId)
     let events = db.events

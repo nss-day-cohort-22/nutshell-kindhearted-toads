@@ -6,7 +6,7 @@
 const getUser = require("../auth/getActiveUser");
 
 
-function fill(news) {
+function fillNews(news) {
     const user = getUser()
     let domString = ""
     news.forEach(function (article) {
@@ -32,4 +32,4 @@ function fill(news) {
     this.container.innerHTML = domString
 }
 
-module.exports = fill
+module.exports = fillNews

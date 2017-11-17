@@ -10,7 +10,8 @@ const getUser = require("../auth/getActiveUser")
 const fillFunc = require("./fill")
 const getNews = require("./getNews")
 const addEvents = require("./eventListeners");
-
+const database = require("../database");
+const friends = require("../auth/getFriends")
 
 const newsWidget = makeWidget()
 
@@ -28,8 +29,12 @@ newsWidget.init = function () {
     newsWidget.user = getUser();
     newsWidget.getNews = getNews;
     newsWidget.fill = fillFunc
-    newsWidget.populate = function () {
-        this.fill(this.getNews())
+    newsWidget.populate = () => {
+        database((database) => {
+            const myFriends = friends(database);
+            const news = getNews(myFriends, database);
+            this.fill(news);
+        })
     }
     newsWidget.populate()
     addEvents(newsWidget)
