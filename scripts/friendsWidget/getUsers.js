@@ -3,16 +3,14 @@
  * Pulls the filtered users from the database
  * Excludes the current user
  */
-const database = require("../database");
 const getCurrentUser = require("../auth/getActiveUser");
 
-const getUsers = function() {
+const getUsers = function(database) {
     let filteredUsers = [];
     try {
         const currentUser = getCurrentUser();
         // get incomplete tasks for user
-        let db = database();
-        const users = db.users;
+        const users = database.users;
         filteredUsers = users.filter(u=> u.id !== currentUser.userId)
             .sort((f,s)=>f.userName - s.userName)
     } catch (err) {

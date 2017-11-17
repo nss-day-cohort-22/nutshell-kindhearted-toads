@@ -1,0 +1,239 @@
+{
+    "users": [{
+        "id": 1,
+        "timeStamp": 1510711514716,
+        "userName": "Steve",
+        "email": "me@me.com"
+    }, {
+        "id": 2,
+        "timeStamp": 1510711514718,
+        "userName": "Mark",
+        "email": "you@you.com"
+    }, {
+        "id": 3,
+        "timeStamp": 1510711514718,
+        "userName": "Krista",
+        "email": "foo@foo.com"
+    }, {
+        "id": 4,
+        "timeStamp": 1510711514718,
+        "userName": "Greg",
+        "email": "greg@greg.com"
+    }, {
+        "id": 5,
+        "timeStamp": 1510711514719,
+        "userName": "Krys",
+        "email": "krys@krys.com"
+    }, {
+        "id": 6,
+        "timeStamp": 1510711514719,
+        "userName": "Chris",
+        "email": "chris@chris.com"
+    }, {
+        "id": 7,
+        "timeStamp": 1510711514719,
+        "userName": "Sean",
+        "email": "sean@sean.com"
+    }],
+    "events": [{
+        "id": 1,
+        "timeStamp": 1510711514724,
+        "userId": 1,
+        "name": "Event example :: Foo Fighters",
+        "eventDate": "2017-12-05",
+        "location": "Bridgestone"
+    }, {
+        "id": 2,
+        "timeStamp": 1510711514724,
+        "userId": 1,
+        "name": "Event example :: Boo Bighters",
+        "eventDate": "2017-12-15",
+        "location": "Bridgeblock"
+    }, {
+        "id": 3,
+        "timeStamp": 1510711514724,
+        "userId": 1,
+        "name": "Event example :: Doo Dighters",
+        "eventDate": "2017-12-30",
+        "location": "Walkwayestone"
+    }],
+    "messages": [{
+        "id": 1,
+        "timeStamp": 1510711514719,
+        "userId": 1,
+        "content": "This is where a chat message will display"
+    }, {
+        "id": 2,
+        "timeStamp": 1510711514720,
+        "userId": 1,
+        "content": "More Displayed Content"
+    }, {
+        "id": 3,
+        "timeStamp": 1510711514720,
+        "userId": 1,
+        "content": "Test to see if this gets a userId info attached"
+    }, {
+        "id": 4,
+        "timeStamp": 1510711514720,
+        "userId": 1,
+        "content": "I just want more than 4 messages"
+    }, {
+        "id": 5,
+        "timeStamp": 1510711514720,
+        "userId": 1,
+        "content": "Five or more is better"
+    }, {
+        "id": 6,
+        "timeStamp": 1510711514720,
+        "userId": 1,
+        "content": "Maybe even ten! But it goes to 11..."
+    }, {
+        "id": 7,
+        "timeStamp": 1510756355839,
+        "userId": 1,
+        "content": "Test message"
+    }, {
+        "id": 8,
+        "timeStamp": 1510756372742,
+        "userId": 1,
+        "content": "@Krista Are you There?",
+        "rcp": "Krista"
+    }, {
+        "id": 9,
+        "timeStamp": 1510757688316,
+        "userId": 5,
+        "content": "@Steve does the private message work?",
+        "rcp": "Steve"
+    }, {
+        "id": 10,
+        "timeStamp": 1510774044090,
+        "userId": 1,
+        "content": "@Krys test of private message",
+        "rcp": "Krys"
+    }],
+    "friends": [{
+        "id": 3,
+        "userId": 1,
+        "timeStamp": 1510711514722,
+        "friendId": 2
+    }, {
+        "id": 4,
+        "userId": 1,
+        "timeStamp": 1510757647806,
+        "friendId": 7
+    }, {
+        "id": 7,
+        "userId": 1,
+        "timeStamp": 1510773399973,
+        "friendId": 3
+    }, {
+        "id": 8,
+        "userId": 5,
+        "timeStamp": 1510775295570,
+        "friendId": 2
+    }, {
+        "id": 9,
+        "userId": 5,
+        "timeStamp": 1510775299054,
+        "friendId": 1
+    }, {
+        "id": 10,
+        "userId": 5,
+        "timeStamp": 1510775315339,
+        "friendId": 3
+    }],
+    "news": [{
+        "id": 1,
+        "timeStamp": 1510711514721,
+        "userId": 1,
+        "title": "This is an example of a News Article",
+        "synopsis": "put a summary of the article here",
+        "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/"
+    }],
+    "tasks": [{
+        "id": 1,
+        "timeStamp": 1510711514723,
+        "userId": 1,
+        "taskName": "Task example :: Take out garbage",
+        "completionDate": "2017-12-15",
+        "completed": false
+    }, {
+        "id": 2,
+        "timeStamp": 1510711514723,
+        "userId": 1,
+        "taskName": "Second task example :: Bring the garbage back in",
+        "completionDate": "2017-12-25",
+        "completed": false
+    }, {
+        "id": 3,
+        "timeStamp": 1510711514723,
+        "userId": 1,
+        "taskName": "Third Example",
+        "completionDate": "2017-10-05",
+        "completed": false
+    }, {
+        "id": 4,
+        "timestamp": 1510745055539,
+        "userId": 1,
+        "taskName": "Fifth Example",
+        "completionDate": "2017-11-15",
+        "completed": true
+    }, {
+        "id": 5,
+        "timestamp": 1510745127852,
+        "userId": 1,
+        "taskName": "Bongo Java",
+        "completionDate": "2017-11-15",
+        "completed": true
+    }, {
+        "id": 6,
+        "timestamp": 1510745277234,
+        "userId": 1,
+        "taskName": "Fourth Example 2.0",
+        "completionDate": "2017-11-15",
+        "completed": false
+    }, {
+        "id": 7,
+        "timestamp": 1510773390654,
+        "userId": 1,
+        "taskName": "Task2",
+        "completionDate": "2017-11-15",
+        "completed": false
+    }],
+    "eventJoin": [{
+        "id": 1,
+        "timeStamp": 1510711514725,
+        "userId": 1,
+        "eventId": 1
+    }, {
+        "id": 2,
+        "timeStamp": 1510711514725,
+        "userId": 1,
+        "eventId": 1
+    }, {
+        "id": 3,
+        "timeStamp": 1510711514725,
+        "userId": 1,
+        "eventId": 2
+    }, {
+        "id": 4,
+        "timeStamp": 1510711514725,
+        "userId": 1,
+        "eventId": 2
+    }, {
+        "id": 5,
+        "timeStamp": 1510711514726,
+        "userId": 1,
+        "eventId": 3
+    }, {
+        "id": 6,
+        "timeStamp": 1510711514726,
+        "userId": 1,
+        "eventId": 3
+    }, {
+        "id": 7,
+        "timeStamp": 1510711567229,
+        "userId": 3,
+        "eventId": 1
+    }]
+}
