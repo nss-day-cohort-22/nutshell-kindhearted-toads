@@ -123,16 +123,30 @@ const createChatListener = (chatWidget) => {
         }
     })
     
-    // create a click event to display an edit button on each message
-    chatContainerEl.addEventListener("click", event => {
-        // check if the target has a next sibling
-        if (event.target.nextElementSibling) {
-            // check if the next sibling element is the Edit Button
-            let nextSiblingId = event.target.nextElementSibling.id
-            if (nextSiblingId.startsWith("editBtn_")) {
-                // toggle class to make button visible
-                event.target.nextElementSibling.classList.toggle("hidden")
-            }
+    // detects if the user is hovering over one of their chat messages and displays an edit button
+    chatContainerEl.addEventListener("mouseover", event => {
+        // check if the target has the parent of the chat Widget message
+        // if (event.target.parentElement.className === "chatWidget__msg" || event.target.parentElement.className === "chatWidget__msg isPrivate") {
+        if (event.target.parentElement.className.includes("chatWidget__msg")) {
+            // get the id number of the msg 
+            let msgId = event.target.parentElement.dataset.msgId
+            // get control of the edit button that cooresponds with the message
+            let hideBtn = document.getElementById("editBtn_" + msgId)
+            // toggle class to make button visible
+            hideBtn.classList.toggle("hidden")
+        }
+    })
+
+    // detects when the user has moved mouse out of a chat message
+    chatContainerEl.addEventListener("mouseout", event => {
+        // check if the target has the parent of the chat Widget message
+        if (event.target.parentElement.className.includes("chatWidget__msg")) {            
+            // get the id number of the msg 
+            let msgId = event.target.parentElement.dataset.msgId
+            // get control of the edit button that cooresponds with the message
+            let hideBtn = document.getElementById("editBtn_" + msgId)
+            // toggle class to make button visible
+            hideBtn.classList.toggle("hidden")
         }
     })
 }
