@@ -129,10 +129,12 @@ const createChatListener = (chatWidget) => {
         if (event.target.parentElement.className.includes("chatWidget__msg")) {
             // get the id number of the msg 
             let msgId = event.target.parentElement.dataset.msgId
-            // get control of the edit button that cooresponds with the message
-            let hideBtn = document.getElementById("editBtn_" + msgId)
-            // toggle class to make button visible
-            hideBtn.classList.toggle("hidden")
+            if (document.getElementById("editBtn_" + msgId)) {
+                // get control of the edit button that cooresponds with the message
+                let hideBtn = document.getElementById("editBtn_" + msgId)
+                // toggle class to make button visible
+                hideBtn.classList.toggle("hidden")
+            }
         }
     })
 
@@ -142,10 +144,12 @@ const createChatListener = (chatWidget) => {
         if (event.target.parentElement.className.includes("chatWidget__msg")) {            
             // get the id number of the msg 
             let msgId = event.target.parentElement.dataset.msgId
-            // get control of the edit button that cooresponds with the message
-            let hideBtn = document.getElementById("editBtn_" + msgId)
-            // toggle class to make button visible
-            hideBtn.classList.toggle("hidden")
+            if (document.getElementById("editBtn_" + msgId)) {
+                // get control of the edit button that cooresponds with the message
+                let hideBtn = document.getElementById("editBtn_" + msgId)
+                // toggle class to make button visible
+                hideBtn.classList.toggle("hidden")
+            }
         }
     })
 }
