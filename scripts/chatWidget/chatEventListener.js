@@ -126,7 +126,6 @@ const createChatListener = (chatWidget) => {
     // detects if the user is hovering over one of their chat messages and displays an edit button
     chatContainerEl.addEventListener("mouseover", event => {
         // check if the target has the parent of the chat Widget message
-        // if (event.target.parentElement.className === "chatWidget__msg" || event.target.parentElement.className === "chatWidget__msg isPrivate") {
         if (event.target.parentElement.className.includes("chatWidget__msg")) {
             // get the id number of the msg 
             let msgId = event.target.parentElement.dataset.msgId
