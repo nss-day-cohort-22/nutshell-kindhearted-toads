@@ -132,7 +132,7 @@ const createChatListener = (chatWidget) => {
             if (document.getElementById("editBtn_" + msgId)) {
                 // get control of the edit button that cooresponds with the message
                 let hideBtn = document.getElementById("editBtn_" + msgId)
-                // toggle class to make button visible
+                // remove hidden class to make button visible
                 hideBtn.classList.remove("hidden")
             }
         }
@@ -147,7 +147,7 @@ const createChatListener = (chatWidget) => {
             if (document.getElementById("editBtn_" + msgId)) {
                 // get control of the edit button that cooresponds with the message
                 let hideBtn = document.getElementById("editBtn_" + msgId)
-                // toggle class to make button visible
+                // add hidden class to make button invisible
                 hideBtn.classList.add("hidden")
             }
         }
